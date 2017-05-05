@@ -1,0 +1,7 @@
+﻿David Medina
+
+
+05-05-17:
+* Find the libraries that I will need
+* Find out how to read audio files.
+* Design the basic layout of the music player.
