@@ -26,3 +26,8 @@
 * Created a main file to test the audio class.
 * Reading audio is simple with Qt.
 * Need to start designing how classes will interact with each other.
+* Began exploring TagLib.
+---> Still debating whether:
+---- to use Qt's metadata classes, or use TagLib.
+---- TagLib seems like a better option
+---- but requires more work and cmake.
