@@ -1,7 +1,28 @@
 ﻿David Medina
 
+05-04-17:
+* Figure out the platform to use.
+* Either Android studio or Qt creator.
+* Figure out which platform is best.
 
 05-05-17:
 * Find the libraries that I will need
 * Find out how to read audio files.
 * Design the basic layout of the music player.
+
+05-07-17:
+* I've decided on Qt creator.
+* Look at how to read audio files on Qt.
+* Find out whether additional libraries will be needed.
+
+---> reading audio files is possible without any additional libraries
+---- but in order to get metadata, I'll need another library
+---- , since Qt loads metadata only after loading the audio files.
+
+05-08-17:
+* Find out which metadata library to use
+---> possible libs: Taglib, Symbian API, or just Qt's native class.
+* Began creating the initial class for a 'Song'.
+* Created a main file to test the audio class.
+* Reading audio is simple with Qt.
+* Need to start designing how classes will interact with each other.
