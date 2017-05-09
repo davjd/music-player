@@ -31,3 +31,13 @@
 ---- to use Qt's metadata classes, or use TagLib.
 ---- TagLib seems like a better option
 ---- but requires more work and cmake.
+
+05-09-17:
+* I've decided to use TagLib as the library for metadata.
+* I have also figured out how to link it with a simple program.
+* Now I need to find out how to link it using Qt creator
+-- but it should be easy!!
+* Afterwards, I'll begin creating the initial classes for audio files.
+* I've also decided to use Qt Media player to load the files.
+* A feature that I'm planning to add later is audio visualization
+-- but it doesn't seem easy so i dont know yet.
