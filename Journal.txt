@@ -41,3 +41,9 @@
 * I've also decided to use Qt Media player to load the files.
 * A feature that I'm planning to add later is audio visualization
 -- but it doesn't seem easy so i dont know yet.
+
+05-11-17:
+* I've learned how to link taglib with Qt.
+* Now I need to look at the documentation.
+* I need to learn the methods that I'll need for the metadata.
+* I've also created a simple test to run FileRef class to test taglib.
