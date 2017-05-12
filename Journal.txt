@@ -47,3 +47,9 @@
 * Now I need to look at the documentation.
 * I need to learn the methods that I'll need for the metadata.
 * I've also created a simple test to run FileRef class to test taglib.
+
+05-12-17:
+* I've created the first class, called "Song", which contains all information of the song.
+* from that class, it'll be connected to a mediaplayer, which will play the song.
+* the class will have methods to get metadata.
+* I've also found out how to use the absolute path file instead of a local file.
