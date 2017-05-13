@@ -15,8 +15,6 @@ class Song : public QObject, public QMediaContent
     Q_OBJECT
 public:
     Song(QDir ref);
-    void setPlayer(QMediaPlayer* p);
-    QMediaPlayer* player();
     QString artist();
     QString title();
     QString album();
@@ -29,7 +27,6 @@ public:
 
 
 private:
-    QMediaPlayer* player_;
     TagLib::FileRef* source_;
     QUrl path_;
 

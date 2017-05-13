@@ -4,18 +4,9 @@
 
 Song::Song(QDir ref) : QMediaContent(QUrl("file://" + ref.absolutePath()))
 {
-    player_ = nullptr;
     path_ = QUrl("file://" + ref.absolutePath());
 
 //    source_ = new TagLib::FileRef(ref);
-}
-
-void Song::setPlayer(QMediaPlayer *p){
-    player_ = p;
-}
-
-QMediaPlayer* Song::player(){
-    return player_;
 }
 
 QString Song::artist()
