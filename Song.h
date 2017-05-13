@@ -29,9 +29,6 @@ public:
 private:
     TagLib::FileRef* source_;
     QUrl path_;
-
-//public slots:
-//    void printMeta();
 };
 
 #endif // SONG_H
