@@ -59,3 +59,20 @@
 * from that class, it'll be connected to a mediaplayer, which will play the song.
 * the class will have methods to get metadata.
 * I've also found out how to use the absolute path file instead of a local file.
+
+
+05-13-17:
+* The song class seems to be finished.
+-- it's able to retrieve metadata
+-- it uses the audio's filepath as a parameter.
+-- it can be connected to QMediaPlayer to be played.
+* I've created the initial scanner for audio files.
+* I'm still unsure how I want input the paths of music
+-- I could just manually search through all the user's files.
+----> this would take a lot of computer power and would slow down performance.
+-- I could ask the user to input the possible paths for music files 
+----> this would be the easiest but least pleasant way for the user.
+-- I could create a simple GUI to ask the user for possible paths.
+----> this would be the hardest but would make it easier for the user.
+* I'm planning to design the first screen that would display the avaliable music by the end of this week.
+
