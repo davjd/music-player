@@ -23,6 +23,13 @@ int main(int argc, char *argv[])
     player->setVolume(100);
     player->play();
 
+    qDebug() << "Testing metadata: ";
+    qDebug() << "album: " << src->album() << "\nartist: " << src->artist();
+    qDebug() << "genre: " << src->genre() << "\ncomment: " << src->comment();
+    qDebug() << "title: " << src->title();
+
+    qDebug() << "track: " << src->track() << "\nyear: " << src->year();
+
 
 
     w.show();

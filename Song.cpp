@@ -4,9 +4,9 @@
 
 Song::Song(QDir ref) : QMediaContent(QUrl("file://" + ref.absolutePath()))
 {
+    // ugly but for now i'll leave it like this...
     path_ = QUrl("file://" + ref.absolutePath());
-
-//    source_ = new TagLib::FileRef(ref);
+    source_ = new TagLib::FileRef(ref.absolutePath().toStdString().data());
 }
 
 QString Song::artist()
@@ -49,10 +49,3 @@ QUrl Song::path(){
 TagLib::FileRef* Song::source(){
     return source_;
 }
-
-//void Song::printMeta(){
-//    won't be needed anymore.
-//    qDebug() << player_->isMetaDataAvailable();
-//    qDebug() << "Title: " << player_->metaData(QMediaMetaData::Title).toString();
-//    qDebug() << "Author: " << player_->metaData(QMediaMetaData::Author).toString();
-//}
