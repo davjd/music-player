@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     while(it.hasNext()){
         QFileInfo f(it.filePath());
         if(f.isFile()){
-            if(valids.contains(f.suffix())){
+            if(valids.contains(f.suffix().toLower())){
                 qDebug() << "base: " << f.baseName();
             }
         }

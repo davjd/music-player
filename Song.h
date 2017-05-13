@@ -15,6 +15,7 @@ class Song : public QObject, public QMediaContent
     Q_OBJECT
 public:
     Song(QDir ref);
+    ~Song();
     QString artist();
     QString title();
     QString album();

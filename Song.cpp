@@ -9,6 +9,10 @@ Song::Song(QDir ref) : QMediaContent(QUrl("file://" + ref.absolutePath()))
     source_ = new TagLib::FileRef(ref.absolutePath().toStdString().data());
 }
 
+Song::~Song(){
+    delete source_;
+}
+
 QString Song::artist()
 {
     return QString::fromStdString(source_->tag()->artist().to8Bit());
