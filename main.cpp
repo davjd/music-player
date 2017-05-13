@@ -7,6 +7,7 @@
 #include <QDir>
 #include <QDirIterator>
 #include <QHash>
+#include <QQueue>
 
 
 int main(int argc, char *argv[])
@@ -39,17 +40,30 @@ int main(int argc, char *argv[])
     for(int i = 0; i < 9; ++i){
         valids.insert(valid[i], 1);
     }
-
+    QQueue<Song*> playlist;
 
     while(it.hasNext()){
         QFileInfo f(it.filePath());
         if(f.isFile()){
             if(valids.contains(f.suffix().toLower())){
                 qDebug() << "base: " << f.baseName();
+                playlist.enqueue(new Song(QDir(f.filePath())));
             }
         }
         it.next();
     }
+
+    qDebug() << "\n\n\n\nPlaylist: ";
+    QList<Song*>::iterator iter;
+    for(iter = playlist.begin(); iter != playlist.end(); ++iter){
+        qDebug() << "album: " << (*iter)->album() << "\nartist: " << (*iter)->artist();
+        qDebug() << "genre: " << (*iter)->genre() << "\ncomment: " << (*iter)->comment();
+        qDebug() << "title: " << (*iter)->title();
+
+        qDebug() << "track: " << (*iter)->track() << "\nyear: " << (*iter)->year();
+        qDebug() << (*iter)->path() << "\n\n";
+    }
+
 
 
 
