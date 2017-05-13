@@ -34,11 +34,11 @@ QString Song::album()
     return QString::fromStdString(source_->tag()->album().to8Bit());
 }
 
-unsigned Song::track(){
+unsigned int Song::track(){
     return source_->tag()->track();
 }
 
-unsigned Song::year(){
+unsigned int Song::year(){
     return source_->tag()->year();
 }
 

@@ -6,6 +6,7 @@
 #include "Song.h"
 #include <QDir>
 #include <QDirIterator>
+#include <QHash>
 
 
 int main(int argc, char *argv[])
@@ -33,14 +34,19 @@ int main(int argc, char *argv[])
     QDirIterator it(p, QDirIterator::Subdirectories);
 
     // most common audio files:
-    std::string valid[] = {"m4a","mp3", "aac","ogg","flac","alac","wma","wav","aiff"};
+    QHash<QString, unsigned int> valids;
+    QString valid[] = {"m4a","mp3", "aac","ogg","flac","alac","wma","wav","aiff"};
+    for(int i = 0; i < 9; ++i){
+        valids.insert(valid[i], 1);
+    }
 
 
     while(it.hasNext()){
         QFileInfo f(it.filePath());
         if(f.isFile()){
-            qDebug() << "base: " << f.baseName();
-            qDebug() << "end: " << f.suffix();
+            if(valids.contains(f.suffix())){
+                qDebug() << "base: " << f.baseName();
+            }
         }
         it.next();
     }
