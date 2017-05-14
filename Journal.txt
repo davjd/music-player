@@ -14,7 +14,6 @@
 * I've decided on Qt creator.
 * Look at how to read audio files on Qt.
 * Find out whether additional libraries will be needed.
-
 ---> reading audio files is possible without any additional libraries
 ---- but in order to get metadata, I'll need another library
 ---- , since Qt loads metadata only after loading the audio files.
@@ -41,6 +40,7 @@
 * I've also decided to use Qt Media player to load the files.
 * A feature that I'm planning to add later is audio visualization
 -- but it doesn't seem easy so i dont know yet.
+
 5-10-17:
 * I got Qt to recognize the path of TagLibs'library,
 -- but it's still not working.
@@ -48,6 +48,7 @@
 * A feature I want to add is to have an audio visualizer 
 -- but that'll require more work.
 -- so I'll do it if I have time at the end.
+
 05-11-17:
 * I've learned how to link taglib with Qt.
 * Now I need to look at the documentation.
