@@ -15,35 +15,33 @@ SongScreen::~SongScreen()
 }
 
 void SongScreen::next(){
-    qDebug() << "index: " << player->playlist()->currentIndex();
     qDebug() << "next!!!";
     if(player->isAudioAvailable()){
         if(player->list()->currentIndex() < player->playlist()->mediaCount() - 1){
             player->playlist()->next();
             qDebug() << "Going to next.";
+            qDebug() << "new index: " << player->playlist()->currentIndex();
         }
     }
 }
 
 void SongScreen::previous(){
-    qDebug() << "index: " << player->playlist()->currentIndex();
+    qDebug() << "previous!!!";
     if(player->isAudioAvailable()){
         if(player->list()->currentIndex() > 0){
             player->playlist()->previous();
             qDebug() << "Going to previous.";
+            qDebug() << "new index: " << player->playlist()->currentIndex();
         }
     }
-    qDebug() << "previous!!!";
 }
 
 void SongScreen::play(){
     qDebug() << "play!!!";
-    qDebug() << "has media: " << player->isAudioAvailable();
-    qDebug() << "is available: " << player->isAvailable();
-    qDebug() << "status: " << player->state();
     if(player->isAudioAvailable()){
         if(player->state() != QMediaPlayer::PlayingState){
             player->play();
+            qDebug() << "current idx: " << player->playlist()->currentIndex();
             qDebug() << "Starting to play.";
         }
         else qDebug() << "It's playing no need for this click";
