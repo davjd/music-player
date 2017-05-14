@@ -34,7 +34,8 @@ SOURCES += main.cpp\
 HEADERS  += MainWindow.h \
     Song.h \
     SongScreen.h \
-    MusicPlayer.h
+    MusicPlayer.h \
+    Player.h
 
 FORMS    += MainWindow.ui \
     SongScreen.ui

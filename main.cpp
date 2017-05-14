@@ -11,7 +11,9 @@
 #include <QQueue>
 #include <QObject>
 #include <QMediaPlaylist>
-#include "MusicPlayer.h"
+#include "Player.h"
+
+MusicPlayer* player;
 
 
 int main(int argc, char *argv[])
@@ -19,7 +21,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
 
-    MusicPlayer* pl = new MusicPlayer();
+    player = new MusicPlayer();
 //    QMediaPlaylist* playlist = new QMediaPlaylist;
 //    QMediaPlayer* player = new QMediaPlayer;
 //    QDir path = QDir(QString(getenv("HOME")) + "/Music" + "/DAMN" + "/blood.m4a");
@@ -49,18 +51,19 @@ int main(int argc, char *argv[])
     for(int i = 0; i < 9; ++i){
         valids.insert(valid[i], 1);
     }
-//    QQueue<Song*> playlist;
 
     while(it.hasNext()){
         QFileInfo f(it.filePath());
         if(f.isFile()){
             if(valids.contains(f.suffix().toLower())){
                 qDebug() << "base: " << f.baseName();
-                pl->list()->addMedia(Song(QDir(f.filePath())));
+                player->list()->addMedia(Song(QDir(f.filePath())));
             }
         }
         it.next();
     }
+    player->setList();
+    player->play();
 
 //    qDebug() << "\n\n\n\nPlaylist: ";
 //    QList<Song*>::iterator iter;
