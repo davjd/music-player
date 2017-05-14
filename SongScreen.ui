@@ -13,10 +13,10 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="left">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>170</x>
      <y>290</y>
      <width>51</width>
      <height>41</height>
@@ -32,10 +32,10 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="right">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>440</x>
      <y>290</y>
      <width>51</width>
      <height>41</height>
@@ -51,10 +51,10 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="middle">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>300</x>
      <y>280</y>
      <width>71</width>
      <height>61</height>
@@ -73,9 +73,9 @@
   <widget class="Line" name="line">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>200</x>
      <y>340</y>
-     <width>271</width>
+     <width>261</width>
      <height>31</height>
     </rect>
    </property>
@@ -86,9 +86,9 @@
   <widget class="Line" name="line_2">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>200</x>
      <y>260</y>
-     <width>271</width>
+     <width>261</width>
      <height>31</height>
     </rect>
    </property>
@@ -99,7 +99,7 @@
   <widget class="Line" name="line_3">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>150</x>
      <y>280</y>
      <width>20</width>
      <height>61</height>
@@ -112,7 +112,7 @@
   <widget class="Line" name="line_4">
    <property name="geometry">
     <rect>
-     <x>470</x>
+     <x>490</x>
      <y>280</y>
      <width>20</width>
      <height>61</height>
@@ -121,6 +121,69 @@
    <property name="orientation">
     <enum>Qt::Vertical</enum>
    </property>
+  </widget>
+  <widget class="QFrame" name="border">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>40</y>
+     <width>281</width>
+     <height>201</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="title">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>20</y>
+      <width>281</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="text">
+     <string>Title</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="artist">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>50</y>
+      <width>281</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="text">
+     <string>Artist</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources>

@@ -1,4 +1,5 @@
 #include "MainWindow.h"
+#include "SongScreen.h"
 #include <QApplication>
 #include <QMediaPlayer>
 #include <QDebug>
@@ -16,6 +17,8 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
+    SongScreen s;
+
 
     QMediaPlaylist* playlist = new QMediaPlaylist;
     QMediaPlayer* player = new QMediaPlayer;
@@ -76,7 +79,8 @@ int main(int argc, char *argv[])
 
 
 
-    w.show();
+//    w.show();
+    s.show();
 
     return a.exec();
 }
