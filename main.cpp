@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 
 
     QDir p = QDir(QString(getenv("HOME")) + "/Music/1.5Luv");
-    QDirIterator it(p, QDirIterator::Subdirectories);
+    QDirIterator it(p.absolutePath(), QDir::Files, QDirIterator::Subdirectories);
 
     // most common audio files:
     QHash<QString, unsigned int> valids;
@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
     for(int i = 0; i < 9; ++i){
         valids.insert(valid[i], 1);
     }
+
 
     while(it.hasNext()){
         QFileInfo f(it.filePath());
@@ -45,6 +46,16 @@ int main(int argc, char *argv[])
         }
         it.next();
     }
+
+    // there will still be one more file, because of hasNext().
+    QFileInfo f(it.filePath());
+    if(f.isFile()){
+        if(valids.contains(f.suffix().toLower())){
+            qDebug() << "base: " << f.baseName();
+            player->list()->addMedia(Song(QDir(f.filePath())));
+        }
+    }
+
     player->setList();
     player->play();
 

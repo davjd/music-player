@@ -2,6 +2,7 @@
 #define SONGSCREEN_H
 
 #include <QWidget>
+#include "Player.h"
 
 namespace Ui {
 class SongScreen;
@@ -17,6 +18,9 @@ public:
 
 private:
     Ui::SongScreen *ui;
+public slots:
+    void next();
+    void previous();
 };
 
 #endif // SONGSCREEN_H

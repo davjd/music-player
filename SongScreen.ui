@@ -13,63 +13,6 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="left">
-   <property name="geometry">
-    <rect>
-     <x>170</x>
-     <y>290</y>
-     <width>51</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="images.qrc">:/buttons/back.svg</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="right">
-   <property name="geometry">
-    <rect>
-     <x>440</x>
-     <y>290</y>
-     <width>51</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="images.qrc">:/buttons/next-1.svg</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="middle">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>280</y>
-     <width>71</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="images.qrc">:/buttons/play-button.svg</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
   <widget class="Line" name="line">
    <property name="geometry">
     <rect>
@@ -185,20 +128,23 @@
     </property>
    </widget>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="middle">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>70</y>
+     <x>290</x>
+     <y>270</y>
      <width>81</width>
-     <height>131</height>
+     <height>91</height>
     </rect>
    </property>
    <property name="autoFillBackground">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgba(255,255,255,0);
+    <string notr="true">* {
+	background-color: rgba(0,125,0,0);
+}
+
 </string>
    </property>
    <property name="text">
@@ -211,17 +157,135 @@
    </property>
    <property name="iconSize">
     <size>
-     <width>60</width>
-     <height>70</height>
+     <width>75</width>
+     <height>75</height>
     </size>
    </property>
    <property name="autoDefault">
     <bool>false</bool>
    </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="right">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>270</y>
+     <width>81</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">* {
+	background-color: rgba(0,125,0,0);
+}
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <disabledoff>:/buttons/fast-forward.svg</disabledoff>
+    </iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>70</width>
+     <height>75</height>
+    </size>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="left">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>270</y>
+     <width>81</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">* {
+	background-color: rgba(0,125,0,0);
+}
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <disabledoff>:/buttons/rewind.svg</disabledoff>
+    </iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>70</width>
+     <height>75</height>
+    </size>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
   </widget>
  </widget>
- <resources>
-  <include location="images.qrc"/>
- </resources>
- <connections/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>left</sender>
+   <signal>clicked()</signal>
+   <receiver>SongScreen</receiver>
+   <slot>previous()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>210</x>
+     <y>315</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>341</x>
+     <y>210</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>right</sender>
+   <signal>clicked()</signal>
+   <receiver>SongScreen</receiver>
+   <slot>next()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>450</x>
+     <y>315</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>341</x>
+     <y>210</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>previous()</slot>
+  <slot>next()</slot>
+ </slots>
 </ui>
