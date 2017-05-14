@@ -21,6 +21,8 @@ private:
 public slots:
     void next();
     void previous();
+    void play();
+    void pause();
 };
 
 #endif // SONGSCREEN_H

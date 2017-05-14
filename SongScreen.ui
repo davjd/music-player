@@ -283,9 +283,27 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>middle</sender>
+   <signal>clicked()</signal>
+   <receiver>SongScreen</receiver>
+   <slot>play()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>330</x>
+     <y>315</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>341</x>
+     <y>210</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>previous()</slot>
   <slot>next()</slot>
+  <slot>play()</slot>
+  <slot>pause()</slot>
  </slots>
 </ui>

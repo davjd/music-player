@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
     }
 
     player->setList();
-    player->play();
+//    player->play();
 
     MainWindow w;
     SongScreen s;
