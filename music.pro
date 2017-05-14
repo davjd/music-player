@@ -28,11 +28,13 @@ LIBS += -ltag
 SOURCES += main.cpp\
         MainWindow.cpp \
     Song.cpp \
-    SongScreen.cpp
+    SongScreen.cpp \
+    MusicPlayer.cpp
 
 HEADERS  += MainWindow.h \
     Song.h \
-    SongScreen.h
+    SongScreen.h \
+    MusicPlayer.h
 
 FORMS    += MainWindow.ui \
     SongScreen.ui

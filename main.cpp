@@ -11,17 +11,17 @@
 #include <QQueue>
 #include <QObject>
 #include <QMediaPlaylist>
+#include "MusicPlayer.h"
 
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
-    SongScreen s;
 
 
-    QMediaPlaylist* playlist = new QMediaPlaylist;
-    QMediaPlayer* player = new QMediaPlayer;
+    MusicPlayer* pl = new MusicPlayer();
+//    QMediaPlaylist* playlist = new QMediaPlaylist;
+//    QMediaPlayer* player = new QMediaPlayer;
 //    QDir path = QDir(QString(getenv("HOME")) + "/Music" + "/DAMN" + "/blood.m4a");
 //    Song* src = new Song(path);
 
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 //    player->setVolume(100);
 //    player->play();
 
-    qDebug() << player->mediaStatus();
+//    qDebug() << player->mediaStatus();
 
 //    qDebug() << "Testing metadata: ";
 //    qDebug() << "album: " << src->album() << "\nartist: " << src->artist();
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 
 //    qDebug() << "track: " << src->track() << "\nyear: " << src->year();
 
-    QDir p = QDir(QString(getenv("HOME")) + "/Music");
+    QDir p = QDir(QString(getenv("HOME")) + "/Music/1.5Luv");
     QDirIterator it(p, QDirIterator::Subdirectories);
 
     // most common audio files:
@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
         if(f.isFile()){
             if(valids.contains(f.suffix().toLower())){
                 qDebug() << "base: " << f.baseName();
-                playlist->addMedia(Song(QDir(f.filePath())));
+                pl->list()->addMedia(Song(QDir(f.filePath())));
             }
         }
         it.next();
@@ -73,11 +73,13 @@ int main(int argc, char *argv[])
 //        qDebug() << (*iter)->path() << "\n\n";
 //    }
 
-    playlist->setCurrentIndex(1);
-    player->setPlaylist(playlist);
-    player->play();
+//    playlist->setCurrentIndex(1);
+//    player->setPlaylist(playlist);
+//    player->play();
 
 
+    MainWindow w;
+    SongScreen s;
 
 //    w.show();
     s.show();
