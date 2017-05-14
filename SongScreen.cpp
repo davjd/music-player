@@ -7,6 +7,7 @@ SongScreen::SongScreen(QWidget *parent) :
     ui(new Ui::SongScreen)
 {
     ui->setupUi(this);
+//    connect(player, SIGNAL())
 }
 
 SongScreen::~SongScreen()
@@ -47,6 +48,8 @@ void SongScreen::pause(){
     player->pause();
     ui->middle->setIcon(QIcon(":/buttons/play-button.svg"));
 }
+
+
 
 void SongScreen::toggle(){
     if(player->isAudioAvailable()){
