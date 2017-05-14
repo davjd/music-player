@@ -75,4 +75,10 @@
 -- I could create a simple GUI to ask the user for possible paths.
 ----> this would be the hardest but would make it easier for the user.
 * I'm planning to design the first screen that would display the avaliable music by the end of this week.
+* I was able to test my file scanner
+-- by using QMediaPlaylist, which takes in multiple media contents 
+-- to create  a playlist. I used the files scanned to create individual media contents.
+-- then i set the playlist to the player, and it's working for now.
+* I'm still deciding how I'm going to design the player class
+-- or maybe i'll just use Qt's player class, but it has its limits.
 
