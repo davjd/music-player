@@ -37,25 +37,24 @@ void SongScreen::previous(){
 }
 
 void SongScreen::play(){
-    qDebug() << "play!!!";
-    if(player->isAudioAvailable()){
-        if(player->state() != QMediaPlayer::PlayingState){
-            player->play();
-            qDebug() << "current idx: " << player->playlist()->currentIndex();
-            qDebug() << "Starting to play.";
-        }
-        else qDebug() << "It's playing no need for this click";
-    }
+    qDebug() << "Player will be played.";
+    player->play();
+    ui->middle->setIcon(QIcon(":/buttons/pause.svg"));
 }
 
 void SongScreen::pause(){
+    qDebug() << "Player will be paused.";
+    player->pause();
+    ui->middle->setIcon(QIcon(":/buttons/play-button.svg"));
+}
 
-    qDebug() << "pause!!!";
+void SongScreen::toggle(){
     if(player->isAudioAvailable()){
-        if(player->state() == QMediaPlayer::PausedState){
-            player->pause();
-            qDebug() << "Player has been paused.";
+        if(player->state() == QMediaPlayer::PausedState || player->state() == QMediaPlayer::StoppedState){
+            play();
         }
-        else qDebug() << "Player already paused.";
+        else if(player->state() == QMediaPlayer::PlayingState){
+            pause();
+        }
     }
 }

@@ -138,7 +138,7 @@
     </rect>
    </property>
    <property name="autoFillBackground">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="styleSheet">
     <string notr="true">* {
@@ -287,7 +287,7 @@
    <sender>middle</sender>
    <signal>clicked()</signal>
    <receiver>SongScreen</receiver>
-   <slot>play()</slot>
+   <slot>toggle()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>330</x>
@@ -303,7 +303,6 @@
  <slots>
   <slot>previous()</slot>
   <slot>next()</slot>
-  <slot>play()</slot>
-  <slot>pause()</slot>
+  <slot>toggle()</slot>
  </slots>
 </ui>
