@@ -54,7 +54,6 @@ int main(int argc, char *argv[])
             if(valids.contains(f.suffix().toLower())){
                 qDebug() << "base: " << f.baseName();
                 playlist->addMedia(Song(QDir(f.filePath())));
-//                playlist.enqueue(new Song(QDir(f.filePath())));
             }
         }
         it.next();

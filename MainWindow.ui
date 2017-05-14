@@ -17,27 +17,13 @@
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>120</y>
-      <width>160</width>
-      <height>80</height>
+      <x>130</x>
+      <y>70</y>
+      <width>381</width>
+      <height>261</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="font">
-        <font>
-         <family>Waree</family>
-         <underline>false</underline>
-        </font>
-       </property>
-       <property name="text">
-        <string>PLAY</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <layout class="QHBoxLayout" name="horizontalLayout"/>
    </widget>
   </widget>
  </widget>

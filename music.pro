@@ -27,13 +27,45 @@ LIBS += -ltag
 
 SOURCES += main.cpp\
         MainWindow.cpp \
-    Song.cpp
+    Song.cpp \
+    SongScreen.cpp
 
 HEADERS  += MainWindow.h \
-    Song.h
+    Song.h \
+    SongScreen.h
 
-FORMS    += MainWindow.ui
+FORMS    += MainWindow.ui \
+    SongScreen.ui
 
 CONFIG += mobility
 MOBILITY = 
+
+RESOURCES += \
+    images.qrc
+
+DISTFILES += \
+    ../Downloads/151845-music-player-icons/svg/cancel.svg \
+    ../Downloads/151845-music-player-icons/svg/plus.svg \
+    ../Downloads/151845-music-player-icons/svg/fast-forward.svg \
+    ../Downloads/151845-music-player-icons/svg/next-1.svg \
+    ../Downloads/151845-music-player-icons/svg/back.svg \
+    ../Downloads/151845-music-player-icons/svg/previous.svg \
+    ../Downloads/151845-music-player-icons/svg/list.svg \
+    ../Downloads/151845-music-player-icons/svg/musical-note.svg \
+    ../Downloads/151845-music-player-icons/svg/equalizer.svg \
+    ../Downloads/151845-music-player-icons/svg/up-arrow.svg \
+    ../Downloads/151845-music-player-icons/svg/minus.svg \
+    ../Downloads/151845-music-player-icons/svg/next.svg \
+    ../Downloads/151845-music-player-icons/svg/play-button.svg \
+    ../Downloads/151845-music-player-icons/svg/power-button.svg \
+    ../Downloads/151845-music-player-icons/svg/eject.svg \
+    ../Downloads/151845-music-player-icons/svg/rewind.svg \
+    ../Downloads/151845-music-player-icons/svg/down-arrow.svg \
+    ../Downloads/151845-music-player-icons/svg/stop.svg \
+    ../Downloads/151845-music-player-icons/svg/replay.svg \
+    ../Downloads/151845-music-player-icons/svg/pause.svg \
+    ../Downloads/151845-music-player-icons/svg/speaker.svg \
+    ../Downloads/151845-music-player-icons/svg/bar-graph.svg \
+    ../Downloads/151845-music-player-icons/svg/share.svg \
+    ../Downloads/151845-music-player-icons/svg/checked.svg
 
