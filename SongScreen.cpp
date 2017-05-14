@@ -7,7 +7,6 @@ SongScreen::SongScreen(QWidget *parent) :
     ui(new Ui::SongScreen)
 {
     ui->setupUi(this);
-//    qDebug() << "player: " << player;
 }
 
 SongScreen::~SongScreen()
@@ -16,9 +15,10 @@ SongScreen::~SongScreen()
 }
 
 void SongScreen::next(){
+    qDebug() << "index: " << player->playlist()->currentIndex();
     qDebug() << "next!!!";
     if(player->isAudioAvailable()){
-        if(player->list()->currentIndex() < player->playlist()->mediaCount()){
+        if(player->list()->currentIndex() < player->playlist()->mediaCount() - 1){
             player->playlist()->next();
             qDebug() << "Going to next.";
         }
@@ -26,8 +26,9 @@ void SongScreen::next(){
 }
 
 void SongScreen::previous(){
+    qDebug() << "index: " << player->playlist()->currentIndex();
     if(player->isAudioAvailable()){
-        if(player->list()->currentIndex() > 1){
+        if(player->list()->currentIndex() > 0){
             player->playlist()->previous();
             qDebug() << "Going to previous.";
         }
