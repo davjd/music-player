@@ -3,21 +3,20 @@
 MusicPlayer::MusicPlayer(): QMediaPlayer()
 {
     list_ = new QList<Song*>();
-    playlist_ = new QMediaPlaylist();
 }
 
-QMediaPlaylist* MusicPlayer::list(){
-    return playlist_;
+QList<Song*>* MusicPlayer::songList(){
+    return list_;
 }
 
 void MusicPlayer::setList(){
+    QMediaPlaylist* p = new QMediaPlaylist();
     for(int i = 0, end = list_->size(); i < end; ++i){
-        playlist_->addMedia(*(list_->at(i)));
+        p->addMedia(*(list_->at(i)));
     }
-    setPlaylist(playlist_);
+    setPlaylist(p);
 }
 
 void MusicPlayer::insert(Song* content){
     list_->append(content);
-//    list_->addMedia(content);
 }
