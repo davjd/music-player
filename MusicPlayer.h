@@ -3,7 +3,6 @@
 
 #include <QObject>
 #include <QMediaPlayer>
-#include <QMediaPlaylist>
 #include <QMediaContent>
 #include "Song.h"
 
