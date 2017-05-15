@@ -24,6 +24,8 @@ void SongScreen::next(){
             qDebug() << "new index: " << player->playlist()->currentIndex();
         }
     }
+
+    qDebug() << ui->middle->icon().name();
 }
 
 void SongScreen::previous(){
@@ -35,6 +37,8 @@ void SongScreen::previous(){
             qDebug() << "new index: " << player->playlist()->currentIndex();
         }
     }
+
+    qDebug() << ui->middle->icon().name();
 }
 
 void SongScreen::play(){

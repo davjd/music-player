@@ -18,6 +18,7 @@ public:
 
 private:
     Ui::SongScreen *ui;
+
 public slots:
     void next();
     void previous();
