@@ -1,14 +1,13 @@
 #include "MusicPlayer.h"
-#include <QMediaPlaylist>
 
 MusicPlayer::MusicPlayer(): QMediaPlayer()
 {
     list_ = new QList<Song*>();
-    playlist_ = new QMediaPlaylist;
+    playlist_ = new QMediaPlaylist();
 }
 
-QList<Song*>* MusicPlayer::list(){
-    return list_;
+QMediaPlaylist* MusicPlayer::list(){
+    return playlist_;
 }
 
 void MusicPlayer::setList(){

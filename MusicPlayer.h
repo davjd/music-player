@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QMediaPlayer>
 #include <QMediaContent>
+#include <QMediaPlaylist>
 #include "Song.h"
 
 class MusicPlayer: public QMediaPlayer
@@ -11,7 +12,7 @@ class MusicPlayer: public QMediaPlayer
     Q_OBJECT
 public:
     MusicPlayer();
-    QList<Song*>* list();
+    QMediaPlaylist* list();
     void setList();
     void insert(Song* content);
 private:
