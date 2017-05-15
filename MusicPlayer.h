@@ -11,11 +11,11 @@ class MusicPlayer: public QMediaPlayer
     Q_OBJECT
 public:
     MusicPlayer();
-    QList<Song>* list();
+    QList<Song*>* list();
     void setList();
-    void insert(Song content);
+    void insert(Song* content);
 private:
-    QList<Song>* list_;
+    QList<Song*>* list_;
 };
 
 #endif // MUSICPLAYER_H

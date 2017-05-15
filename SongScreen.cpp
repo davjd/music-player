@@ -61,7 +61,7 @@ void SongScreen::togglePlay(){
         }
     }
     else{
-        if(player->playlist()->mediaCount() > 0 && (player->playlist() == NULL)){
+        if((player->playlist() == NULL) && player->playlist()->mediaCount() > 0){
             qDebug() << "setting playlist...";
             player->setList();
             play();
