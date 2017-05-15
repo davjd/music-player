@@ -70,8 +70,10 @@ void SongScreen::togglePlay(){
 }
 
 void SongScreen::drawArtist(){
-    qDebug() << "Loaded media!";
-    qDebug() << "artist: " << ((Song)player->media()).artist();
+//    qDebug() << player->list()->media(player->playlist()->currentIndex());
+    qDebug() << "eq: " << (player->playlist() == player->list());
+//    Song *s = &(player->media());
+//    qDebug() << "artist: " << s.artist();
 }
 
 void SongScreen::drawTitle(){
