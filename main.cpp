@@ -1,16 +1,12 @@
 #include "MainWindow.h"
 #include "SongScreen.h"
 #include <QApplication>
-#include <QMediaPlayer>
 #include <QDebug>
 #include <QFileInfo>
-#include "Song.h"
 #include <QDir>
 #include <QDirIterator>
 #include <QHash>
-#include <QQueue>
-#include <QObject>
-#include <QMediaPlaylist>
+#include "Song.h"
 #include "Player.h"
 
 MusicPlayer* player;
@@ -25,9 +21,8 @@ int main(int argc, char *argv[])
     player->setVolume(100);
 
 
-    QDir p = QDir(QString(getenv("HOME")) + "/Music/1.5Luv");
+    QDir p = QDir(QString(getenv("HOME")) + "/Music/DAMN");
     QDirIterator it(p.absolutePath(), QDir::Files, QDirIterator::Subdirectories);
-    Song s(QDir(p.absolutePath() + "/04 - YSL.mp3"));
 
     // most common audio files:
     QHash<QString, unsigned int> valids;
@@ -57,7 +52,6 @@ int main(int argc, char *argv[])
         }
     }
 
-//    player->play();
 
 //    MainWindow w;
     SongScreen screen;

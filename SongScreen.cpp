@@ -70,11 +70,19 @@ void SongScreen::togglePlay(){
 }
 
 void SongScreen::drawArtist(){
+    if(player->playlist()->currentIndex() > player->list_->size() - 1){
+        qDebug() << "Title won't be loaded, because of index.";
+        return;
+    }
     qDebug() << "artist: " << player->songList()->at(player->playlist()->currentIndex())->artist();
     ui->artist->setText(player->songList()->at(player->playlist()->currentIndex())->artist());
 }
 
 void SongScreen::drawTitle(){
+    if(player->playlist()->currentIndex() > player->list_->size() - 1){
+        qDebug() << "Title won't be loaded, because of index.";
+        return;
+    }
     qDebug() << "title: " << player->songList()->at(player->playlist()->currentIndex())->title();
     ui->title->setText(player->songList()->at(player->playlist()->currentIndex())->title());
 }
