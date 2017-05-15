@@ -22,7 +22,9 @@ private:
 public slots:
     void next();
     void previous();
-    void toggle();
+    void togglePlay();
+    void drawTitle();
+    void drawArtist();
 private slots:
     void play();
     void pause();

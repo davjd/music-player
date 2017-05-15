@@ -1,13 +1,15 @@
 #include "SongScreen.h"
 #include "ui_SongScreen.h"
 #include <QDebug>
+#include "Song.h"
 
 SongScreen::SongScreen(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::SongScreen)
 {
     ui->setupUi(this);
-//    connect(player, SIGNAL())
+    connect(player, SIGNAL(currentMediaChanged(QMediaContent)), this, SLOT(drawArtist()));
+    qDebug() << "before: " << (player->playlist() == NULL);
 }
 
 SongScreen::~SongScreen()
@@ -16,7 +18,6 @@ SongScreen::~SongScreen()
 }
 
 void SongScreen::next(){
-    qDebug() << "next!!!";
     if(player->isAudioAvailable()){
         if(player->list()->currentIndex() < player->playlist()->mediaCount() - 1){
             player->playlist()->next();
@@ -24,12 +25,10 @@ void SongScreen::next(){
             qDebug() << "new index: " << player->playlist()->currentIndex();
         }
     }
-
     qDebug() << ui->middle->icon().name();
 }
 
 void SongScreen::previous(){
-    qDebug() << "previous!!!";
     if(player->isAudioAvailable()){
         if(player->list()->currentIndex() > 0){
             player->playlist()->previous();
@@ -37,7 +36,6 @@ void SongScreen::previous(){
             qDebug() << "new index: " << player->playlist()->currentIndex();
         }
     }
-
     qDebug() << ui->middle->icon().name();
 }
 
@@ -53,9 +51,7 @@ void SongScreen::pause(){
     ui->middle->setIcon(QIcon(":/buttons/play-button.svg"));
 }
 
-
-
-void SongScreen::toggle(){
+void SongScreen::togglePlay(){
     if(player->isAudioAvailable()){
         if(player->state() == QMediaPlayer::PausedState || player->state() == QMediaPlayer::StoppedState){
             play();
@@ -64,4 +60,20 @@ void SongScreen::toggle(){
             pause();
         }
     }
+    else{
+        if(player->list()->mediaCount() > 0 && (player->playlist() == NULL)){
+            qDebug() << "setting playlist...";
+            player->setList();
+            play();
+        }
+    }
+}
+
+void SongScreen::drawArtist(){
+    qDebug() << "Loaded media!";
+    qDebug() << "artist: " << ((Song)player->media()).artist();
+}
+
+void SongScreen::drawTitle(){
+//    qDebug() << "artist: " /*<< ((Song)player->media()).title()*/;
 }

@@ -1,28 +1,20 @@
 <RCC>
     <qresource prefix="/buttons">
-        <file>cancel.svg</file>
-        <file>plus.svg</file>
+        <file>headphones.svg</file>
+        <file>favorite.svg</file>
         <file>fast-forward.svg</file>
-        <file>next-1.svg</file>
-        <file>back.svg</file>
         <file>previous.svg</file>
-        <file>list.svg</file>
+        <file>mute.svg</file>
         <file>musical-note.svg</file>
+        <file>next-1.svg</file>
         <file>equalizer.svg</file>
-        <file>up-arrow.svg</file>
-        <file>minus.svg</file>
+        <file>volume.svg</file>
         <file>next.svg</file>
         <file>play-button.svg</file>
-        <file>power-button.svg</file>
-        <file>eject.svg</file>
+        <file>repeat.svg</file>
+        <file>menu.svg</file>
         <file>rewind.svg</file>
-        <file>down-arrow.svg</file>
         <file>stop.svg</file>
-        <file>replay.svg</file>
         <file>pause.svg</file>
-        <file>speaker.svg</file>
-        <file>bar-graph.svg</file>
-        <file>share.svg</file>
-        <file>checked.svg</file>
     </qresource>
 </RCC>
