@@ -9,6 +9,7 @@ SongScreen::SongScreen(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(player, SIGNAL(currentMediaChanged(QMediaContent)), this, SLOT(drawArtist()));
+    connect(player, SIGNAL(currentMediaChanged(QMediaContent)), this, SLOT(drawTitle()));
 }
 
 SongScreen::~SongScreen()
@@ -70,8 +71,10 @@ void SongScreen::togglePlay(){
 
 void SongScreen::drawArtist(){
     qDebug() << "artist: " << player->songList()->at(player->playlist()->currentIndex())->artist();
+    ui->artist->setText(player->songList()->at(player->playlist()->currentIndex())->artist());
 }
 
 void SongScreen::drawTitle(){
-//    qDebug() << "artist: " /*<< ((Song)player->media()).title()*/;
+    qDebug() << "title: " << player->songList()->at(player->playlist()->currentIndex())->title();
+    ui->title->setText(player->songList()->at(player->playlist()->currentIndex())->title());
 }
