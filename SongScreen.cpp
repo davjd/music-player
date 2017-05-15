@@ -9,6 +9,7 @@ SongScreen::SongScreen(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(player, SIGNAL(currentMediaChanged(QMediaContent)), this, SLOT(drawArtist()));
+    player->setList();
 //    qDebug() << "before: " << (player->playlist() == NULL);
 }
 
@@ -29,13 +30,13 @@ void SongScreen::next(){
 }
 
 void SongScreen::previous(){
-    if(player->isAudioAvailable()){
-        if(player->playlist()->currentIndex() > 0){
-            player->playlist()->previous();
-            qDebug() << "Going to previous.";
-            qDebug() << "new index: " << player->playlist()->currentIndex();
-        }
-    }
+//    if(player->isAudioAvailable()){
+//        if(player->playlist()->currentIndex() > 0){
+//            player->playlist()->previous();
+//            qDebug() << "Going to previous.";
+//            qDebug() << "new index: " << player->playlist()->currentIndex();
+//        }
+//    }
     qDebug() << ui->middle->icon().name();
 }
 
@@ -61,7 +62,7 @@ void SongScreen::togglePlay(){
         }
     }
     else{
-        if((player->playlist() == NULL) && player->playlist()->mediaCount() > 0){
+        if((player->playlist() == NULL) /*&& player->playlist()->mediaCount() > 0*/){
             qDebug() << "setting playlist...";
             player->setList();
             play();

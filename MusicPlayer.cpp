@@ -4,6 +4,7 @@
 MusicPlayer::MusicPlayer(): QMediaPlayer()
 {
     list_ = new QList<Song*>();
+    playlist_ = new QMediaPlaylist;
 }
 
 QList<Song*>* MusicPlayer::list(){
@@ -11,11 +12,10 @@ QList<Song*>* MusicPlayer::list(){
 }
 
 void MusicPlayer::setList(){
-    QMediaPlaylist* p;
     for(int i = 0, end = list_->size(); i < end; ++i){
-        p->addMedia(*(list_->at(i)));
+        playlist_->addMedia(*(list_->at(i)));
     }
-    setPlaylist(p);
+    setPlaylist(playlist_);
 }
 
 void MusicPlayer::insert(Song* content){

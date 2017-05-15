@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
         }
     }
 
-//    player->setList();
+    player->setList();
 //    player->play();
 
 //    MainWindow w;

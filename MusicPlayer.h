@@ -16,6 +16,7 @@ public:
     void insert(Song* content);
 private:
     QList<Song*>* list_;
+    QMediaPlaylist* playlist_;
 };
 
 #endif // MUSICPLAYER_H
