@@ -95,3 +95,12 @@
 * I'm still trying to find alternatives to having a global variable
 -- since they're so bad.
 
+05-15-17:
+* So i've stumbled upon a really nasty bug.
+* I tried fixing the casting error I initially had, by creating a member variable
+-- to keep track of the old subclass type.
+* but now I'm having errors with the playlist that's used for the QMediaPlayer.
+* This bug affects the functionality of every button
+-- so it's essential that I fix it..
+
+
