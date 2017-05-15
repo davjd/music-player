@@ -83,3 +83,15 @@
 * I'm still deciding how I'm going to design the player class
 -- or maybe i'll just use Qt's player class, but it has its limits.
 
+05-14-17:
+* I've began implementing the main screen
+-- where the next/previous/play/pause buttons will appear.
+-- the buttons seemed to be functional as of now.
+-- I want to make it look prettier
+-- ,which will be difficult and take sometime.
+* I also have to connect the metadata with the screen
+-- by displaying the title of the song and artist.
+* I've also finished the initial design of the player class.
+* I'm still trying to find alternatives to having a global variable
+-- since they're so bad.
+
