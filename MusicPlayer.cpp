@@ -2,17 +2,18 @@
 
 MusicPlayer::MusicPlayer(): QMediaPlayer()
 {
-    list_ = new QMediaPlaylist();
+    list_ = new QList<Song>();
 }
 
-QMediaPlaylist* MusicPlayer::list(){
+QList<Song>* MusicPlayer::list(){
     return list_;
 }
 
 void MusicPlayer::setList(){
-    setPlaylist(list_);
+    setPlaylist((*list_));
 }
 
-void MusicPlayer::insert(QMediaContent content){
-    list_->addMedia(content);
+void MusicPlayer::insert(Song content){
+    list_->append(content);
+//    list_->addMedia(content);
 }
