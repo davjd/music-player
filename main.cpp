@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     player->setVolume(100);
 
 
-    QDir p = QDir(QString(getenv("HOME")) + "/Music/DAMN");
+    QDir p = QDir(QString(getenv("HOME")) + "/Music/1.5Luv");
     QDirIterator it(p.absolutePath(), QDir::Files, QDirIterator::Subdirectories);
 
     // most common audio files:

@@ -27,6 +27,7 @@ public:
     TagLib::FileRef* source();
 
 
+
 private:
     TagLib::FileRef* source_;
     QUrl path_;

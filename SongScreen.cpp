@@ -25,7 +25,6 @@ void SongScreen::next(){
             qDebug() << "new index: " << player->playlist()->currentIndex();
         }
     }
-    qDebug() << ui->middle->icon().name();
 }
 
 void SongScreen::previous(){
@@ -36,7 +35,6 @@ void SongScreen::previous(){
             qDebug() << "new index: " << player->playlist()->currentIndex();
         }
     }
-    qDebug() << ui->middle->icon().name();
 }
 
 void SongScreen::play(){
@@ -70,7 +68,8 @@ void SongScreen::togglePlay(){
 }
 
 void SongScreen::drawArtist(){
-    if(player->playlist()->currentIndex() > player->list_->size() - 1){
+    qDebug() << "artist-current: " << player->playlist()->currentIndex();
+    if(player->playlist()->currentIndex() < 0 || player->playlist()->currentIndex() > player->songList()->size() - 1){
         qDebug() << "Title won't be loaded, because of index.";
         return;
     }
@@ -79,7 +78,8 @@ void SongScreen::drawArtist(){
 }
 
 void SongScreen::drawTitle(){
-    if(player->playlist()->currentIndex() > player->list_->size() - 1){
+    qDebug() << "title-current: " << player->playlist()->currentIndex();
+    if(player->playlist()->currentIndex() < 0 || player->playlist()->currentIndex() > player->songList()->size() - 1){
         qDebug() << "Title won't be loaded, because of index.";
         return;
     }

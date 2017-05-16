@@ -17,4 +17,7 @@
         <file>stop.svg</file>
         <file>pause.svg</file>
     </qresource>
+    <qresource prefix="/demoArt">
+        <file>front.jpg</file>
+    </qresource>
 </RCC>
