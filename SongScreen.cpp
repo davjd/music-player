@@ -108,5 +108,7 @@ void SongScreen::toggleShuffle(){
 //        player->playlist()->setPlaybackMode(QMediaPlaylist::Loop);
 //    }
     qDebug() << "shuffling";
-    player->playlist()->shuffle();
+    if(player->playlist()->playbackMode() != QMediaPlaylist::Random)
+        player->playlist()->setPlaybackMode(QMediaPlaylist::Random);
+    else qDebug() << "already shuffed.";
 }
