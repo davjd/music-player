@@ -97,3 +97,16 @@ void SongScreen::toggleRepeat(){
         player->playlist()->setPlaybackMode(QMediaPlaylist::Loop);
     }
 }
+
+void SongScreen::toggleShuffle(){
+//    if(player->playlist()->playbackMode() == QMediaPlaylist::Loop){
+//        qDebug() << "from loop to only once.";
+//        player->playlist()->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
+//    }
+//    else {
+//        qDebug() << "from only once to loop";
+//        player->playlist()->setPlaybackMode(QMediaPlaylist::Loop);
+//    }
+    qDebug() << "shuffling";
+    player->playlist()->shuffle();
+}

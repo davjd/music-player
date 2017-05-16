@@ -459,11 +459,28 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>shuffle</sender>
+   <signal>clicked()</signal>
+   <receiver>SongScreen</receiver>
+   <slot>toggleShuffle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>285</x>
+     <y>300</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>349</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>previous()</slot>
   <slot>next()</slot>
   <slot>togglePlay()</slot>
   <slot>toggleRepeat()</slot>
+  <slot>toggleShuffle()</slot>
  </slots>
 </ui>
