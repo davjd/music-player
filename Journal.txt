@@ -103,4 +103,16 @@
 * This bug affects the functionality of every button
 -- so it's essential that I fix it..
 
-
+05-16-17:
+* I'm almost finished with the buttons.
+* so far I have the following buttons working:
+    - play
+    - pause
+    - repeat
+* I'm having some trouble with the shuffle button
+    * it's working, but it messes with the current index of the playlist.
+    -- since the metadata relies on the current index
+* I'm planning on abandoning the QMediaPlaylist
+-- mainly because it has limited functionalities.
+-- I also don't have fully control of the class.
+-- if i create my own playlist class, I'll be more comfortable working with it.
