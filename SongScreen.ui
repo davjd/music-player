@@ -166,12 +166,7 @@
      </rect>
     </property>
     <property name="text">
-     <string notr="true"/>
-    </property>
-    <property name="icon">
-     <iconset>
-      <disabledoff>:/demoArt/front.jpg</disabledoff>
-     </iconset>
+     <string notr="true">Cover Art</string>
     </property>
     <property name="iconSize">
      <size>
