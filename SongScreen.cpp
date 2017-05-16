@@ -86,3 +86,14 @@ void SongScreen::drawTitle(){
     qDebug() << "title: " << player->songList()->at(player->playlist()->currentIndex())->title();
     ui->title->setText(player->songList()->at(player->playlist()->currentIndex())->title());
 }
+
+void SongScreen::toggleRepeat(){
+    if(player->playlist()->playbackMode() == QMediaPlaylist::Loop){
+        qDebug() << "from loop to only once.";
+        player->playlist()->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
+    }
+    else {
+        qDebug() << "from only once to loop";
+        player->playlist()->setPlaybackMode(QMediaPlaylist::Loop);
+    }
+}

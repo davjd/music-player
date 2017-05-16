@@ -299,7 +299,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="right_2">
+  <widget class="QPushButton" name="shuffle">
    <property name="geometry">
     <rect>
      <x>260</x>
@@ -339,7 +339,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="right_3">
+  <widget class="QPushButton" name="repeat">
    <property name="geometry">
     <rect>
      <x>370</x>
@@ -443,10 +443,27 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>repeat</sender>
+   <signal>clicked()</signal>
+   <receiver>SongScreen</receiver>
+   <slot>toggleRepeat()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>390</x>
+     <y>300</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>349</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>previous()</slot>
   <slot>next()</slot>
   <slot>togglePlay()</slot>
+  <slot>toggleRepeat()</slot>
  </slots>
 </ui>
