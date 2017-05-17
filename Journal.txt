@@ -116,3 +116,11 @@
 -- mainly because it has limited functionalities.
 -- I also don't have fully control of the class.
 -- if i create my own playlist class, I'll be more comfortable working with it.
+
+05-16-17:
+* I modified some of the buttons and their signals.
+* I tried working on creating a progress bar of the current song.
+-- but i'm having trouble with getting the duration of the song.
+-- because it requires that the media has been loaded to the player.
+-- and this takes some time before it actually happens.
+-- so i'll have to find some other signal to work with.
