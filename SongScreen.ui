@@ -86,7 +86,7 @@
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>90</x>
       <y>0</y>
       <width>281</width>
       <height>51</height>
@@ -159,8 +159,8 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>60</y>
+      <x>90</x>
+      <y>50</y>
       <width>281</width>
       <height>201</height>
      </rect>
@@ -176,6 +176,22 @@
     </property>
     <property name="flat">
      <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="position">
+    <property name="geometry">
+     <rect>
+      <x>87</x>
+      <y>240</y>
+      <width>301</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
     </property>
    </widget>
   </widget>

@@ -10,6 +10,7 @@ SongScreen::SongScreen(QWidget *parent) :
     ui->setupUi(this);
     connect(player, SIGNAL(currentMediaChanged(QMediaContent)), this, SLOT(drawArtist()));
     connect(player, SIGNAL(currentMediaChanged(QMediaContent)), this, SLOT(drawTitle()));
+    connect(player, SIGNAL(currentMediaChanged(QMediaContent)), this, SLOT(setFiller()));
 }
 
 SongScreen::~SongScreen()
@@ -44,6 +45,7 @@ void SongScreen::play(){
 }
 
 void SongScreen::pause(){
+    qDebug() << "len: " << player->duration();
     qDebug() << "Player will be paused.";
     player->pause();
     ui->middle->setIcon(QIcon(":/buttons/play-button.svg"));
@@ -111,4 +113,15 @@ void SongScreen::toggleShuffle(){
     if(player->playlist()->playbackMode() != QMediaPlaylist::Random)
         player->playlist()->setPlaybackMode(QMediaPlaylist::Random);
     else qDebug() << "already shuffed.";
+}
+
+void SongScreen::setFiller(){
+//    ui->position->setMaximum(player->dure);
+    qDebug() << "length: " << player->duration();
+}
+
+void SongScreen::fillBuffer(){
+    qDebug() << "filling buffer";
+
+//    ui->position->setValue();
 }
