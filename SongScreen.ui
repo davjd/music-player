@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>699</width>
+    <width>679</width>
     <height>429</height>
    </rect>
   </property>
@@ -190,8 +190,14 @@
     <property name="value">
      <number>0</number>
     </property>
+    <property name="textVisible">
+     <bool>false</bool>
+    </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="invertedAppearance">
+     <bool>false</bool>
     </property>
    </widget>
   </widget>
