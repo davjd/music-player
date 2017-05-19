@@ -10,7 +10,9 @@ SongScreen::SongScreen(QWidget *parent) :
     ui->setupUi(this);
     connect(player, SIGNAL(currentMediaChanged(QMediaContent)), this, SLOT(drawArtist()));
     connect(player, SIGNAL(currentMediaChanged(QMediaContent)), this, SLOT(drawTitle()));
-    connect(player, SIGNAL(currentMediaChanged(QMediaContent)), this, SLOT(setFiller()));
+    connect(player, SIGNAL(mediaStatusChanged(QMediaPlayer::MediaStatus)), this, SLOT(setFiller()));
+    connect(player, SIGNAL(positionChanged(qint64)), this, SLOT(fillBuffer()));
+//    connect(player, SIGNAL(currentMediaChanged(QMediaContent)), this, SLOT(setFiller()));
 }
 
 SongScreen::~SongScreen()
@@ -117,11 +119,16 @@ void SongScreen::toggleShuffle(){
 
 void SongScreen::setFiller(){
 //    ui->position->setMaximum(player->dure);
-    qDebug() << "length: " << player->duration();
+    if( player->mediaStatus() == QMediaPlayer::BufferedMedia){
+        qDebug() << "length: " << player->duration();
+        ui->position->setMaximum(player->duration());
+    }
+    else qDebug() << player->mediaStatus();
 }
 
 void SongScreen::fillBuffer(){
-    qDebug() << "filling buffer";
+//    qDebug() << "filling buffer";
+    ui->position->setValue(player->position());
 
 //    ui->position->setValue();
 }
