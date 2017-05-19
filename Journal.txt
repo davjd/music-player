@@ -117,10 +117,22 @@
 -- I also don't have fully control of the class.
 -- if i create my own playlist class, I'll be more comfortable working with it.
 
-05-16-17:
+05-17-17:
 * I modified some of the buttons and their signals.
 * I tried working on creating a progress bar of the current song.
 -- but i'm having trouble with getting the duration of the song.
 -- because it requires that the media has been loaded to the player.
 -- and this takes some time before it actually happens.
 -- so i'll have to find some other signal to work with.
+
+05-18-17:
+* I got the progress bar working.
+-- as the song plays, the bar shows how much is left until the song is over.
+-- one feature I want to add is giving the user the ability to select the position of the song.
+-- I don't know how though.
+* I also began investigating how I could possibly ditch Qt's playlist class.
+-- since it doesn't have many functionalities.
+-- I'm planning to create the class tomorrow and finish it over the weekend.
+* The cover art is still not working.
+-- the reason why it's becoming such a big issue, is because not all audio formats support it.
+-- So I need to find a way on how to find out if a song does support it.
