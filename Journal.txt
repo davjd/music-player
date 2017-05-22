@@ -150,3 +150,10 @@
 ---> shuffle: either ON or OFF.
 ---> repeat: either ON on an individual song or playlist, or OFF.
 * I'm hoping to finish the class by tuesday, maybe even tmrw.
+
+
+05-22-17:
+* I started implementing certain methods for the playback functionalities.
+-- including: repeat, shuffle, both, or neither.
+* I also created a playlist class, but I don't think i'll use it.
+* I still need to do the cover art.
