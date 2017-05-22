@@ -136,3 +136,17 @@
 * The cover art is still not working.
 -- the reason why it's becoming such a big issue, is because not all audio formats support it.
 -- So I need to find a way on how to find out if a song does support it.
+
+05-19-17:
+* I've started looking at the signals needed to extend the functionalities of my current music player.
+-- there are two signals that seem to suffice.
+-- hoepfully im right.
+* I will start editing the class over the weekend.
+* I've also started looking at possible ways to retrieve the cover art.
+
+05-21-17:
+* I've began editing the music player class.
+-- the functionalities i'm hoping to extend are:
+---> shuffle: either ON or OFF.
+---> repeat: either ON on an individual song or playlist, or OFF.
+* I'm hoping to finish the class by tuesday, maybe even tmrw.
