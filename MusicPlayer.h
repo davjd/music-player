@@ -36,6 +36,7 @@ private:
 
     void remove(const int idx);
     int nextIndex();
+    int previousIndex();
 
 
 private slots:

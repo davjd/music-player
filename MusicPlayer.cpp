@@ -39,7 +39,7 @@ unsigned int MusicPlayer::index(){
 }
 
 void MusicPlayer::next(){
-//    if()
+    setMedia(list_->at(nextIndex()));
 }
 
 void MusicPlayer::previous(){
@@ -67,9 +67,6 @@ int MusicPlayer::nextIndex(){
                 -repeat: OFF
                 -repeat: individual
                 -repeat: list
-
-
-
     */
 
     // check if shuffle is activated.
@@ -77,14 +74,23 @@ int MusicPlayer::nextIndex(){
         // find out what the repeat state is.
 
         if(repeatState_ == Repeat::off){
-
+            if(index_ < length_){
+                return -1;
+            }
+            else{
+                return shuffledList_->at(++index_);
+            }
         }
         else if(repeatState_ == Repeat::single){
-
+            return index_;
         }
         else{
-            // repeatState_ is list.
+            // check whether it's in bound.
+            if(index_ >= length_){
+                index_ = 0;
+            }
 
+            return shuffledList_->at(index_);
         }
     }
     else{ // if shuffle is not ativated:
@@ -100,7 +106,8 @@ int MusicPlayer::nextIndex(){
         else if(repeatState_ == Repeat::single){
             return index_;
         }
-        else{
+        else{ // repeatState_ = Repeat::list
+
             // check whether it's in bound.
             if(index_ < length_){
                 return ++index_;
@@ -108,8 +115,63 @@ int MusicPlayer::nextIndex(){
             else return 0;
         }
     }
+}
 
-    return 1;
+int MusicPlayer::previousIndex(){
+    /*
+        possible cases:
+            shuffle OFF/ON:
+                -repeat: OFF
+                -repeat: individual
+                -repeat: list
+    */
+
+    // check if shuffle is activated.
+    if(shuffleOn_){
+        // find out what the repeat state is.
+
+        if(repeatState_ == Repeat::off){
+            if(index_ > 0){
+                return shuffledList_->at(++index_);
+            }
+            else{
+                return -1;
+            }
+        }
+        else if(repeatState_ == Repeat::single){
+            return index_;
+        }
+        else{
+            // check whether it's in bound.
+            if(index_ >= length_){
+                index_ = 0;
+            }
+
+            return shuffledList_->at(index_);
+        }
+    }
+    else{ // if shuffle is not ativated:
+
+        if(repeatState_ == Repeat::off){
+            if(index_ < length_){
+                return -1;
+            }
+            else{
+                return ++index_;
+            }
+        }
+        else if(repeatState_ == Repeat::single){
+            return index_;
+        }
+        else{ // repeatState_ = Repeat::list
+
+            // check whether it's in bound.
+            if(index_ < length_){
+                return ++index_;
+            } // start from the beginning if not.
+            else return 0;
+        }
+    }
 }
 
 
