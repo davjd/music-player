@@ -13,7 +13,7 @@ class MusicPlayer: public QMediaPlayer
     Q_OBJECT
 public:
     enum Repeat{
-        individual, list, off
+        single, list, off
     };
 
     MusicPlayer();
@@ -30,6 +30,7 @@ public:
 private:
     QVector<Song*>* list_;
     unsigned int index_;
+    Repeat repeatState_;
 
 
 private slots:

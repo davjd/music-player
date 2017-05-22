@@ -20,7 +20,6 @@ void MusicPlayer::setList(){
 
 void MusicPlayer::insert(Song* content){
     list_->push_back(content);
-//    list_->append(content);
 }
 
 unsigned int MusicPlayer::index(){
@@ -36,7 +35,13 @@ void MusicPlayer::previous(){
 }
 
 void MusicPlayer::toggleRepeat(){
-
+    if(repeatState_ == Repeat::off){
+        repeatState_ = Repeat::single;
+    }
+    else if(repeatState_ == Repeat::single){
+        repeatState_ = Repeat::list;
+    }
+    else repeatState_ = Repeat::off;
 }
 
 void MusicPlayer::toggleShuffle(){
@@ -44,6 +49,6 @@ void MusicPlayer::toggleShuffle(){
 }
 
 void MusicPlayer::add(Song *song){
-//    list_->append();
+    list_->push_back(song);
 }
 
