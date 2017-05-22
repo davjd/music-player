@@ -5,6 +5,7 @@
 #include <QMediaPlayer>
 #include <QMediaContent>
 #include <QMediaPlaylist>
+#include <QVector>
 #include "Song.h"
 
 class MusicPlayer: public QMediaPlayer
@@ -12,21 +13,22 @@ class MusicPlayer: public QMediaPlayer
     Q_OBJECT
 public:
     enum Repeat{
-        individual, playlist, off
+        individual, list, off
     };
 
     MusicPlayer();
-    QList<Song*>* songList();
+    QVector<Song*>* songList();
     void setList();
     void insert(Song* content);
     unsigned int index();
     bool isShuffled();
     Repeat repeatState();
+    void add(Song* song);
 
 
 
 private:
-    QList<Song*>* list_;
+    QVector<Song*>* list_;
     unsigned int index_;
 
 

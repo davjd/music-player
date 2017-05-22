@@ -2,10 +2,11 @@
 
 MusicPlayer::MusicPlayer(): QMediaPlayer()
 {
-    list_ = new QList<Song*>();
+    list_ = new QVector<Song*>();
+    index_ = -1;
 }
 
-QList<Song*>* MusicPlayer::songList(){
+QVector<Song*>* MusicPlayer::songList(){
     return list_;
 }
 
@@ -18,7 +19,12 @@ void MusicPlayer::setList(){
 }
 
 void MusicPlayer::insert(Song* content){
-    list_->append(content);
+    list_->push_back(content);
+//    list_->append(content);
+}
+
+unsigned int MusicPlayer::index(){
+    return index_;
 }
 
 void MusicPlayer::next(){
@@ -35,5 +41,9 @@ void MusicPlayer::toggleRepeat(){
 
 void MusicPlayer::toggleShuffle(){
 
+}
+
+void MusicPlayer::add(Song *song){
+//    list_->append();
 }
 
