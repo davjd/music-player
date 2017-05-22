@@ -29,13 +29,15 @@ SOURCES += main.cpp\
         MainWindow.cpp \
     Song.cpp \
     SongScreen.cpp \
-    MusicPlayer.cpp
+    MusicPlayer.cpp \
+    Playlist.cpp
 
 HEADERS  += MainWindow.h \
     Song.h \
     SongScreen.h \
     MusicPlayer.h \
-    Player.h
+    Player.h \
+    Playlist.h
 
 FORMS    += MainWindow.ui \
     SongScreen.ui
