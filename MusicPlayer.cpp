@@ -20,3 +20,20 @@ void MusicPlayer::setList(){
 void MusicPlayer::insert(Song* content){
     list_->append(content);
 }
+
+void MusicPlayer::next(){
+
+}
+
+void MusicPlayer::previous(){
+
+}
+
+void MusicPlayer::toggleRepeat(){
+
+}
+
+void MusicPlayer::toggleShuffle(){
+
+}
+
