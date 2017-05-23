@@ -20,7 +20,7 @@ public:
     QVector<Song*>* songList();
     void setList();
     void insert(Song* content);
-    unsigned int index();
+    int index();
     bool isShuffled();
     Repeat repeatState();
 
@@ -37,6 +37,7 @@ private:
     void remove(const int idx);
     int nextIndex();
     int previousIndex();
+    void shuffle();
 
 
 private slots:

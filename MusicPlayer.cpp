@@ -1,4 +1,6 @@
 #include "MusicPlayer.h"
+#include <random>
+#include <algorithm>
 
 MusicPlayer::MusicPlayer(): QMediaPlayer()
 {
@@ -34,16 +36,16 @@ void MusicPlayer::remove(const int idx){
     --length_;
 }
 
-unsigned int MusicPlayer::index(){
+int MusicPlayer::index(){
     return index_;
 }
 
 void MusicPlayer::next(){
-    setMedia(list_->at(nextIndex()));
+    setMedia((*list_->at(nextIndex())));
 }
 
 void MusicPlayer::previous(){
-
+    setMedia((*list_->at(previousIndex())));
 }
 
 void MusicPlayer::toggleRepeat(){
@@ -56,8 +58,20 @@ void MusicPlayer::toggleRepeat(){
     else repeatState_ = Repeat::off;
 }
 
-void MusicPlayer::toggleShuffle(){
+void MusicPlayer::shuffle(){
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::shuffle(shuffledList_.begin(), shuffledList_.end(), g);
+}
 
+void MusicPlayer::toggleShuffle(){
+    if(shuffleOn_){
+        shuffleOn_ = false;
+    } else{
+        shuffleOn_ = true;
+        shuffle();
+        index_ = 0;
+    }
 }
 
 int MusicPlayer::nextIndex(){
@@ -69,10 +83,7 @@ int MusicPlayer::nextIndex(){
                 -repeat: list
     */
 
-    // check if shuffle is activated.
     if(shuffleOn_){
-        // find out what the repeat state is.
-
         if(repeatState_ == Repeat::off){
             if(index_ < length_){
                 return -1;
@@ -85,15 +96,14 @@ int MusicPlayer::nextIndex(){
             return index_;
         }
         else{
-            // check whether it's in bound.
             if(index_ >= length_){
                 index_ = 0;
             }
-
+            else ++index_;
             return shuffledList_->at(index_);
         }
     }
-    else{ // if shuffle is not ativated:
+    else{
 
         if(repeatState_ == Repeat::off){
             if(index_ < length_){
@@ -106,70 +116,45 @@ int MusicPlayer::nextIndex(){
         else if(repeatState_ == Repeat::single){
             return index_;
         }
-        else{ // repeatState_ = Repeat::list
-
-            // check whether it's in bound.
+        else{
             if(index_ < length_){
                 return ++index_;
-            } // start from the beginning if not.
+            }
             else return 0;
         }
     }
 }
 
 int MusicPlayer::previousIndex(){
-    /*
-        possible cases:
-            shuffle OFF/ON:
-                -repeat: OFF
-                -repeat: individual
-                -repeat: list
-    */
-
-    // check if shuffle is activated.
     if(shuffleOn_){
-        // find out what the repeat state is.
-
         if(repeatState_ == Repeat::off){
             if(index_ > 0){
-                return shuffledList_->at(++index_);
+                return shuffledList_->at(--index_);
             }
             else{
                 return -1;
             }
         }
-        else if(repeatState_ == Repeat::single){
+        else if(repeatState_ == Repeat::single){ // this should be checked before calling this method.
             return index_;
         }
         else{
-            // check whether it's in bound.
-            if(index_ >= length_){
-                index_ = 0;
+            if(index_ <= 0){
+                index_ = length_;
             }
-
+            else --index_;
             return shuffledList_->at(index_);
         }
     }
-    else{ // if shuffle is not ativated:
-
+    else{
         if(repeatState_ == Repeat::off){
-            if(index_ < length_){
-                return -1;
-            }
-            else{
-                return ++index_;
-            }
+            if(index_ <= 0 ) return -1;
+            else return --index_;
         }
-        else if(repeatState_ == Repeat::single){
-            return index_;
-        }
-        else{ // repeatState_ = Repeat::list
-
-            // check whether it's in bound.
-            if(index_ < length_){
-                return ++index_;
-            } // start from the beginning if not.
-            else return 0;
+        else if(repeatState_ == Repeat::single) return index_;
+        else{
+            if(index_ > 0) return --index_;
+            else return length_;
         }
     }
 }
