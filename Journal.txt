@@ -157,3 +157,11 @@
 -- including: repeat, shuffle, both, or neither.
 * I also created a playlist class, but I don't think i'll use it.
 * I still need to do the cover art.
+
+05-22-17:
+* I started re-editing the directory iterator, so it'll support creating 'playlists' for each folder.
+-- kinda having trouble with recursive folders.
+-- since they might have depths greather than two.
+-- I'll try finishing it tonight.
+* When I'm done with the iterator, I can start testing the MusicPlayer playlist functionalities.
+
