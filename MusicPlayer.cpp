@@ -61,10 +61,12 @@ void MusicPlayer::toggleRepeat(){
 void MusicPlayer::shuffle(){
     std::random_device rd;
     std::mt19937 g(rd());
-    std::shuffle(shuffledList_.begin(), shuffledList_.end(), g);
+    std::shuffle(shuffledList_->begin(), shuffledList_->end(), g);
 }
 
 void MusicPlayer::toggleShuffle(){
+    if(length_ < 0) return;
+
     if(shuffleOn_){
         shuffleOn_ = false;
     } else{
