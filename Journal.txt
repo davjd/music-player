@@ -165,3 +165,10 @@
 -- I'll try finishing it tonight.
 * When I'm done with the iterator, I can start testing the MusicPlayer playlist functionalities.
 
+05-22-17:
+* I apparantly have a deadlock
+-- i think it's my application thats crashing my laptop.
+-- So i'll need to insure that everything is thread safe.
+* I continued working on the directory scanner.
+-- I think i'll be finished with it tonight(if i work on it later.)
+* hopefully the deadlock isn't a big problem.
