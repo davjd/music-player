@@ -158,17 +158,25 @@
 * I also created a playlist class, but I don't think i'll use it.
 * I still need to do the cover art.
 
-05-22-17:
+05-23-17:
 * I started re-editing the directory iterator, so it'll support creating 'playlists' for each folder.
 -- kinda having trouble with recursive folders.
 -- since they might have depths greather than two.
 -- I'll try finishing it tonight.
 * When I'm done with the iterator, I can start testing the MusicPlayer playlist functionalities.
 
-05-22-17:
+05-24-17:
 * I apparantly have a deadlock
 -- i think it's my application thats crashing my laptop.
 -- So i'll need to insure that everything is thread safe.
 * I continued working on the directory scanner.
 -- I think i'll be finished with it tonight(if i work on it later.)
 * hopefully the deadlock isn't a big problem.
+
+05-24-17:
+* So the thing about the deadlock...
+-- it seems it wasnt my application that was causing the freeze.
+-- after updating my OS, my laptop no longer freezes.
+-- so i can now focus on other features of music player instead of it being thread-safety.
+* I was able to get the audio file scanner working.
+-- I haven't fully tested it though.
