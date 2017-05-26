@@ -12,6 +12,11 @@ MusicPlayer::MusicPlayer(): QMediaPlayer()
     length_ = -1;
 }
 
+MusicPlayer::~MusicPlayer(){
+    delete list_;
+    delete shuffledList_;
+}
+
 QVector<Song*>* MusicPlayer::songList(){
     return list_;
 }
@@ -81,47 +86,30 @@ int MusicPlayer::nextIndex(){
         possible cases:
             shuffle OFF/ON:
                 -repeat: OFF
-                -repeat: individual
+                -repeat: individual --> only with loadedNext().
                 -repeat: list
     */
 
     if(shuffleOn_){
         if(repeatState_ == Repeat::off){
-            if(index_ < length_){
-                return -1;
-            }
-            else{
-                return shuffledList_->at(++index_);
-            }
-        }
-        else if(repeatState_ == Repeat::single){
-            return index_;
+            if(index_ < length_) return -1;
+            else return shuffledList_->at(++index_);
         }
         else{
-            if(index_ >= length_){
-                index_ = 0;
-            }
+            if(index_ >= length_) index_ = 0;
             else ++index_;
+
             return shuffledList_->at(index_);
         }
     }
     else{
 
         if(repeatState_ == Repeat::off){
-            if(index_ < length_){
-                return -1;
-            }
-            else{
-                return ++index_;
-            }
-        }
-        else if(repeatState_ == Repeat::single){
-            return index_;
+            if(index_ < length_) return -1;
+            else return ++index_;
         }
         else{
-            if(index_ < length_){
-                return ++index_;
-            }
+            if(index_ < length_) return ++index_;
             else return 0;
         }
     }
@@ -130,21 +118,13 @@ int MusicPlayer::nextIndex(){
 int MusicPlayer::previousIndex(){
     if(shuffleOn_){
         if(repeatState_ == Repeat::off){
-            if(index_ > 0){
-                return shuffledList_->at(--index_);
-            }
-            else{
-                return -1;
-            }
-        }
-        else if(repeatState_ == Repeat::single){ // this should be checked before calling this method.
-            return index_;
+            if(index_ > 0) return shuffledList_->at(--index_);
+            else return -1;
         }
         else{
-            if(index_ <= 0){
-                index_ = length_;
-            }
+            if(index_ <= 0) index_ = length_;
             else --index_;
+
             return shuffledList_->at(index_);
         }
     }
@@ -153,7 +133,6 @@ int MusicPlayer::previousIndex(){
             if(index_ <= 0 ) return -1;
             else return --index_;
         }
-        else if(repeatState_ == Repeat::single) return index_;
         else{
             if(index_ > 0) return --index_;
             else return length_;
@@ -162,10 +141,6 @@ int MusicPlayer::previousIndex(){
 }
 
 void MusicPlayer::insert(QVector<Song *> *content){
-//    list_ = new QVector<Song*>();
-//    shuffledList_ = new QVector<int>();
-//    shuffleOn_ = false;
-//    repeatState_ = Repeat::off;
     index_ = -1;
     length_ = -1;
 
@@ -174,6 +149,17 @@ void MusicPlayer::insert(QVector<Song *> *content){
 
     for(int i = 0; i < content->size(); ++i){
         insert(content->at(i));
+    }
+}
+
+void MusicPlayer::loadedNext(){
+    // this is like next(), but occurs when the song is finished
+    // unlike next(), which occurs when next-button is clicked.
+    if(repeatState_ == Repeat::single){
+        setMedia((*list_->at(index_)));
+    }
+    else{
+        next();
     }
 }
 

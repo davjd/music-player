@@ -17,6 +17,7 @@ public:
     };
 
     MusicPlayer();
+    ~MusicPlayer();
     QVector<Song*>* songList();
     void setList();
     void insert(Song* content);
@@ -30,8 +31,8 @@ public:
 private:
     QVector<Song*>* list_;
     QVector<int>* shuffledList_;
-    int index_;
     Repeat repeatState_;
+    int index_;
     bool shuffleOn_;
     int length_;
 
@@ -44,6 +45,7 @@ private:
 private slots:
     void next();
     void previous();
+    void loadedNext();
     void toggleShuffle();
     void toggleRepeat();
 

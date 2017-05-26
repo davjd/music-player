@@ -52,8 +52,6 @@ void iterate(QHash<QString, QVector<Song*>* >* list, const QDir &directory){
            list->value(key)->push_back(new Song(QDir(f.filePath())));
        }
    }
-
-
 }
 
 
@@ -71,39 +69,6 @@ int main(int argc, char *argv[])
     qDebug() << "Path: " <<base.absolutePath();
 
     player->insert(list->value(base.absolutePath()));
-
-
-//    QDir p = QDir(QString(getenv("HOME")) + "/Music/etc");
-//    QDirIterator it(p.absolutePath(), QDir::Files, QDirIterator::Subdirectories);
-
-    // most common audio files:
-//    QHash<QString, unsigned int> valids;
-//    QString valid[] = {"m4a","mp3", "aac","ogg","flac","alac","wma","wav","aiff"};
-//    for(int i = 0; i < 9; ++i){
-//        valids.insert(valid[i], 1);
-//    }
-
-
-//    while(it.hasNext()){
-//        QFileInfo f(it.filePath());
-
-//        if(f.isFile()){
-//            if(valids.contains(f.suffix().toLower())){
-//                qDebug() << "base: " << f.baseName();
-//                player->insert(new Song(QDir(f.filePath())));
-//            }
-//        }
-//        it.next();
-//    }
-
-//     //there will still be one more file, because of hasNext().
-//    QFileInfo f(it.filePath());
-//    if(f.isFile()){
-//        if(valids.contains(f.suffix().toLower())){
-//            qDebug() << "base: " << f.baseName();
-//            player->insert(new Song(QDir(f.filePath())));
-//        }
-//    }
 
 
 //    MainWindow w;
