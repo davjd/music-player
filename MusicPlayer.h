@@ -25,6 +25,7 @@ public:
     bool isShuffled();
     Repeat repeatState();
     void insert(QVector<Song*>* content);
+    void initializeContent();
 
 
 

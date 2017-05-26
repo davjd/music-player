@@ -12,6 +12,12 @@ SongScreen::SongScreen(QWidget *parent) :
     connect(player, SIGNAL(currentMediaChanged(QMediaContent)), this, SLOT(drawTitle()));
     connect(player, SIGNAL(mediaStatusChanged(QMediaPlayer::MediaStatus)), this, SLOT(setFiller()));
     connect(player, SIGNAL(positionChanged(qint64)), this, SLOT(fillBuffer()));
+    connect(player, &QMediaPlayer::mediaStatusChanged, [this](QMediaPlayer::MediaStatus status){
+        if(status == QMediaPlayer::EndOfMedia){
+            qDebug() << "End of song!";
+        }
+        else qDebug() << "Something else..";
+    });
 }
 
 SongScreen::~SongScreen()
@@ -126,4 +132,13 @@ void SongScreen::setFiller(){
 
 void SongScreen::fillBuffer(){
     ui->position->setValue(player->position());
+}
+
+void SongScreen::out(){
+    if(player->mediaStatus() == QMediaPlayer::EndOfMedia){
+        qDebug() << "End of song!";
+    }
+    else{
+        qDebug() << "something else..";
+    }
 }

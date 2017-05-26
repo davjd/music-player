@@ -4,6 +4,7 @@
 
 MusicPlayer::MusicPlayer(): QMediaPlayer()
 {
+
     list_ = new QVector<Song*>();
     shuffledList_ = new QVector<int>();
     shuffleOn_ = false;
@@ -15,6 +16,32 @@ MusicPlayer::MusicPlayer(): QMediaPlayer()
 MusicPlayer::~MusicPlayer(){
     delete list_;
     delete shuffledList_;
+}
+
+void MusicPlayer::initializeContent(){
+    /*
+
+        Initialized the QMediaPlayer's mediaContet.
+        This will also initialize all signals and slots required.
+
+    */
+    next();
+
+    connect(player, &QMediaPlayer::mediaStatusChanged, [this](QMediaPlayer::MediaStatus status){
+        if(status == QMediaPlayer::EndOfMedia){
+            qDebug() << "End of song.. Loading next..";
+            loadedNext();
+        }
+    });
+
+//    connect(player, &QMediaPlayer::mediaStatusChanged, [this](QMediaPlayer::MediaStatus status){
+//        if(status == QMediaPlayer::EndOfMedia){
+//            qDebug() << "End of song.. Loading next..";
+//            loadedNext();
+//        }
+//    });
+
+
 }
 
 QVector<Song*>* MusicPlayer::songList(){
