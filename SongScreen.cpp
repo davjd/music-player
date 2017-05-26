@@ -29,6 +29,7 @@ void SongScreen::next(){
     if(player->isAudioAvailable()){
         if(player->index() < player->length()){
             player->next();
+            player->play();
             qDebug() << "Going to next.";
             qDebug() << "new index: " << player->index();
         }
@@ -39,6 +40,7 @@ void SongScreen::previous(){
     if(player->isAudioAvailable()){
         if(player->index() > 0){
             player->previous();
+            player->play();
             qDebug() << "Going to previous.";
             qDebug() << "new index: " << player->index();
         }

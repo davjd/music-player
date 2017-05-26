@@ -81,11 +81,17 @@ bool MusicPlayer::hasPlayed(){
 }
 
 void MusicPlayer::next(){
-    setMedia((*list_->at(nextIndex())));
+    int idx = nextIndex();
+    if(idx != -1){
+        setMedia((*list_->at(nextIndex())));
+    }
 }
 
 void MusicPlayer::previous(){
-    setMedia((*list_->at(previousIndex())));
+    int idx = nextIndex();
+    if(idx != -1){
+        setMedia((*list_->at(previousIndex())));
+    }
 }
 
 void MusicPlayer::toggleRepeat(){
@@ -148,8 +154,8 @@ int MusicPlayer::nextIndex(){
     else{
 
         if(repeatState_ == Repeat::off){
-            if(index_ < length_) return -1;
-            else return ++index_;
+            if(index_ < length_) return ++index_;
+            else return -1;
         }
         else{
             if(index_ < length_) return ++index_;
