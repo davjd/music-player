@@ -34,15 +34,6 @@ void MusicPlayer::initializeContent(){
             loadedNext();
         }
     });
-
-//    connect(player, &QMediaPlayer::mediaStatusChanged, [this](QMediaPlayer::MediaStatus status){
-//        if(status == QMediaPlayer::EndOfMedia){
-//            qDebug() << "End of song.. Loading next..";
-//            loadedNext();
-//        }
-//    });
-
-
 }
 
 QVector<Song*>* MusicPlayer::songList(){
@@ -85,7 +76,7 @@ void MusicPlayer::next(){
     int idx = nextIndex();
     qDebug() << "Next idx: " << idx;
     if(idx != -1){
-        setMedia((*list_->at(nextIndex())));
+        setMedia((*list_->at(idx)));
     }
 }
 
@@ -93,7 +84,7 @@ void MusicPlayer::previous(){
     int idx = nextIndex();
     qDebug() << "Previous idx: " << idx;
     if(idx != -1){
-        setMedia((*list_->at(previousIndex())));
+        setMedia((*list_->at(idx)));
     }
 }
 

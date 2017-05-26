@@ -70,14 +70,11 @@ void SongScreen::togglePlay(){
     }
     else{
         if(!player->hasPlayed()){
-            qDebug() << "setting playlist...";
-            qDebug() << "original state: " << player->mediaStatus();
+            qDebug() << "initializing player...";
             player->initializeContent();
             play();
         }
     }
-
-    qDebug() << "Play toggled.";
 }
 
 void SongScreen::drawArtist(){
@@ -106,32 +103,12 @@ void SongScreen::toggleRepeat(){
     qDebug() << "Toggling repeat.";
     player->toggleRepeat();
     qDebug() << "New repeat state: " << player->repeatState();
-//    if(player->playlist()->playbackMode() == QMediaPlaylist::Loop){
-//        qDebug() << "from loop to only once.";
-//        player->playlist()->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
-//    }
-//    else {
-//        qDebug() << "from only once to loop";
-//        player->playlist()->setPlaybackMode(QMediaPlaylist::Loop);
-//    }
 }
 
 void SongScreen::toggleShuffle(){
-//    if(player->playlist()->playbackMode() == QMediaPlaylist::Loop){
-//        qDebug() << "from loop to only once.";
-//        player->playlist()->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
-//    }
-//    else {
-//        qDebug() << "from only once to loop";
-//        player->playlist()->setPlaybackMode(QMediaPlaylist::Loop);
-//    }
     qDebug() << "shuffling";
     player->toggleShuffle();
     qDebug() << "New shuffle state: " << player->isShuffled();
-
-//    if(player->playlist()->playbackMode() != QMediaPlaylist::Random)
-//        player->playlist()->setPlaybackMode(QMediaPlaylist::Random);
-//    else qDebug() << "already shuffled.";
 }
 
 void SongScreen::setFiller(){
