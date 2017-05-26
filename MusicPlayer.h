@@ -43,6 +43,12 @@ private:
     int nextIndex();
     int previousIndex();
     void shuffle();
+    int setIndex(const int v); // will emit signal when index changes.
+    int increment();
+    int decrement();
+
+signals:
+    void idxChanged();
 
 
 public slots:

@@ -8,16 +8,14 @@ SongScreen::SongScreen(QWidget *parent) :
     ui(new Ui::SongScreen)
 {
     ui->setupUi(this);
-    connect(player, SIGNAL(currentMediaChanged(QMediaContent)), this, SLOT(drawArtist()));
-    connect(player, SIGNAL(currentMediaChanged(QMediaContent)), this, SLOT(drawTitle()));
+
+    connect(player, &MusicPlayer::idxChanged, [this](){
+        qDebug() << "index changed: " << player->index();
+        drawArtist();
+        drawTitle();
+    });
     connect(player, SIGNAL(mediaStatusChanged(QMediaPlayer::MediaStatus)), this, SLOT(setFiller()));
     connect(player, SIGNAL(positionChanged(qint64)), this, SLOT(fillBuffer()));
-    connect(player, &QMediaPlayer::mediaStatusChanged, [this](QMediaPlayer::MediaStatus status){
-        if(status == QMediaPlayer::EndOfMedia){
-            qDebug() << "End of song!";
-        }
-        else qDebug() << "Something else..";
-    });
 }
 
 SongScreen::~SongScreen()
@@ -73,6 +71,7 @@ void SongScreen::togglePlay(){
     else{
         if(!player->hasPlayed()){
             qDebug() << "setting playlist...";
+            qDebug() << "original state: " << player->mediaStatus();
             player->initializeContent();
             play();
         }
@@ -89,7 +88,7 @@ void SongScreen::drawArtist(){
         return;
     }
     qDebug() << "artist: " << player->songList()->at(player->index())->artist();
-    ui->title->setText(player->songList()->at(player->index())->artist());
+    ui->artist->setText(player->songList()->at(player->index())->artist());
 }
 
 void SongScreen::drawTitle(){

@@ -25,7 +25,8 @@ void MusicPlayer::initializeContent(){
         This will also initialize all signals and slots required.
 
     */
-    setMedia((*list_->at(0)));
+    setMedia((*list_->at(increment())));
+    emit idxChanged();
 
     connect(this, &QMediaPlayer::mediaStatusChanged, [this](QMediaPlayer::MediaStatus status){
         if(status == QMediaPlayer::EndOfMedia){
@@ -82,6 +83,7 @@ bool MusicPlayer::hasPlayed(){
 
 void MusicPlayer::next(){
     int idx = nextIndex();
+    qDebug() << "Next idx: " << idx;
     if(idx != -1){
         setMedia((*list_->at(nextIndex())));
     }
@@ -89,6 +91,7 @@ void MusicPlayer::next(){
 
 void MusicPlayer::previous(){
     int idx = nextIndex();
+    qDebug() << "Previous idx: " << idx;
     if(idx != -1){
         setMedia((*list_->at(previousIndex())));
     }
@@ -141,12 +144,12 @@ int MusicPlayer::nextIndex(){
 
     if(shuffleOn_){
         if(repeatState_ == Repeat::off){
-            if(index_ < length_) return -1;
-            else return shuffledList_->at(++index_);
+            if(index_ < length_) return setIndex(-1);
+            else return shuffledList_->at(increment());
         }
         else{
-            if(index_ >= length_) index_ = 0;
-            else ++index_;
+            if(index_ >= length_) setIndex(0);
+            else increment();
 
             return shuffledList_->at(index_);
         }
@@ -154,12 +157,12 @@ int MusicPlayer::nextIndex(){
     else{
 
         if(repeatState_ == Repeat::off){
-            if(index_ < length_) return ++index_;
-            else return -1;
+            if(index_ < length_) return increment();
+            else return setIndex(-1);
         }
         else{
-            if(index_ < length_) return ++index_;
-            else return 0;
+            if(index_ < length_) return increment();
+            else return setIndex(0);
         }
     }
 }
@@ -167,24 +170,24 @@ int MusicPlayer::nextIndex(){
 int MusicPlayer::previousIndex(){
     if(shuffleOn_){
         if(repeatState_ == Repeat::off){
-            if(index_ > 0) return shuffledList_->at(--index_);
-            else return -1;
+            if(index_ > 0) return shuffledList_->at(decrement());
+            else return setIndex(-1);
         }
         else{
-            if(index_ <= 0) index_ = length_;
-            else --index_;
+            if(index_ <= 0) setIndex(length_);
+            else decrement();
 
-            return shuffledList_->at(index_);
+            return shuffledList_->at(decrement());
         }
     }
     else{
         if(repeatState_ == Repeat::off){
-            if(index_ <= 0 ) return -1;
-            else return --index_;
+            if(index_ <= 0 ) return setIndex(-1);
+            else return decrement();
         }
         else{
-            if(index_ > 0) return --index_;
-            else return length_;
+            if(index_ > 0) return decrement();
+            else return setIndex(length_);
         }
     }
 }
@@ -210,6 +213,20 @@ void MusicPlayer::loadedNext(){
     else{
         next();
     }
+}
+
+int MusicPlayer::setIndex(const int v){
+    index_ = v;
+    emit idxChanged();
+    return index_;
+}
+
+int MusicPlayer::increment(){
+    return setIndex(index_ + 1);
+}
+
+int MusicPlayer::decrement(){
+    return setIndex(index_ - 1);
 }
 
 
