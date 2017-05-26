@@ -27,20 +27,20 @@ SongScreen::~SongScreen()
 
 void SongScreen::next(){
     if(player->isAudioAvailable()){
-        if(player->playlist()->currentIndex() < player->playlist()->mediaCount() - 1){
-            player->playlist()->next();
+        if(player->index() < player->length()){
+            player->next();
             qDebug() << "Going to next.";
-            qDebug() << "new index: " << player->playlist()->currentIndex();
+            qDebug() << "new index: " << player->index();
         }
     }
 }
 
 void SongScreen::previous(){
     if(player->isAudioAvailable()){
-        if(player->playlist()->currentIndex() > 0){
-            player->playlist()->previous();
+        if(player->index() > 0){
+            player->previous();
             qDebug() << "Going to previous.";
-            qDebug() << "new index: " << player->playlist()->currentIndex();
+            qDebug() << "new index: " << player->index();
         }
     }
 }
@@ -59,6 +59,7 @@ void SongScreen::pause(){
 }
 
 void SongScreen::togglePlay(){
+    qDebug() << "Toggling play.";
     if(player->isAudioAvailable()){
         if(player->state() == QMediaPlayer::PausedState || player->state() == QMediaPlayer::StoppedState){
             play();
@@ -68,43 +69,50 @@ void SongScreen::togglePlay(){
         }
     }
     else{
-        if((player->playlist() == NULL) /*&& player->playlist()->mediaCount() > 0*/){
+        if(!player->hasPlayed()){
             qDebug() << "setting playlist...";
-            player->setList();
+            player->initializeContent();
             play();
         }
     }
+
+    qDebug() << "Play toggled.";
 }
 
 void SongScreen::drawArtist(){
-    qDebug() << "artist-current: " << player->playlist()->currentIndex();
-    if(player->playlist()->currentIndex() < 0 || player->playlist()->currentIndex() > player->songList()->size() - 1){
+    int idx = player->index();
+    qDebug() << "artist-current: " << idx;
+    if(idx < 0 || idx > player->length()){
         qDebug() << "Title won't be loaded, because of index.";
         return;
     }
-    qDebug() << "artist: " << player->songList()->at(player->playlist()->currentIndex())->artist();
-    ui->artist->setText(player->songList()->at(player->playlist()->currentIndex())->artist());
+    qDebug() << "artist: " << player->songList()->at(player->index())->artist();
+    ui->title->setText(player->songList()->at(player->index())->artist());
 }
 
 void SongScreen::drawTitle(){
-    qDebug() << "title-current: " << player->playlist()->currentIndex();
-    if(player->playlist()->currentIndex() < 0 || player->playlist()->currentIndex() > player->songList()->size() - 1){
+    int idx = player->index();
+    qDebug() << "title-current: " << idx;
+    if(idx < 0 || idx > player->length()){
         qDebug() << "Title won't be loaded, because of index.";
         return;
     }
-    qDebug() << "title: " << player->songList()->at(player->playlist()->currentIndex())->title();
-    ui->title->setText(player->songList()->at(player->playlist()->currentIndex())->title());
+    qDebug() << "title: " << player->songList()->at(player->index())->title();
+    ui->title->setText(player->songList()->at(player->index())->title());
 }
 
 void SongScreen::toggleRepeat(){
-    if(player->playlist()->playbackMode() == QMediaPlaylist::Loop){
-        qDebug() << "from loop to only once.";
-        player->playlist()->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
-    }
-    else {
-        qDebug() << "from only once to loop";
-        player->playlist()->setPlaybackMode(QMediaPlaylist::Loop);
-    }
+    qDebug() << "Toggling repeat.";
+    player->toggleRepeat();
+    qDebug() << "New repeat state: " << player->repeatState();
+//    if(player->playlist()->playbackMode() == QMediaPlaylist::Loop){
+//        qDebug() << "from loop to only once.";
+//        player->playlist()->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
+//    }
+//    else {
+//        qDebug() << "from only once to loop";
+//        player->playlist()->setPlaybackMode(QMediaPlaylist::Loop);
+//    }
 }
 
 void SongScreen::toggleShuffle(){
@@ -117,9 +125,12 @@ void SongScreen::toggleShuffle(){
 //        player->playlist()->setPlaybackMode(QMediaPlaylist::Loop);
 //    }
     qDebug() << "shuffling";
-    if(player->playlist()->playbackMode() != QMediaPlaylist::Random)
-        player->playlist()->setPlaybackMode(QMediaPlaylist::Random);
-    else qDebug() << "already shuffled.";
+    player->toggleShuffle();
+    qDebug() << "New shuffle state: " << player->isShuffled();
+
+//    if(player->playlist()->playbackMode() != QMediaPlaylist::Random)
+//        player->playlist()->setPlaybackMode(QMediaPlaylist::Random);
+//    else qDebug() << "already shuffled.";
 }
 
 void SongScreen::setFiller(){

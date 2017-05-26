@@ -22,10 +22,12 @@ public:
     void setList();
     void insert(Song* content);
     int index();
+    int length();
     bool isShuffled();
     Repeat repeatState();
     void insert(QVector<Song*>* content);
     void initializeContent();
+    bool hasPlayed();
 
 
 
@@ -43,7 +45,7 @@ private:
     void shuffle();
 
 
-private slots:
+public slots:
     void next();
     void previous();
     void loadedNext();

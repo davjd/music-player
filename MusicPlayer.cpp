@@ -25,9 +25,9 @@ void MusicPlayer::initializeContent(){
         This will also initialize all signals and slots required.
 
     */
-    next();
+    setMedia((*list_->at(0)));
 
-    connect(player, &QMediaPlayer::mediaStatusChanged, [this](QMediaPlayer::MediaStatus status){
+    connect(this, &QMediaPlayer::mediaStatusChanged, [this](QMediaPlayer::MediaStatus status){
         if(status == QMediaPlayer::EndOfMedia){
             qDebug() << "End of song.. Loading next..";
             loadedNext();
@@ -72,6 +72,14 @@ int MusicPlayer::index(){
     return index_;
 }
 
+int MusicPlayer::length(){
+    return length_;
+}
+
+bool MusicPlayer::hasPlayed(){
+    return (index_!= -1);
+}
+
 void MusicPlayer::next(){
     setMedia((*list_->at(nextIndex())));
 }
@@ -106,6 +114,14 @@ void MusicPlayer::toggleShuffle(){
         shuffle();
         index_ = 0;
     }
+}
+
+MusicPlayer::Repeat MusicPlayer::repeatState(){
+    return repeatState_;
+}
+
+bool MusicPlayer::isShuffled(){
+    return shuffleOn_;
 }
 
 int MusicPlayer::nextIndex(){
