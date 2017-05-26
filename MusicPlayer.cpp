@@ -161,4 +161,20 @@ int MusicPlayer::previousIndex(){
     }
 }
 
+void MusicPlayer::insert(QVector<Song *> *content){
+//    list_ = new QVector<Song*>();
+//    shuffledList_ = new QVector<int>();
+//    shuffleOn_ = false;
+//    repeatState_ = Repeat::off;
+    index_ = -1;
+    length_ = -1;
+
+    list_->clear();
+    shuffledList_->clear();
+
+    for(int i = 0; i < content->size(); ++i){
+        insert(content->at(i));
+    }
+}
+
 

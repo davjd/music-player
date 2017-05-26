@@ -23,16 +23,17 @@ public:
     int index();
     bool isShuffled();
     Repeat repeatState();
+    void insert(QVector<Song*>* content);
 
 
 
 private:
     QVector<Song*>* list_;
     QVector<int>* shuffledList_;
-    unsigned int index_;
+    int index_;
     Repeat repeatState_;
     bool shuffleOn_;
-    unsigned int length_;
+    int length_;
 
     void remove(const int idx);
     int nextIndex();
