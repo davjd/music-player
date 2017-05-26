@@ -173,10 +173,19 @@
 -- I think i'll be finished with it tonight(if i work on it later.)
 * hopefully the deadlock isn't a big problem.
 
-05-24-17:
+05-25-17:
 * So the thing about the deadlock...
 -- it seems it wasnt my application that was causing the freeze.
 -- after updating my OS, my laptop no longer freezes.
 -- so i can now focus on other features of music player instead of it being thread-safety.
 * I was able to get the audio file scanner working.
 -- I haven't fully tested it though.
+
+05-26-17:
+* I started fixing the signals for the music player.
+-- signals include:
+    -- when a song has ended.
+    -- when the user clicks the next button.
+    -- when the user clicks the previous button.
+    -- when the metadata needs to be extracted.
+* I've also fixed the index error i previously had.
