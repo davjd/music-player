@@ -32,6 +32,7 @@ void MusicPlayer::initializeContent(){
         if(status == QMediaPlayer::EndOfMedia){
             qDebug() << "End of song.. Loading next..";
             loadedNext();
+            play();
         }
     });
 }
@@ -81,7 +82,7 @@ void MusicPlayer::next(){
 }
 
 void MusicPlayer::previous(){
-    int idx = nextIndex();
+    int idx = previousIndex();
     qDebug() << "Previous idx: " << idx;
     if(idx != -1){
         setMedia((*list_->at(idx)));
@@ -146,7 +147,6 @@ int MusicPlayer::nextIndex(){
         }
     }
     else{
-
         if(repeatState_ == Repeat::off){
             if(index_ < length_) return increment();
             else return setIndex(-1);
@@ -168,7 +168,7 @@ int MusicPlayer::previousIndex(){
             if(index_ <= 0) setIndex(length_);
             else decrement();
 
-            return shuffledList_->at(decrement());
+            return shuffledList_->at(index_);
         }
     }
     else{

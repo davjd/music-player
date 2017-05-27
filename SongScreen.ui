@@ -110,6 +110,9 @@
      <property name="layoutDirection">
       <enum>Qt::LeftToRight</enum>
      </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;</string>
+     </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
      </property>
@@ -131,6 +134,10 @@
      </property>
      <property name="layoutDirection">
       <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;
+</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
@@ -162,7 +169,7 @@
       <x>90</x>
       <y>50</y>
       <width>281</width>
-      <height>201</height>
+      <height>191</height>
      </rect>
     </property>
     <property name="text">
@@ -187,11 +194,24 @@
       <height>23</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QProgressBar {
+    border: 2px solid grey;
+    border-radius: 5px;
+	text-align: center;
+}
+
+QProgressBar::chunk {
+    background-color: #CD96CD;
+    width: 10px;
+    margin: 0.5px;
+}</string>
+    </property>
     <property name="value">
      <number>0</number>
     </property>
     <property name="textVisible">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
@@ -374,9 +394,7 @@
     <bool>false</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">* {
-	background-color: rgba(0,125,0,0);
-}
+    <string notr="true">background-color: rgba(0,125,0,0);
 
 </string>
    </property>
@@ -410,10 +428,41 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <property name="orientation">
     <enum>Qt::Vertical</enum>
    </property>
   </widget>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>-1</y>
+     <width>681</width>
+     <height>431</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(85,158,131);</string>
+   </property>
+  </widget>
+  <zorder>widget</zorder>
+  <zorder>line</zorder>
+  <zorder>line_2</zorder>
+  <zorder>line_3</zorder>
+  <zorder>line_4</zorder>
+  <zorder>border</zorder>
+  <zorder>middle</zorder>
+  <zorder>right</zorder>
+  <zorder>left</zorder>
+  <zorder>shuffle</zorder>
+  <zorder>repeat</zorder>
+  <zorder>line_5</zorder>
  </widget>
  <resources/>
  <connections>
