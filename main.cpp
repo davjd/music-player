@@ -14,7 +14,6 @@
 MusicPlayer* player;
 
 void iterate(QHash<QString, QVector<Song*>* >* list, const QDir &directory){
-//    QDir p = QDir(QString(getenv("HOME")) + "/Music/rage");
     QDirIterator it(directory.absolutePath(), QDir::Files, QDirIterator::Subdirectories);
 
     // most common audio files:
@@ -64,7 +63,7 @@ int main(int argc, char *argv[])
     player->setVolume(100);
 
     QHash<QString, QVector<Song*>* >* list = new QHash<QString, QVector<Song*>*>();
-    QDir base(QString(getenv("HOME")) + "/Music/rage");
+    QDir base(QString(getenv("HOME")) + "/Music/etc");
     iterate(list, QDir(base));
     qDebug() << "Path: " <<base.absolutePath();
 

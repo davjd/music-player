@@ -22,6 +22,7 @@ public:
     void setList();
     void insert(Song* content);
     int index();
+    int songIndex();
     int length();
     bool isShuffled();
     Repeat repeatState();

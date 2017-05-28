@@ -26,13 +26,11 @@ void MusicPlayer::initializeContent(){
 
     */
     setMedia((*list_->at(increment())));
-    emit idxChanged();
 
     connect(this, &QMediaPlayer::mediaStatusChanged, [this](QMediaPlayer::MediaStatus status){
         if(status == QMediaPlayer::EndOfMedia){
             qDebug() << "End of song.. Loading next..";
             loadedNext();
-            play();
         }
     });
 }
@@ -65,15 +63,30 @@ int MusicPlayer::index(){
     return index_;
 }
 
+int MusicPlayer::songIndex(){
+    // the difference between index() and this
+    // is that this will take into account if the playlist
+    // is shuffled, returning its true index on the songList.
+    if(shuffleOn_) return shuffledList_->at(index_);
+    else return index_;
+}
+
 int MusicPlayer::length(){
     return length_;
 }
 
 bool MusicPlayer::hasPlayed(){
-    return (index_!= -1);
+    return (index_ != -1);
 }
 
 void MusicPlayer::next(){
+    if(repeatState_ == Repeat::off || repeatState_ == Repeat::single){
+        if(index_ == length_) return;
+    }
+
+
+
+
     int idx = nextIndex();
     qDebug() << "Next idx: " << idx;
     if(idx != -1){
@@ -100,9 +113,11 @@ void MusicPlayer::toggleRepeat(){
 }
 
 void MusicPlayer::shuffle(){
+    shuffledList_->removeOne(index_);
     std::random_device rd;
     std::mt19937 g(rd());
     std::shuffle(shuffledList_->begin(), shuffledList_->end(), g);
+    shuffledList_->push_front(index_); // current index will be the last item.
 }
 
 void MusicPlayer::toggleShuffle(){
@@ -135,9 +150,9 @@ int MusicPlayer::nextIndex(){
     */
 
     if(shuffleOn_){
-        if(repeatState_ == Repeat::off){
-            if(index_ < length_) return setIndex(-1);
-            else return shuffledList_->at(increment());
+        if(repeatState_ == Repeat::off || repeatState_ == Repeat::single){
+            if(index_ < length_ && index_ > -1) return shuffledList_->at(increment());
+            else return setIndex(-1);
         }
         else{
             if(index_ >= length_) setIndex(0);
@@ -147,8 +162,8 @@ int MusicPlayer::nextIndex(){
         }
     }
     else{
-        if(repeatState_ == Repeat::off){
-            if(index_ < length_) return increment();
+        if(repeatState_ == Repeat::off || repeatState_ == Repeat::single){
+            if(index_ < length_ && index_ > -1) return increment();
             else return setIndex(-1);
         }
         else{
@@ -160,7 +175,7 @@ int MusicPlayer::nextIndex(){
 
 int MusicPlayer::previousIndex(){
     if(shuffleOn_){
-        if(repeatState_ == Repeat::off){
+        if(repeatState_ == Repeat::off || repeatState_ == Repeat::single){
             if(index_ > 0) return shuffledList_->at(decrement());
             else return setIndex(-1);
         }
@@ -172,7 +187,7 @@ int MusicPlayer::previousIndex(){
         }
     }
     else{
-        if(repeatState_ == Repeat::off){
+        if(repeatState_ == Repeat::off || repeatState_ == Repeat::single){
             if(index_ <= 0 ) return setIndex(-1);
             else return decrement();
         }
@@ -200,6 +215,7 @@ void MusicPlayer::loadedNext(){
     // unlike next(), which occurs when next-button is clicked.
     if(repeatState_ == Repeat::single){
         setMedia((*list_->at(index_)));
+        play();
     }
     else{
         next();
@@ -219,5 +235,4 @@ int MusicPlayer::increment(){
 int MusicPlayer::decrement(){
     return setIndex(index_ - 1);
 }
-
 

@@ -11,6 +11,7 @@ SongScreen::SongScreen(QWidget *parent) :
 
     connect(player, &MusicPlayer::idxChanged, [this](){
         qDebug() << "index changed: " << player->index();
+        qDebug() << "Song idx: " << player->songIndex();
         drawArtist();
         drawTitle();
     });
@@ -52,7 +53,6 @@ void SongScreen::play(){
 }
 
 void SongScreen::pause(){
-    qDebug() << "len: " << player->duration();
     qDebug() << "Player will be paused.";
     player->pause();
     ui->middle->setIcon(QIcon(":/buttons/play-button.svg"));
@@ -79,41 +79,34 @@ void SongScreen::togglePlay(){
 
 void SongScreen::drawArtist(){
     int idx = player->index();
-    qDebug() << "artist-current: " << idx;
     if(idx < 0 || idx > player->length()){
         qDebug() << "Title won't be loaded, because of index.";
         return;
     }
-    qDebug() << "artist: " << player->songList()->at(player->index())->artist();
-    ui->artist->setText(player->songList()->at(player->index())->artist());
+    ui->artist->setText(player->songList()->at(player->songIndex())->artist());
 }
 
 void SongScreen::drawTitle(){
     int idx = player->index();
-    qDebug() << "title-current: " << idx;
     if(idx < 0 || idx > player->length()){
         qDebug() << "Title won't be loaded, because of index.";
         return;
     }
-    qDebug() << "title: " << player->songList()->at(player->index())->title();
-    ui->title->setText(player->songList()->at(player->index())->title());
+    ui->title->setText(player->songList()->at(player->songIndex())->title());
 }
 
 void SongScreen::toggleRepeat(){
-    qDebug() << "Toggling repeat.";
     player->toggleRepeat();
     qDebug() << "New repeat state: " << player->repeatState();
 }
 
 void SongScreen::toggleShuffle(){
-    qDebug() << "shuffling";
     player->toggleShuffle();
-    qDebug() << "New shuffle state: " << player->isShuffled();
+    qDebug() << "New repeat state: " << player->isShuffled();
 }
 
 void SongScreen::setFiller(){
     if( player->mediaStatus() == QMediaPlayer::BufferedMedia){
-        qDebug() << "length: " << player->duration();
         ui->position->setMaximum(player->duration());
     }
     else qDebug() << player->mediaStatus();
