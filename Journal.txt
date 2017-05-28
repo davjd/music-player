@@ -189,3 +189,12 @@
     -- when the user clicks the previous button.
     -- when the metadata needs to be extracted.
 * I've also fixed the index error i previously had.
+
+05-27-17:
+* So I'm still fixing and editing the methods to switch between songs.
+-- I'm mainly having issues because there's a lot questions that are arising
+    -- most are design questions on how i want the music player to interact and respond.
+    -- which don't seem to have wrong or correct answers, because it really depends
+    -- on how I want the music player to switch songs.
+* I have also begun looking at how I will extract the cover art from songs.
+-- But i'll implement when I'm 100% sure that switching betweens songs is perfect and smooth.
