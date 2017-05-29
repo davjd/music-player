@@ -8,6 +8,7 @@
 #include <QHash>
 #include "Song.h"
 #include "Player.h"
+#include "IntroScreen.h"
 #include <QVector>
 
 
@@ -71,10 +72,12 @@ int main(int argc, char *argv[])
 
 
 //    MainWindow w;
-    SongScreen screen;
+//    SongScreen screen;
+    IntroScreen intro;
 
 //    w.show();
-    screen.show();
+    intro.show();
+//    screen.show();
 
     return a.exec();
 }

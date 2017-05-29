@@ -17,6 +17,8 @@ public:
 
 private:
     Ui::IntroScreen *ui;
+public slots:
+    void addItem();
 };
 
 #endif // INTROSCREEN_H
