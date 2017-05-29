@@ -1,7 +1,9 @@
 #include "IntroScreen.h"
 #include "ui_IntroScreen.h"
+#include "Player.h"
 #include <QLabel>
 #include <QDebug>
+#include <QVectorIterator>
 
 IntroScreen::IntroScreen(QWidget *parent) :
     QWidget(parent),
@@ -22,8 +24,10 @@ void IntroScreen::addItem(){
     ui->scrollArea->setWidget(viewport);
     ui->scrollArea->setWidgetResizable(true);
     QVBoxLayout *l = new QVBoxLayout(viewport);
-    for(int i=0;i<50;++i) {
-        QPushButton *pb = new QPushButton(QString::number(i+1));
+
+    QVectorIterator<Song*> i((*player->songList()));
+    while (i.hasNext()){
+        QPushButton *pb = new QPushButton((*i.next()).title());
         l->addWidget(pb);
     }
 }
