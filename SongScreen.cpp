@@ -15,6 +15,10 @@ SongScreen::SongScreen(QWidget *parent) :
         drawArtist();
         drawTitle();
     });
+    connect(ui->progress, &QSlider::sliderMoved, [this](){
+        player->setPosition(ui->progress->value());
+    });
+
     connect(player, SIGNAL(mediaStatusChanged(QMediaPlayer::MediaStatus)), this, SLOT(setFiller()));
     connect(player, SIGNAL(positionChanged(qint64)), this, SLOT(fillBuffer()));
 }
@@ -107,20 +111,11 @@ void SongScreen::toggleShuffle(){
 
 void SongScreen::setFiller(){
     if( player->mediaStatus() == QMediaPlayer::BufferedMedia){
-        ui->position->setMaximum(player->duration());
+        ui->progress->setMaximum(player->duration());
     }
     else qDebug() << player->mediaStatus();
 }
 
 void SongScreen::fillBuffer(){
-    ui->position->setValue(player->position());
-}
-
-void SongScreen::out(){
-    if(player->mediaStatus() == QMediaPlayer::EndOfMedia){
-        qDebug() << "End of song!";
-    }
-    else{
-        qDebug() << "something else..";
-    }
+    ui->progress->setValue(player->position());
 }

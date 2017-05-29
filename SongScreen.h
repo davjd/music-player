@@ -32,7 +32,6 @@ private slots:
     void pause();
     void fillBuffer();
     void setFiller();
-    void out();
 };
 
 #endif // SONGSCREEN_H

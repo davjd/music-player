@@ -13,74 +13,14 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="Line" name="line_2">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>320</y>
-     <width>261</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Plain</enum>
-   </property>
-   <property name="lineWidth">
-    <number>2</number>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-  </widget>
-  <widget class="Line" name="line_3">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>340</y>
-     <width>20</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Plain</enum>
-   </property>
-   <property name="lineWidth">
-    <number>2</number>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Vertical</enum>
-   </property>
-  </widget>
-  <widget class="Line" name="line_4">
-   <property name="geometry">
-    <rect>
-     <x>500</x>
-     <y>340</y>
-     <width>16</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color:black;
-</string>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Plain</enum>
-   </property>
-   <property name="lineWidth">
-    <number>2</number>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Vertical</enum>
-   </property>
-  </widget>
+  <property name="styleSheet">
+   <string notr="true">/*background-color: rgb(224,123,97);*/
+background-color:rgb(157, 77, 197);</string>
+  </property>
   <widget class="QFrame" name="border">
    <property name="geometry">
     <rect>
-     <x>120</x>
+     <x>110</x>
      <y>0</y>
      <width>451</width>
      <height>271</height>
@@ -90,10 +30,10 @@
     <bool>false</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-color: rgb(92, 53, 102);</string>
+    <string notr="true">color: rgb(164, 192, 200);</string>
    </property>
    <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
+    <enum>QFrame::Box</enum>
    </property>
    <property name="frameShadow">
     <enum>QFrame::Plain</enum>
@@ -104,25 +44,70 @@
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>80</x>
       <y>0</y>
-      <width>281</width>
-      <height>51</height>
+      <width>291</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
+     <enum>QFrame::Box</enum>
     </property>
     <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
+     <enum>QFrame::Plain</enum>
     </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
+    <widget class="Line" name="line_6">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>20</y>
+       <width>141</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="title">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>0</y>
+       <width>271</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;
+</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <property name="text">
+      <string>Title</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
     <widget class="QLabel" name="artist">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>281</width>
-       <height>20</height>
+       <x>10</x>
+       <y>40</y>
+       <width>271</width>
+       <height>21</height>
       </rect>
      </property>
      <property name="layoutDirection">
@@ -141,54 +126,18 @@
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="title">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>30</y>
-       <width>281</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="layoutDirection">
-      <enum>Qt::LeftToRight</enum>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color:white;
-</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="text">
-      <string>Title</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="Line" name="line_6">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>20</y>
-       <width>118</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>50</y>
-      <width>281</width>
-      <height>191</height>
+      <x>80</x>
+      <y>70</y>
+      <width>291</width>
+      <height>171</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:white;</string>
     </property>
     <property name="text">
      <string notr="true">Cover Art</string>
@@ -203,32 +152,50 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QProgressBar" name="position">
+   <widget class="QSlider" name="progress">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>87</x>
+      <x>80</x>
       <y>240</y>
-      <width>301</width>
-      <height>23</height>
+      <width>291</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QProgressBar {
-    border: 2px solid grey;
-    border-radius: 5px;
-	text-align: center;
+     <string notr="true">QSlider::handle:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);
+    border: 1px solid #5c5c5c;
+    width: 10px;
+    margin: -2px 0;
+    border-radius: 3px;
 }
 
-QProgressBar::chunk {
-    background-color: #CD96CD;
-    width: 10px;
-    margin: 0.5px;
-}</string>
+QSlider::groove:horizontal
+{
+    border: 1px solid #999999;
+    height: 5px;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #B1B1B1, stop:1 #c4c4c4);
+    margin: 2px 0;
+}  
+
+QSlider::sub-page
+{
+    background: rgb(164, 192, 200);
+}
+
+QSlider::add-page 
+{
+    background: rgb(70, 70, 70);
+}
+</string>
     </property>
-    <property name="value">
-     <number>0</number>
+    <property name="maximum">
+     <number>45000</number>
     </property>
-    <property name="textVisible">
+    <property name="tracking">
      <bool>true</bool>
     </property>
     <property name="orientation">
@@ -237,34 +204,8 @@ QProgressBar::chunk {
     <property name="invertedAppearance">
      <bool>false</bool>
     </property>
-   </widget>
-   <widget class="QSlider" name="horizontalSlider">
-    <property name="geometry">
-     <rect>
-      <x>89</x>
-      <y>190</y>
-      <width>291</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QSlider::groove:horizontal {
-    border: 1px solid #999999;
-    height: 8px;
-    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #B1B1B1, stop:1 #c4c4c4);
-    margin: 2px 0;
-}
-
-QSlider::handle:horizontal {
-    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);
-    border: 1px solid #5c5c5c;
-    width: 18px;
-    margin: -2px 0;
-    border-radius: 3px;
-}</string>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
+    <property name="invertedControls">
+     <bool>false</bool>
     </property>
    </widget>
   </widget>
@@ -272,9 +213,9 @@ QSlider::handle:horizontal {
    <property name="geometry">
     <rect>
      <x>300</x>
-     <y>330</y>
+     <y>340</y>
      <width>81</width>
-     <height>91</height>
+     <height>81</height>
     </rect>
    </property>
    <property name="autoFillBackground">
@@ -308,90 +249,10 @@ QSlider::handle:horizontal {
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="right">
-   <property name="geometry">
-    <rect>
-     <x>420</x>
-     <y>330</y>
-     <width>81</width>
-     <height>91</height>
-    </rect>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">* {
-	background-color: rgba(0,125,0,0);
-}
-
-</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="icon">
-    <iconset>
-     <disabledoff>:/buttons/next.svg</disabledoff>
-    </iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>70</width>
-     <height>75</height>
-    </size>
-   </property>
-   <property name="autoDefault">
-    <bool>false</bool>
-   </property>
-   <property name="flat">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="left">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>330</y>
-     <width>81</width>
-     <height>91</height>
-    </rect>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">* {
-	background-color: rgba(0,125,0,0);
-}
-
-</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="icon">
-    <iconset>
-     <disabledoff>:/buttons/previous.svg</disabledoff>
-    </iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>70</width>
-     <height>75</height>
-    </size>
-   </property>
-   <property name="autoDefault">
-    <bool>false</bool>
-   </property>
-   <property name="flat">
-    <bool>true</bool>
-   </property>
-  </widget>
   <widget class="QPushButton" name="shuffle">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>250</x>
      <y>280</y>
      <width>51</width>
      <height>41</height>
@@ -431,7 +292,7 @@ QSlider::handle:horizontal {
   <widget class="QPushButton" name="repeat">
    <property name="geometry">
     <rect>
-     <x>370</x>
+     <x>360</x>
      <y>280</y>
      <width>41</width>
      <height>41</height>
@@ -466,17 +327,119 @@ QSlider::handle:horizontal {
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="QPushButton" name="left">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>360</y>
+     <width>41</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">* {
+	background-color: rgba(0,125,0,0);
+}
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <disabledoff>:/buttons/previous.svg</disabledoff>
+    </iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>70</width>
+     <height>75</height>
+    </size>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="right">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>360</y>
+     <width>41</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">* {
+	background-color: rgba(0,125,0,0);
+}
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <disabledoff>:/buttons/next.svg</disabledoff>
+    </iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>70</width>
+     <height>75</height>
+    </size>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="Line" name="line_2">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>320</y>
+     <width>261</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(164, 192, 200);</string>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <property name="lineWidth">
+    <number>1</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
   <widget class="Line" name="line_5">
    <property name="geometry">
     <rect>
      <x>330</x>
-     <y>280</y>
+     <y>270</y>
      <width>20</width>
-     <height>51</height>
+     <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">color: rgb(164, 192, 200);</string>
    </property>
    <property name="frameShadow">
     <enum>QFrame::Plain</enum>
@@ -488,87 +451,17 @@ QSlider::handle:horizontal {
     <enum>Qt::Vertical</enum>
    </property>
   </widget>
-  <widget class="QWidget" name="widget" native="true">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>-1</y>
-     <width>681</width>
-     <height>431</height>
-    </rect>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(224,123,97);</string>
-   </property>
-   <widget class="Line" name="line">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>410</y>
-      <width>261</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Plain</enum>
-    </property>
-    <property name="lineWidth">
-     <number>2</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-  </widget>
-  <zorder>widget</zorder>
-  <zorder>line_2</zorder>
-  <zorder>line_3</zorder>
-  <zorder>line_4</zorder>
+  <zorder>line_5</zorder>
   <zorder>border</zorder>
-  <zorder>middle</zorder>
-  <zorder>right</zorder>
-  <zorder>left</zorder>
   <zorder>shuffle</zorder>
   <zorder>repeat</zorder>
-  <zorder>line_5</zorder>
+  <zorder>left</zorder>
+  <zorder>right</zorder>
+  <zorder>line_2</zorder>
+  <zorder>middle</zorder>
  </widget>
  <resources/>
  <connections>
-  <connection>
-   <sender>left</sender>
-   <signal>clicked()</signal>
-   <receiver>SongScreen</receiver>
-   <slot>previous()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>210</x>
-     <y>315</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>341</x>
-     <y>210</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>right</sender>
-   <signal>clicked()</signal>
-   <receiver>SongScreen</receiver>
-   <slot>next()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>450</x>
-     <y>315</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>341</x>
-     <y>210</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>middle</sender>
    <signal>clicked()</signal>
@@ -617,6 +510,38 @@ QSlider::handle:horizontal {
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>left</sender>
+   <signal>clicked()</signal>
+   <receiver>SongScreen</receiver>
+   <slot>previous()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>260</x>
+     <y>385</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>339</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>right</sender>
+   <signal>clicked()</signal>
+   <receiver>SongScreen</receiver>
+   <slot>next()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>420</x>
+     <y>385</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>339</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>previous()</slot>
@@ -624,5 +549,6 @@ QSlider::handle:horizontal {
   <slot>togglePlay()</slot>
   <slot>toggleRepeat()</slot>
   <slot>toggleShuffle()</slot>
+  <slot>out()</slot>
  </slots>
 </ui>

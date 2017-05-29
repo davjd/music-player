@@ -215,11 +215,12 @@ void MusicPlayer::loadedNext(){
     // unlike next(), which occurs when next-button is clicked.
     if(repeatState_ == Repeat::single){
         setMedia((*list_->at(index_)));
-        play();
     }
     else{
         next();
     }
+
+    play();
 }
 
 int MusicPlayer::setIndex(const int v){
