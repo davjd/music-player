@@ -15,7 +15,7 @@ SongScreen::SongScreen(QWidget *parent) :
         drawArtist();
         drawTitle();
     });
-    connect(ui->progress, &QSlider::sliderMoved, [this](){
+    connect(ui->progress, &QSlider::sliderReleased, [this](){
         player->setPosition(ui->progress->value());
     });
 

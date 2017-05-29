@@ -30,17 +30,20 @@ SOURCES += main.cpp\
     Song.cpp \
     SongScreen.cpp \
     MusicPlayer.cpp \
-    Playlist.cpp
+    Playlist.cpp \
+    IntroScreen.cpp
 
 HEADERS  += MainWindow.h \
     Song.h \
     SongScreen.h \
     MusicPlayer.h \
     Player.h \
-    Playlist.h
+    Playlist.h \
+    IntroScreen.h
 
 FORMS    += MainWindow.ui \
-    SongScreen.ui
+    SongScreen.ui \
+    IntroScreen.ui
 
 CONFIG += mobility
 MOBILITY = 

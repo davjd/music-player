@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>679</width>
-    <height>429</height>
+    <width>950</width>
+    <height>675</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -20,10 +26,10 @@ background-color:rgb(157, 77, 197);</string>
   <widget class="QFrame" name="border">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>0</y>
-     <width>451</width>
-     <height>271</height>
+     <x>160</x>
+     <y>10</y>
+     <width>641</width>
+     <height>421</height>
     </rect>
    </property>
    <property name="autoFillBackground">
@@ -44,9 +50,9 @@ background-color:rgb(157, 77, 197);</string>
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>0</y>
-      <width>291</width>
+      <x>110</x>
+      <y>10</y>
+      <width>411</width>
       <height>71</height>
      </rect>
     </property>
@@ -62,7 +68,7 @@ background-color:rgb(157, 77, 197);</string>
     <widget class="Line" name="line_6">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>130</x>
        <y>20</y>
        <width>141</width>
        <height>20</height>
@@ -76,8 +82,8 @@ background-color:rgb(157, 77, 197);</string>
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>0</y>
-       <width>271</width>
+       <y>10</y>
+       <width>391</width>
        <height>20</height>
       </rect>
      </property>
@@ -106,7 +112,7 @@ background-color:rgb(157, 77, 197);</string>
       <rect>
        <x>10</x>
        <y>40</y>
-       <width>271</width>
+       <width>391</width>
        <height>21</height>
       </rect>
      </property>
@@ -130,10 +136,10 @@ background-color:rgb(157, 77, 197);</string>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>70</y>
+      <x>170</x>
+      <y>100</y>
       <width>291</width>
-      <height>171</height>
+      <height>241</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -158,8 +164,8 @@ background-color:rgb(157, 77, 197);</string>
     </property>
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>240</y>
+      <x>170</x>
+      <y>370</y>
       <width>291</width>
       <height>20</height>
      </rect>
@@ -208,14 +214,17 @@ QSlider::add-page
      <bool>false</bool>
     </property>
    </widget>
+   <zorder>pushButton</zorder>
+   <zorder>frame</zorder>
+   <zorder>progress</zorder>
   </widget>
   <widget class="QPushButton" name="middle">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>340</y>
-     <width>81</width>
-     <height>81</height>
+     <x>440</x>
+     <y>510</y>
+     <width>91</width>
+     <height>91</height>
     </rect>
    </property>
    <property name="autoFillBackground">
@@ -238,8 +247,8 @@ QSlider::add-page
    </property>
    <property name="iconSize">
     <size>
-     <width>75</width>
-     <height>75</height>
+     <width>90</width>
+     <height>95</height>
     </size>
    </property>
    <property name="autoDefault">
@@ -252,8 +261,8 @@ QSlider::add-page
   <widget class="QPushButton" name="shuffle">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>280</y>
+     <x>390</x>
+     <y>450</y>
      <width>51</width>
      <height>41</height>
     </rect>
@@ -262,9 +271,8 @@ QSlider::add-page
     <bool>false</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">* {
-	background-color: rgba(0,125,0,0);
-}
+    <string notr="true">background-color: rgba(0,125,0,0);
+
 
 </string>
    </property>
@@ -285,6 +293,9 @@ QSlider::add-page
    <property name="autoDefault">
     <bool>false</bool>
    </property>
+   <property name="default">
+    <bool>false</bool>
+   </property>
    <property name="flat">
     <bool>true</bool>
    </property>
@@ -292,8 +303,8 @@ QSlider::add-page
   <widget class="QPushButton" name="repeat">
    <property name="geometry">
     <rect>
-     <x>360</x>
-     <y>280</y>
+     <x>500</x>
+     <y>450</y>
      <width>41</width>
      <height>41</height>
     </rect>
@@ -330,8 +341,8 @@ QSlider::add-page
   <widget class="QPushButton" name="left">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>360</y>
+     <x>380</x>
+     <y>530</y>
      <width>41</width>
      <height>51</height>
     </rect>
@@ -356,8 +367,8 @@ QSlider::add-page
    </property>
    <property name="iconSize">
     <size>
-     <width>70</width>
-     <height>75</height>
+     <width>90</width>
+     <height>95</height>
     </size>
    </property>
    <property name="autoDefault">
@@ -370,8 +381,8 @@ QSlider::add-page
   <widget class="QPushButton" name="right">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>360</y>
+     <x>550</x>
+     <y>530</y>
      <width>41</width>
      <height>51</height>
     </rect>
@@ -396,8 +407,8 @@ QSlider::add-page
    </property>
    <property name="iconSize">
     <size>
-     <width>70</width>
-     <height>75</height>
+     <width>90</width>
+     <height>95</height>
     </size>
    </property>
    <property name="autoDefault">
@@ -410,8 +421,8 @@ QSlider::add-page
   <widget class="Line" name="line_2">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>320</y>
+     <x>350</x>
+     <y>490</y>
      <width>261</width>
      <height>31</height>
     </rect>
@@ -432,8 +443,8 @@ QSlider::add-page
   <widget class="Line" name="line_5">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>270</y>
+     <x>470</x>
+     <y>430</y>
      <width>20</width>
      <height>61</height>
     </rect>
@@ -452,13 +463,13 @@ QSlider::add-page
    </property>
   </widget>
   <zorder>line_5</zorder>
-  <zorder>border</zorder>
   <zorder>shuffle</zorder>
   <zorder>repeat</zorder>
   <zorder>left</zorder>
   <zorder>right</zorder>
   <zorder>line_2</zorder>
   <zorder>middle</zorder>
+  <zorder>border</zorder>
  </widget>
  <resources/>
  <connections>
