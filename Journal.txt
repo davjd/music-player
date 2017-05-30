@@ -198,3 +198,9 @@
     -- on how I want the music player to switch songs.
 * I have also begun looking at how I will extract the cover art from songs.
 -- But i'll implement when I'm 100% sure that switching betweens songs is perfect and smooth.
+
+05-29-17:
+* I think I'm done with the playback functionality.
+* I have begun focusing on the front-end a little.
+* I've began creating and designing the second screen that I'll need.
+* I am still figuring out how I can transition from one screen to another in Qt.
