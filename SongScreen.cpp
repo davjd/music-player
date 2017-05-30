@@ -8,6 +8,9 @@ SongScreen::SongScreen(QWidget *parent) :
     ui(new Ui::SongScreen)
 {
     ui->setupUi(this);
+    this->setStyleSheet("background-color: black;");
+//    setPaletteBackgroundColor(Qt::black);
+    setAutoFillBackground(true);
 
     connect(player, &MusicPlayer::idxChanged, [this](){
         qDebug() << "index changed: " << player->index();

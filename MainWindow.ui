@@ -6,43 +6,48 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>480</height>
+    <width>950</width>
+    <height>675</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="list">
+   <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>220</y>
-      <width>89</width>
-      <height>25</height>
+      <x>0</x>
+      <y>0</y>
+      <width>950</width>
+      <height>675</height>
      </rect>
     </property>
-    <property name="text">
-     <string>List</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="player">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>270</y>
-      <width>89</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Player</string>
-    </property>
+    <widget class="QWidget" name="page">
+     <widget class="SongScreen" name="sScreen" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>950</width>
+        <height>675</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_2"/>
    </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>SongScreen</class>
+   <extends>QWidget</extends>
+   <header>SongScreen.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

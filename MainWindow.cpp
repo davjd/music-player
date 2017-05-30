@@ -10,20 +10,25 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     idx = -1;
-    SongScreen* screen  = new SongScreen();
-    IntroScreen* intro = new IntroScreen();
-    stackedWidget = new QStackedWidget();
-    stackedWidget->addWidget(intro);
-    stackedWidget->addWidget(screen);
 
-    connect(ui->list, &QPushButton::clicked, stackedWidget, [this](){
-        qDebug() << "page 0.";
-        stackedWidget->setCurrentIndex(0);
-    });
-    connect(ui->player, &QPushButton::clicked, stackedWidget, [this](){
-        stackedWidget->setCurrentIndex(1);
-    });
-    stackedWidget->show();
+    this->setStyleSheet("background-color: black;");
+//    setPaletteBackgroundColor(Qt::black);
+    qDebug() << ui->sScreen->palette().color(QPalette::Background);
+//    setAutoFillBackground(true);
+//    SongScreen* screen  = new SongScreen();
+//    IntroScreen* intro = new IntroScreen();
+//    stackedWidget = new QStackedWidget();
+//    stackedWidget->addWidget(intro);
+//    stackedWidget->addWidget(screen);
+
+//    connect(ui->list, &QPushButton::clicked, stackedWidget, [this](){
+//        qDebug() << "page 0.";
+//        stackedWidget->setCurrentIndex(0);
+//    });
+//    connect(ui->player, &QPushButton::clicked, stackedWidget, [this](){
+//        stackedWidget->setCurrentIndex(1);
+//    });
+//    stackedWidget->show();
 
 
 }
