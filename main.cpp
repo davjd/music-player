@@ -10,6 +10,9 @@
 #include "Player.h"
 #include "IntroScreen.h"
 #include <QVector>
+#include <QStackedWidget>
+#include <QVBoxLayout>
+#include <QComboBox>
 
 
 MusicPlayer* player;
@@ -70,13 +73,13 @@ int main(int argc, char *argv[])
 
     player->insert(list->value(base.absolutePath()));
 
+    MainWindow *w = new MainWindow();
+    w->show();
 
-//    MainWindow w;
-//    SongScreen screen;
-    IntroScreen intro;
+
 
 //    w.show();
-    intro.show();
+//    intro.show();
 //    screen.show();
 
     return a.exec();

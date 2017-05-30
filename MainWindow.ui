@@ -14,16 +14,31 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="horizontalLayoutWidget">
+   <widget class="QPushButton" name="list">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>70</y>
-      <width>381</width>
-      <height>261</height>
+      <x>80</x>
+      <y>220</y>
+      <width>89</width>
+      <height>25</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout"/>
+    <property name="text">
+     <string>List</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="player">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>270</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Player</string>
+    </property>
    </widget>
   </widget>
  </widget>
