@@ -210,3 +210,14 @@
 -- I've found out how to connect various screens together.
 -- I dont know if it's the best way though.
 * I've also started designing the first screen where the songs are loaded.
+
+05-31-17:
+* I have the Music Player Screen working, but I'm
+-- having trouble styling it.
+-- for some reason I can only style the main window.
+* I have also finished testing the playback functionalities.
+-- they seem to be working for now.
+* I'm still debating whether I want to add more features, like:
+-- scraping lyrics
+-- audio visualizer
+-- editing song's metadata.
