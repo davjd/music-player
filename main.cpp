@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
     player->setVolume(100);
 
     QHash<QString, QVector<Song*>* >* list = new QHash<QString, QVector<Song*>*>();
-    QDir base(QString(getenv("HOME")) + "/Music/childish");
+    QDir base(QString(getenv("HOME")) + "/Music/morelife");
     iterate(list, QDir(base));
     qDebug() << "Path: " <<base.absolutePath();
 

@@ -18,12 +18,6 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QStackedWidget *stackedWidget;
-    int idx;
-
-    void setIdx(int i);
-signals:
-    void idxChanged();
 };
 
 #endif // MAINWINDOW_H

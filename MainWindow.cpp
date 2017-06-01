@@ -3,39 +3,25 @@
 #include "SongScreen.h"
 #include "IntroScreen.h"
 #include <QDebug>
+#include <QPalette>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    idx = -1;
 
-    this->setStyleSheet("background-color: black;");
-//    setPaletteBackgroundColor(Qt::black);
-    qDebug() << ui->sScreen->palette().color(QPalette::Background);
-//    setAutoFillBackground(true);
-//    SongScreen* screen  = new SongScreen();
-//    IntroScreen* intro = new IntroScreen();
-//    stackedWidget = new QStackedWidget();
-//    stackedWidget->addWidget(intro);
-//    stackedWidget->addWidget(screen);
+//    this->setStyleSheet("background-color: white;");
+    setAutoFillBackground(true);
+    QPalette p = ui->sScreen->palette();
+    p.setColor(QPalette::Window, QColor(200,10,10));
+    ui->sScreen->setPalette(p);
+//    p.setColor(QPalette::Background, QColor(200,0,0));
 
-//    connect(ui->list, &QPushButton::clicked, stackedWidget, [this](){
-//        qDebug() << "page 0.";
-//        stackedWidget->setCurrentIndex(0);
-//    });
-//    connect(ui->player, &QPushButton::clicked, stackedWidget, [this](){
-//        stackedWidget->setCurrentIndex(1);
-//    });
-//    stackedWidget->show();
+//    p.setPaletteBackgroundColor(Qt::black);
+//    qDebug() << ui->sScreen->palette().color(QPalette::Background);
+    qDebug() << "color: " << p.color(QPalette::Window);
 
-
-}
-
-void MainWindow::setIdx(int i){
-    idx = i;
-    emit idxChanged();
 }
 
 MainWindow::~MainWindow()

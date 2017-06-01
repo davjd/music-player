@@ -21,7 +21,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">/*background-color: rgb(224,123,97);*/
-background-color:rgb(157, 77, 197);</string>
+/*background-color:rgb(157, 77, 197);*/</string>
   </property>
   <widget class="QFrame" name="border">
    <property name="geometry">
