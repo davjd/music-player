@@ -221,3 +221,10 @@
 -- scraping lyrics
 -- audio visualizer
 -- editing song's metadata.
+
+06-02-17:
+* I'm still trying to figure out how to get the background color from a stylesheet.
+-- I think I'll have to parse the stylesheet
+-- but that'll be too complicated, so I'm trying to figure out different ways of
+-- changing the background color of a widget.
+
