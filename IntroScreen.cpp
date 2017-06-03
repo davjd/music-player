@@ -4,6 +4,7 @@
 #include <QLabel>
 #include <QDebug>
 #include <QVectorIterator>
+#include <QGridLayout>
 
 IntroScreen::IntroScreen(QWidget *parent) :
     QWidget(parent),
@@ -23,11 +24,28 @@ void IntroScreen::addItem(){
     QWidget *viewport = new QWidget;
     ui->scrollArea->setWidget(viewport);
     ui->scrollArea->setWidgetResizable(true);
-    QVBoxLayout *l = new QVBoxLayout(viewport);
+
+    QGridLayout *l = new QGridLayout(viewport);
+//    l->
 
     QVectorIterator<Song*> i((*player->songList()));
+    int ctr = 0;
     while (i.hasNext()){
         QPushButton *pb = new QPushButton((*i.next()).title());
-        l->addWidget(pb);
+
+        connect(pb, &QPushButton::clicked, [this](bool checked){
+            qDebug() << "Title: " << pb->text();
+        });
+
+
+        int col = ctr % 2;
+        int row;
+
+        if(col) row = ctr - 1;
+        else row = ctr;
+
+        l->addWidget(pb, row, col);
+        ++ctr;
     }
+//    ui->scrollArea->widget()->
 }

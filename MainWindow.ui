@@ -23,7 +23,19 @@
       <height>675</height>
      </rect>
     </property>
-    <widget class="QWidget" name="page">
+    <widget class="QWidget" name="page1">
+     <widget class="IntroScreen" name="iScreen" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>950</width>
+        <height>675</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page2">
      <widget class="SongScreen" name="sScreen" native="true">
       <property name="geometry">
        <rect>
@@ -35,7 +47,6 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_2"/>
    </widget>
   </widget>
  </widget>
@@ -45,6 +56,12 @@
    <class>SongScreen</class>
    <extends>QWidget</extends>
    <header>SongScreen.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>IntroScreen</class>
+   <extends>QWidget</extends>
+   <header>IntroScreen.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

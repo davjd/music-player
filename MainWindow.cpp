@@ -11,16 +11,15 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-//    this->setStyleSheet("background-color: white;");
     setAutoFillBackground(true);
-    QPalette p = ui->sScreen->palette();
+    QPalette p = palette();
     p.setColor(QPalette::Window, QColor(200,10,10));
-    ui->sScreen->setPalette(p);
-//    p.setColor(QPalette::Background, QColor(200,0,0));
-
-//    p.setPaletteBackgroundColor(Qt::black);
-//    qDebug() << ui->sScreen->palette().color(QPalette::Background);
+    setPalette(p);
     qDebug() << "color: " << p.color(QPalette::Window);
+
+//    connect(ui->iScreen, &QMediaPlayer::mediaStatusChanged, [this](QMediaPlayer::MediaStatus status){
+
+//    });
 
 }
 
