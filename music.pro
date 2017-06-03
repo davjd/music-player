@@ -31,7 +31,8 @@ SOURCES += main.cpp\
     SongScreen.cpp \
     MusicPlayer.cpp \
     Playlist.cpp \
-    IntroScreen.cpp
+    IntroScreen.cpp \
+    RotatedButton.cpp
 
 HEADERS  += MainWindow.h \
     Song.h \
@@ -39,7 +40,8 @@ HEADERS  += MainWindow.h \
     MusicPlayer.h \
     Player.h \
     Playlist.h \
-    IntroScreen.h
+    IntroScreen.h \
+    RotatedButton.h
 
 FORMS    += MainWindow.ui \
     SongScreen.ui \

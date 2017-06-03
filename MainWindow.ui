@@ -23,6 +23,9 @@
       <height>675</height>
      </rect>
     </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
     <widget class="QWidget" name="page1">
      <widget class="IntroScreen" name="iScreen" native="true">
       <property name="geometry">

@@ -24,7 +24,7 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <widget class="QPushButton" name="b1">
+     <widget class="RotatedButton" name="b1">
       <property name="text">
        <string>Add</string>
       </property>
@@ -84,6 +84,13 @@
    </widget>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>RotatedButton</class>
+   <extends>QPushButton</extends>
+   <header>RotatedButton.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

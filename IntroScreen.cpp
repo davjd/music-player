@@ -33,8 +33,9 @@ void IntroScreen::addItem(){
     while (i.hasNext()){
         QPushButton *pb = new QPushButton((*i.next()).title());
 
-        connect(pb, &QPushButton::clicked, [this](bool checked){
+        connect(pb, &QPushButton::clicked, [pb](bool checked){
             qDebug() << "Title: " << pb->text();
+
         });
 
 
@@ -47,5 +48,4 @@ void IntroScreen::addItem(){
         l->addWidget(pb, row, col);
         ++ctr;
     }
-//    ui->scrollArea->widget()->
 }
