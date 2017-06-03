@@ -9,9 +9,9 @@ class RotatedButton : public QPushButton
 {
 public:
     RotatedButton();
-    RotatedButton(QWidget* parent);
-    RotatedButton(const QString& text, QWidget* parent);
-    RotatedButton(const QIcon& icon, const QString& text, QWidget* parent);
+    RotatedButton(QWidget* parent = 0);
+    RotatedButton(const QString& text, QWidget* parent = 0);
+    RotatedButton(const QIcon& icon, const QString& text, QWidget* parent = 0);
 
 protected:
     virtual void paintEvent(QPaintEvent* event);

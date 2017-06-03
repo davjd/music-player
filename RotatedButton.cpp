@@ -1,6 +1,7 @@
 #include "RotatedButton.h"
 #include <QStylePainter>
 #include <QStyleOptionButton>
+#include <QPoint>
 
 RotatedButton::RotatedButton()
     : QPushButton()
@@ -26,7 +27,9 @@ RotatedButton::RotatedButton(const QIcon& icon, const QString& text, QWidget* pa
 void RotatedButton::paintEvent(QPaintEvent *)
 {
     QStylePainter painter(this);
-    painter.rotate(-45);
+//    painter.rotate(0);
+    painter.rotate(90);
+    painter.translate(0, width());
 
     QStyleOptionButton o;
     o.initFrom(this);

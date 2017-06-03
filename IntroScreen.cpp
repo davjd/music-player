@@ -6,6 +6,8 @@
 #include <QVectorIterator>
 #include <QGridLayout>
 
+#include "RotatedButton.h"
+
 IntroScreen::IntroScreen(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::IntroScreen)
@@ -26,7 +28,6 @@ void IntroScreen::addItem(){
     ui->scrollArea->setWidgetResizable(true);
 
     QGridLayout *l = new QGridLayout(viewport);
-//    l->
 
     QVectorIterator<Song*> i((*player->songList()));
     int ctr = 0;
@@ -48,4 +49,5 @@ void IntroScreen::addItem(){
         l->addWidget(pb, row, col);
         ++ctr;
     }
+    l->addWidget(new RotatedButton("Rotated.", this));
 }
