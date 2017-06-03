@@ -49,5 +49,8 @@ void IntroScreen::addItem(){
         l->addWidget(pb, row, col);
         ++ctr;
     }
-    l->addWidget(new RotatedButton("Rotated.", this));
+//    RotatedButton* rb = new RotatedButton("Rotated.", this);
+//    rb->setOrientation(Qt::Vertical);
+//    rb->setMirrored(true);
+    l->addWidget(new RotatedButton("Rotated.", Qt::Vertical, true, this));
 }
