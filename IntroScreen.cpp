@@ -18,9 +18,12 @@ IntroScreen::IntroScreen(QWidget *parent) :
 
 
     setAutoFillBackground(true);
+    QPalette p = palette();
+    p.setColor(QPalette::Window, QColor(10,0,0,150));
+    setPalette(p);
 
     ui->b1->setTextColor(QColor(255,238,173,255));
-    ui->b1->setBackgroundColor(QColor(100,10,10,0));
+    ui->b1->setBackgroundColor(QColor(127,55,52,255));
     ui->b1->setOrientation(Qt::Vertical);
     ui->b1->setMirrored(true);
 
@@ -45,7 +48,13 @@ IntroScreen::IntroScreen(QWidget *parent) :
     ui->b5->setMirrored(true);
 
 
-//    ui->b1->setFlat(true);
+    ui->b1->setFlat(true);
+    ui->b2->setFlat(true);
+    ui->b3->setFlat(true);
+    ui->b4->setFlat(true);
+    ui->b5->setFlat(true);
+
+
 
 }
 
