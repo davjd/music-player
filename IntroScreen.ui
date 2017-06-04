@@ -18,7 +18,7 @@
     <rect>
      <x>20</x>
      <y>30</y>
-     <width>121</width>
+     <width>31</width>
      <height>611</height>
     </rect>
    </property>
@@ -26,35 +26,35 @@
     <item>
      <widget class="RotatedButton" name="b1">
       <property name="text">
-       <string>Add</string>
+       <string>Playlists</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_5">
+     <widget class="RotatedButton" name="b2">
       <property name="text">
-       <string>PushButton</string>
+       <string>Songs</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_4">
+     <widget class="RotatedButton" name="b3">
       <property name="text">
-       <string>PushButton</string>
+       <string>Artists</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="RotatedButton" name="b4">
       <property name="text">
-       <string>PushButton</string>
+       <string>Genres</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="RotatedButton" name="b5">
       <property name="text">
-       <string>PushButton</string>
+       <string>Albums</string>
       </property>
      </widget>
     </item>
@@ -63,9 +63,9 @@
   <widget class="QScrollArea" name="scrollArea">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>80</x>
      <y>80</y>
-     <width>721</width>
+     <width>831</width>
      <height>501</height>
     </rect>
    </property>
@@ -77,7 +77,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>719</width>
+      <width>829</width>
       <height>499</height>
      </rect>
     </property>

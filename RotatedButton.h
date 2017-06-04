@@ -3,6 +3,7 @@
 
 #include <QPushButton>
 #include <QIcon>
+#include <QColor>
 
 // credits to: http://svn.codingteam.net/emoglerpp/trunk/src/orientationbutton.cpp
 
@@ -23,6 +24,8 @@ public:
     QSize sizeHint() const;
     QSize minimumSizeHint() const;
     QStyleOptionButton getStyleOption() const;
+    void setTextColor(QColor color);
+    void setBackgroundColor(QColor color);
 
 
 private:

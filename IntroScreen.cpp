@@ -5,6 +5,8 @@
 #include <QDebug>
 #include <QVectorIterator>
 #include <QGridLayout>
+#include <QPalette>
+#include <QColor>
 
 #include "RotatedButton.h"
 
@@ -13,6 +15,37 @@ IntroScreen::IntroScreen(QWidget *parent) :
     ui(new Ui::IntroScreen)
 {
     ui->setupUi(this);
+
+
+    setAutoFillBackground(true);
+
+    ui->b1->setTextColor(QColor(255,238,173,255));
+    ui->b1->setBackgroundColor(QColor(100,10,10,0));
+    ui->b1->setOrientation(Qt::Vertical);
+    ui->b1->setMirrored(true);
+
+    ui->b2->setTextColor(QColor(255,238,173,255));
+    ui->b2->setBackgroundColor(QColor(100,10,10,0));
+    ui->b2->setOrientation(Qt::Vertical);
+    ui->b2->setMirrored(true);
+
+    ui->b3->setTextColor(QColor(255,238,173,255));
+    ui->b3->setBackgroundColor(QColor(100,10,10,0));
+    ui->b3->setOrientation(Qt::Vertical);
+    ui->b3->setMirrored(true);
+
+    ui->b4->setTextColor(QColor(255,238,173,255));
+    ui->b4->setBackgroundColor(QColor(100,10,10,0));
+    ui->b4->setOrientation(Qt::Vertical);
+    ui->b4->setMirrored(true);
+
+    ui->b5->setTextColor(QColor(255,238,173,255));
+    ui->b5->setBackgroundColor(QColor(100,10,10,0));
+    ui->b5->setOrientation(Qt::Vertical);
+    ui->b5->setMirrored(true);
+
+
+//    ui->b1->setFlat(true);
 
 }
 
@@ -39,7 +72,6 @@ void IntroScreen::addItem(){
 
         });
 
-
         int col = ctr % 2;
         int row;
 
@@ -49,8 +81,5 @@ void IntroScreen::addItem(){
         l->addWidget(pb, row, col);
         ++ctr;
     }
-//    RotatedButton* rb = new RotatedButton("Rotated.", this);
-//    rb->setOrientation(Qt::Vertical);
-//    rb->setMirrored(true);
     l->addWidget(new RotatedButton("Rotated.", Qt::Vertical, true, this));
 }

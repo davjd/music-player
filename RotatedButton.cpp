@@ -51,8 +51,10 @@ Qt::Orientation RotatedButton::orientation() const{
 QSize RotatedButton::sizeHint() const{
 
     QSize size = QPushButton::sizeHint();
-    if (orientation_ == Qt::Vertical)
+    if (orientation_ == Qt::Vertical){
         size.transpose();
+        size.setWidth(0);
+    }
     return size;
 }
 QSize RotatedButton::minimumSizeHint() const{
@@ -90,6 +92,20 @@ QStyleOptionButton RotatedButton::getStyleOption() const{
     opt.icon = icon();
     opt.iconSize = iconSize();
     return opt;
+}
+
+void RotatedButton::setTextColor(QColor color)
+{
+    QPalette p = palette();
+    p.setColor(QPalette::ButtonText, color);
+    setPalette(p);
+}
+
+void RotatedButton::setBackgroundColor(QColor color)
+{
+    QPalette p = palette();
+    p.setColor(QPalette::Button, color);
+    setPalette(p);
 }
 
 void RotatedButton::init(){

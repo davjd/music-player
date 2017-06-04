@@ -11,11 +11,11 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    setAutoFillBackground(true);
-    QPalette p = palette();
-    p.setColor(QPalette::Window, QColor(200,10,10));
-    setPalette(p);
-    qDebug() << "color: " << p.color(QPalette::Window);
+//    setAutoFillBackground(true);
+//    QPalette p = palette();
+//    p.setColor(QPalette::Window, QColor(200,10,10));
+//    setPalette(p);
+//    qDebug() << "color: " << p.color(QPalette::Window);
 
 //    connect(ui->iScreen, &QMediaPlayer::mediaStatusChanged, [this](QMediaPlayer::MediaStatus status){
 
