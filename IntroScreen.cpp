@@ -54,6 +54,11 @@ IntroScreen::IntroScreen(QWidget *parent) :
     ui->b4->setFlat(true);
     ui->b5->setFlat(true);
 
+    p = ui->scrollArea->palette();
+    p.setColor(QPalette::Window, QColor(136,216,176,20));
+    ui->scrollArea->setPalette(p);
+
+
 
 
 }
