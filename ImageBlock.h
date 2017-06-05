@@ -9,7 +9,6 @@
 class ImageBlock : public QGroupBox
 {
 public:
-    ImageBlock();
     ImageBlock(QWidget * parent = 0);
     ImageBlock(const QString& title, QWidget* parent = 0);
 
