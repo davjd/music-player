@@ -27,6 +27,8 @@ void ImageBlock::init(){
 
     QGridLayout* grid = new QGridLayout();
     grid->addWidget(l, 0, 0);
-    grid->addWidget(title_, 1, 0);
+
+//    grid->setAlignment(Qt::AlignHCenter);
+    grid->addWidget(title_, 1, 1);
     setLayout(grid);
 }
