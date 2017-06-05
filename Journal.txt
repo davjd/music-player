@@ -228,3 +228,9 @@
 -- but that'll be too complicated, so I'm trying to figure out different ways of
 -- changing the background color of a widget.
 
+06-05-17:
+* I've created new widgets that I think i'll be needing in the future, including:
+-- a group label
+-- a rotatable button
+
+
