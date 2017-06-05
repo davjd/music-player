@@ -16,9 +16,9 @@
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>30</y>
-     <width>31</width>
+     <width>82</width>
      <height>611</height>
     </rect>
    </property>
@@ -63,10 +63,10 @@
   <widget class="QScrollArea" name="scrollArea">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>100</x>
      <y>80</y>
-     <width>831</width>
-     <height>501</height>
+     <width>851</width>
+     <height>500</height>
     </rect>
    </property>
    <property name="widgetResizable">
@@ -77,8 +77,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>829</width>
-      <height>499</height>
+      <width>849</width>
+      <height>498</height>
      </rect>
     </property>
    </widget>

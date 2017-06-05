@@ -32,7 +32,9 @@ SOURCES += main.cpp\
     MusicPlayer.cpp \
     Playlist.cpp \
     IntroScreen.cpp \
-    RotatedButton.cpp
+    RotatedButton.cpp \
+    PlaylistScreen.cpp \
+    ImageBlock.cpp
 
 HEADERS  += MainWindow.h \
     Song.h \
@@ -41,11 +43,14 @@ HEADERS  += MainWindow.h \
     Player.h \
     Playlist.h \
     IntroScreen.h \
-    RotatedButton.h
+    RotatedButton.h \
+    PlaylistScreen.h \
+    ImageBlock.h
 
 FORMS    += MainWindow.ui \
     SongScreen.ui \
-    IntroScreen.ui
+    IntroScreen.ui \
+    PlaylistScreen.ui
 
 CONFIG += mobility
 MOBILITY = 

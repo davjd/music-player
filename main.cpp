@@ -14,6 +14,9 @@
 #include <QVBoxLayout>
 #include <QComboBox>
 
+#include "ImageBlock.h"
+
+
 
 MusicPlayer* player;
 
@@ -63,24 +66,27 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
 
-    player = new MusicPlayer();
-    player->setVolume(100);
+//    player = new MusicPlayer();
+//    player->setVolume(100);
 
-    QHash<QString, QVector<Song*>* >* list = new QHash<QString, QVector<Song*>*>();
-    QDir base(QString(getenv("HOME")) + "/Music/Luv");
-    iterate(list, QDir(base));
-    qDebug() << "Path: " <<base.absolutePath();
+//    QHash<QString, QVector<Song*>* >* list = new QHash<QString, QVector<Song*>*>();
+//    QDir base(QString(getenv("HOME")) + "/Music/Luv");
+//    iterate(list, QDir(base));
+//    qDebug() << "Path: " <<base.absolutePath();
 
-    player->insert(list->value(base.absolutePath()));
+//    player->insert(list->value(base.absolutePath()));
 
-    MainWindow *w = new MainWindow();
-    w->show();
+//    MainWindow *w = new MainWindow();
+//    w->show();
 
 
 
 //    w.show();
 //    intro.show();
 //    screen.show();
+
+    ImageBlock* i = new ImageBlock();
+    i->show();
 
     return a.exec();
 }
