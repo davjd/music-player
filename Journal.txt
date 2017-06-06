@@ -233,4 +233,9 @@
 -- a group label
 -- a rotatable button
 
+06-06-17:
+* I'm still having trouble with the widget I'm trying to make.
+-- Mainly because I don't know how to style the widget correctly
+-- I'm thinking of using Qt designer to create the widget, but I don't know if it's good practice.
+
 
