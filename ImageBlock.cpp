@@ -1,5 +1,6 @@
 #include "ImageBlock.h"
-#include <QGridLayout>
+#include <QVBoxLayout>
+#include <QPalette>
 
 ImageBlock::ImageBlock(QWidget* parent)
     :QGroupBox(parent)
@@ -22,13 +23,14 @@ void ImageBlock::init(){
     title_->setText("Title");
     image_->load(":/buttons/musical-note.svg");
     l->setPixmap((*image_));
+    QPalette p = title_->palette();
+    p.setColor(QPalette::WindowText, Qt::red);
 
 
 
-    QGridLayout* grid = new QGridLayout();
-    grid->addWidget(l, 0, 0);
+    QVBoxLayout* grid = new QVBoxLayout();
+    grid->addWidget(l);
 
-//    grid->setAlignment(Qt::AlignHCenter);
-    grid->addWidget(title_, 1, 1);
+    grid->addWidget(title_, Qt::AlignCenter);
     setLayout(grid);
 }
