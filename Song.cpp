@@ -2,6 +2,12 @@
 #include <QDebug>
 #include <QMediaMetaData>
 
+Song::Song()
+    :QMediaContent()
+{
+
+}
+
 Song::Song(QDir ref) : QMediaContent(QUrl("file://" + ref.absolutePath()))
 {
     // ugly but for now i'll leave it like this...

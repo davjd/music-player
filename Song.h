@@ -8,12 +8,13 @@
 #include <fileref.h>
 #include <QString>
 #include <QDir>
-
+#include <QJsonObject>
 
 class Song : public QObject, public QMediaContent
 {
     Q_OBJECT
 public:
+    Song();
     Song(QDir ref);
     ~Song();
     QString artist();
@@ -25,6 +26,10 @@ public:
     QString comment();
     QUrl path();
     TagLib::FileRef* source();
+//    QMediaContent
+
+    void read(const QJsonObject &json);
+    void write(QJsonObject &json) const;
 
 
 

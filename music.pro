@@ -82,5 +82,6 @@ DISTFILES += \
     ../Downloads/151845-music-player-icons/svg/speaker.svg \
     ../Downloads/151845-music-player-icons/svg/bar-graph.svg \
     ../Downloads/151845-music-player-icons/svg/share.svg \
-    ../Downloads/151845-music-player-icons/svg/checked.svg
+    ../Downloads/151845-music-player-icons/svg/checked.svg \
+    Data/Storage.txt
 
