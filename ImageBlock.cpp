@@ -23,8 +23,7 @@ void ImageBlock::init(){
     title_->setText("Title");
     image_->load(":/buttons/musical-note.svg");
     l->setPixmap((*image_));
-    QPalette p = title_->palette();
-    p.setColor(QPalette::WindowText, Qt::red);
+    title_->setAlignment(Qt::AlignCenter);
 
 
 
