@@ -238,4 +238,12 @@
 -- Mainly because I don't know how to style the widget correctly
 -- I'm thinking of using Qt designer to create the widget, but I don't know if it's good practice.
 
+06-07-17:
+* So I was able to fix the widget I was creating before.
+* Now since I need to start designing the playlists, I was thinking of starting to plan how I will
+-- .. store information and save data.
+-- for example, user's playlist and stuff.
+* I was exploring JSON as a choice of serialization but I'm still unsure if I should use it.
+* I'll begin learning how I can use JSON to store information...
+
 
