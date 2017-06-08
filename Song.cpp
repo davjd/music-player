@@ -1,22 +1,22 @@
 #include "Song.h"
 #include <QDebug>
-#include <QMediaMetaData>
 
 Song::Song()
-    :QMediaContent()
 {
 
 }
 
-Song::Song(QDir ref) : QMediaContent(QUrl("file://" + ref.absolutePath()))
+Song::Song(QDir ref)
 {
     // ugly but for now i'll leave it like this...
     path_ = QUrl("file://" + ref.absolutePath());
     source_ = new TagLib::FileRef(ref.absolutePath().toStdString().data());
+    content_ = new QMediaContent(QUrl("file://" + ref.absolutePath()));
 }
 
 Song::~Song(){
     delete source_;
+    delete content_;
 }
 
 QString Song::artist()
@@ -58,4 +58,20 @@ QUrl Song::path(){
 
 TagLib::FileRef* Song::source(){
     return source_;
+}
+
+void Song::setS(TagLib::FileRef* s){
+    source_ = s;
+}
+
+void Song::setP(QUrl p){
+    path_ = p;
+}
+
+void Song::setContent(QMediaContent* content){
+    content_ = content;
+}
+
+QMediaContent* Song::content(){
+    return content_;
 }

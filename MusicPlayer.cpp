@@ -25,7 +25,7 @@ void MusicPlayer::initializeContent(){
         This will also initialize all signals and slots required.
 
     */
-    setMedia((*list_->at(increment())));
+    setMedia((*list_->at(increment())->content()));
 
     connect(this, &QMediaPlayer::mediaStatusChanged, [this](QMediaPlayer::MediaStatus status){
         if(status == QMediaPlayer::EndOfMedia){
@@ -42,7 +42,7 @@ QVector<Song*>* MusicPlayer::songList(){
 void MusicPlayer::setList(){
     QMediaPlaylist* p = new QMediaPlaylist();
     for(int i = 0, end = list_->size(); i < end; ++i){
-        p->addMedia(*(list_->at(i)));
+        p->addMedia(*(list_->at(i))->content());
     }
     setPlaylist(p);
 }
@@ -90,7 +90,7 @@ void MusicPlayer::next(){
     int idx = nextIndex();
     qDebug() << "Next idx: " << idx;
     if(idx != -1){
-        setMedia((*list_->at(idx)));
+        setMedia((*list_->at(idx)->content()));
     }
 }
 
@@ -98,7 +98,7 @@ void MusicPlayer::previous(){
     int idx = previousIndex();
     qDebug() << "Previous idx: " << idx;
     if(idx != -1){
-        setMedia((*list_->at(idx)));
+        setMedia((*list_->at(idx)->content()));
     }
 }
 
@@ -214,7 +214,7 @@ void MusicPlayer::loadedNext(){
     // this is like next(), but occurs when the song is finished
     // unlike next(), which occurs when next-button is clicked.
     if(repeatState_ == Repeat::single){
-        setMedia((*list_->at(index_)));
+        setMedia((*list_->at(index_)->content()));
     }
     else{
         next();

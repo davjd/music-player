@@ -79,8 +79,20 @@ int main(int argc, char *argv[])
 //    MainWindow *w = new MainWindow();
 //    w->show();
 
-    SongScreen* s = new SongScreen();
-    s->show();
+
+//    Song* s = new Song();
+
+////    path_ = QUrl("file://" + ref.absolutePath());
+////    source_ = new TagLib::FileRef(ref.absolutePath().toStdString().data());
+//    QDir ref(QString(getenv("HOME")) + "/Music/trav/butterfly.mp3");
+//    s->setP(QUrl("file://" + ref.absolutePath()));
+//    s->setS(new TagLib::FileRef(ref.absolutePath().toStdString().data()));
+//    s->setContent(new QMediaContent(QUrl("file://" + ref.absolutePath())));
+
+//    player->insert(s);
+
+    SongScreen* screen = new SongScreen();
+    screen->show();
 
 
 
@@ -91,7 +103,6 @@ int main(int argc, char *argv[])
 //    ImageBlock* i = new ImageBlock();
 //    i->show();
 
-//    Song* s = new Song();
 
 
 

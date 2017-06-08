@@ -10,7 +10,7 @@
 #include <QDir>
 #include <QJsonObject>
 
-class Song : public QObject, public QMediaContent
+class Song : public QObject
 {
     Q_OBJECT
 public:
@@ -31,11 +31,18 @@ public:
     void read(const QJsonObject &json);
     void write(QJsonObject &json) const;
 
+    void setS(TagLib::FileRef* s);
+    void setP(QUrl p);
+
+    void setContent(QMediaContent* content);
+    QMediaContent* content();
+
 
 
 private:
     TagLib::FileRef* source_;
     QUrl path_;
+    QMediaContent* content_;
 };
 
 #endif // SONG_H
