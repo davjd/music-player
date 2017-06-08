@@ -256,7 +256,13 @@ Song:
     - title
     - artist
 Playlist:
-    - song object
+    - Song object
 Storage Directory:
     - absolute path
+Artist:
+    - Song object
+Album:
+    - Song object
+Genre:
+    - Song object
 ------------------------------------------------;;
