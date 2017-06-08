@@ -246,4 +246,17 @@
 * I was exploring JSON as a choice of serialization but I'm still unsure if I should use it.
 * I'll begin learning how I can use JSON to store information...
 
+;;------------------------------------------------
 
+Serialization:
+-- using JSON:
+
+Song:
+    - absolute path
+    - title
+    - artist
+Playlist:
+    - song object
+Storage Directory:
+    - absolute path
+------------------------------------------------;;
