@@ -3,12 +3,24 @@
 #include <QVector>
 #include <QObject>
 #include "Song.h"
-class Playlist: public QObject
+#include <QVector>
+
+
+class Playlist
 {
-    Q_OBJECT
 public:
     Playlist();
+    void push_back(Song* song);
+    QVector<Song* >* list();
+    QString title();
+    void setTitle(QString title);
+    void read(const QJsonObject &json);
+    void write(QJsonObject &json);
+
+
 private:
+    QVector<Song* >* list_;
+    QString title_;
 
 public slots:
 

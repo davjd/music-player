@@ -6,17 +6,18 @@ Song::Song()
 
 }
 
-Song::Song(QDir ref)
+Song::Song(QDir* ref)
 {
     // ugly but for now i'll leave it like this...
-    path_ = QUrl("file://" + ref.absolutePath());
-    source_ = new TagLib::FileRef(ref.absolutePath().toStdString().data());
-    content_ = new QMediaContent(QUrl("file://" + ref.absolutePath()));
+    path_ = ref;
+    source_ = new TagLib::FileRef(ref->absolutePath().toStdString().data());
+    content_ = new QMediaContent(QUrl("file://" + ref->absolutePath()));
 }
 
 Song::~Song(){
     delete source_;
     delete content_;
+    delete path_;
 }
 
 QString Song::artist()
@@ -52,7 +53,7 @@ unsigned int Song::year(){
     return source_->tag()->year();
 }
 
-QUrl Song::path(){
+QDir* Song::path(){
     return path_;
 }
 
@@ -64,7 +65,7 @@ void Song::setS(TagLib::FileRef* s){
     source_ = s;
 }
 
-void Song::setP(QUrl p){
+void Song::setP(QDir* p){
     path_ = p;
 }
 
@@ -74,4 +75,16 @@ void Song::setContent(QMediaContent* content){
 
 QMediaContent* Song::content(){
     return content_;
+}
+
+void Song::read(const QJsonObject &json){
+    path_ = new QDir(json["path"].toString());
+    source_ = new TagLib::FileRef(path_->absolutePath().toStdString().data());
+    content_ = new QMediaContent(QUrl("file://" + path_->absolutePath()));
+}
+
+void Song::write(QJsonObject &json) {
+    json["path"] = path_->absolutePath();
+    json["title"] = title();
+    json["artist"] = artist();
 }

@@ -25,7 +25,9 @@ void iterate(QHash<QString, QVector<Song*>* >* list, const QDir &directory){
 
     // most common audio files:
     QHash<QString, unsigned int> valids;
-    QString valid[] = {"m4a","mp3", "aac","ogg","flac","alac","wma","wav","aiff"};
+    QString valid[]
+            = {"m4a","mp3", "aac","ogg","flac","alac","wma","wav","aiff"};
+
     for(int i = 0; i < 9; ++i){
         valids.insert(valid[i], 1);
     }
@@ -40,7 +42,7 @@ void iterate(QHash<QString, QVector<Song*>* >* list, const QDir &directory){
                         if(!list->contains(key)){
                             list->insert(key, new QVector<Song*>());
                         }
-                        list->value(key)->push_back(new Song(QDir(f.filePath())));
+                        list->value(key)->push_back(new Song(new QDir(f.filePath())));
                     }
                 }
         it.next();
@@ -55,7 +57,7 @@ void iterate(QHash<QString, QVector<Song*>* >* list, const QDir &directory){
            if(!list->contains(key)){
                list->insert(key, new QVector<Song*>());
            }
-           list->value(key)->push_back(new Song(QDir(f.filePath())));
+           list->value(key)->push_back(new Song(new QDir(f.filePath())));
        }
    }
 }
@@ -66,33 +68,25 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
 
-    player = new MusicPlayer();
-    player->setVolume(100);
+//    player = new MusicPlayer();
+//    player->setVolume(100);
 
-    QHash<QString, QVector<Song*>* >* list = new QHash<QString, QVector<Song*>*>();
-    QDir base(QString(getenv("HOME")) + "/Music/Luv");
-    iterate(list, QDir(base));
-    qDebug() << "Path: " <<base.absolutePath();
+//    QHash<QString, QVector<Song*>* >* list = new QHash<QString, QVector<Song*>*>();
+//    QDir base(QString(getenv("HOME")) + "/Music/Luv");
+//    iterate(list, QDir(base));
+//    qDebug() << "Path: " <<base.absolutePath();
 
-    player->insert(list->value(base.absolutePath()));
+//    player->insert(list->value(base.absolutePath()));
 
 //    MainWindow *w = new MainWindow();
 //    w->show();
 
 
-//    Song* s = new Song();
+//    SongScreen* screen = new SongScreen();
+//    screen->show();
 
-////    path_ = QUrl("file://" + ref.absolutePath());
-////    source_ = new TagLib::FileRef(ref.absolutePath().toStdString().data());
-//    QDir ref(QString(getenv("HOME")) + "/Music/trav/butterfly.mp3");
-//    s->setP(QUrl("file://" + ref.absolutePath()));
-//    s->setS(new TagLib::FileRef(ref.absolutePath().toStdString().data()));
-//    s->setContent(new QMediaContent(QUrl("file://" + ref.absolutePath())));
-
-//    player->insert(s);
-
-    SongScreen* screen = new SongScreen();
-    screen->show();
+    QDir* d = new QDir(QString(getenv("HOME")) + "/Music/trav/butterfly.mp3");
+    qDebug() << "p: " << d->absolutePath();
 
 
 

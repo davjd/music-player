@@ -15,7 +15,7 @@ class Song : public QObject
     Q_OBJECT
 public:
     Song();
-    Song(QDir ref);
+    Song(QDir* ref);
     ~Song();
     QString artist();
     QString title();
@@ -24,15 +24,15 @@ public:
     unsigned int track();
     unsigned int year();
     QString comment();
-    QUrl path();
+    QDir* path();
     TagLib::FileRef* source();
 //    QMediaContent
 
     void read(const QJsonObject &json);
-    void write(QJsonObject &json) const;
+    void write(QJsonObject &json);
 
     void setS(TagLib::FileRef* s);
-    void setP(QUrl p);
+    void setP(QDir* p);
 
     void setContent(QMediaContent* content);
     QMediaContent* content();
@@ -41,7 +41,7 @@ public:
 
 private:
     TagLib::FileRef* source_;
-    QUrl path_;
+    QDir* path_;
     QMediaContent* content_;
 };
 
