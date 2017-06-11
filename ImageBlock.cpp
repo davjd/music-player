@@ -15,21 +15,24 @@ ImageBlock::ImageBlock(const QString& title, QWidget* parent)
 
 }
 
+void ImageBlock::setTitle(const QString& title){
+    title_->setText(title);
+}
+
+void ImageBlock::setImage(const QString& path){
+    image_->setPixmap(QPixmap(path));
+}
+
 void ImageBlock::init(){
     title_ = new QLabel();
-    image_ = new QPixmap();
-    QLabel *l = new QLabel();
+    image_ = new QLabel();
 
-    title_->setText("Title");
-    image_->load(":/buttons/musical-note.svg");
-    l->setPixmap((*image_));
+    setImage(":/buttons/musical-note.svg");
+    setTitle("Title");
     title_->setAlignment(Qt::AlignCenter);
 
-
-
     QVBoxLayout* grid = new QVBoxLayout();
-    grid->addWidget(l);
-
-    grid->addWidget(title_, Qt::AlignCenter);
+    grid->addWidget(image_);
+    grid->addWidget(title_);
     setLayout(grid);
 }

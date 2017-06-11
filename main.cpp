@@ -110,6 +110,7 @@ int main(int argc, char *argv[])
 //    screen.show();
 
     ImageBlock* i = new ImageBlock();
+    i->setTitle("Song Title");
     i->show();
 
 

@@ -12,15 +12,17 @@ public:
     ImageBlock(QWidget * parent = 0);
     ImageBlock(const QString& title, QWidget* parent = 0);
 
-    QPixmap* image();
+    QLabel* image();
     QLabel* title();
 
     void init();
+    void setTitle(const QString& title);
+    void setImage(const QString& path);
 
 
 
 private:
-    QPixmap* image_;
+    QLabel* image_;
     QLabel* title_;
 
 };
