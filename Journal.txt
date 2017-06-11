@@ -246,7 +246,29 @@
 * I was exploring JSON as a choice of serialization but I'm still unsure if I should use it.
 * I'll begin learning how I can use JSON to store information...
 
-;;------------------------------------------------
+06-08-17:
+* I'm still trying to figure out how I will structure the data.
+* I know I want to use JSON, but I'm still getting familiar with how Qt parses it and handles it.
+* If JSON doesn't work, I'll try XML.
+
+06-09-17:
+* I've been looking at the QJson API for Qt.
+* The way Qt handles json is pretty standard.
+* I'll start implementin the searializer today.
+
+06-10-17:
+* I started implementing the JSON serializer.
+-- the Song class has been integrated.
+-- the playlist class has been integrated.
+* Much easier than I expected!
+
+06-11-17:
+* So I kinda have the serializer, but I want to make sure the schema is robust.
+* One of the problems I'm debating about is how I will retrieve songs based on artist..genre.. etc.
+-- I could just save it in another JSON object, but it will take so much space.
+-- I could scan through the original Song JSON object, but this might slow down performance.
+
+;;----------------BASIC-STRUCTURE-----------------
 
 Serialization:
 -- using JSON:
@@ -265,4 +287,40 @@ Album:
     - Song object
 Genre:
     - Song object
+    
+----Song----
+
+{
+    "url" :
+        "song-url",
+    "title" :
+        "song-title",
+    "artist" :
+        "song-artist"
+}  
+    
+----Playlist----
+{
+    "playlist-name" :
+        [
+                {
+                    "url" :
+                        "song-url",
+                    "title" :
+                        "song-title",
+                    "artist" :
+                        "song-artist"
+                },
+                
+                {
+                    "url" :
+                        "song-url",
+                    "title" :
+                        "song-title",
+                    "artist" :
+                        "song-artist"
+                }
+        
+        ]
+}
 ------------------------------------------------;;
