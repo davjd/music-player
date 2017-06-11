@@ -1,4 +1,6 @@
 #include "Playlist.h"
+#include <QJsonArray>
+
 
 Playlist::Playlist()
 {
@@ -26,8 +28,14 @@ void Playlist::read(const QJsonObject &json){
 }
 
 void Playlist::write(QJsonObject &json){
-//    json["title"] = title_;
-//    json["list"] = ;
-//    json["title"] = title();
-//    json["artist"] = artist();
+      json["title"] = title_;
+
+      QJsonArray songs;
+      foreach(Song* song, list_){
+          QJsonObject data;
+          song->write(data);
+          songs.push_back(data);
+      }
+
+      json["songs"] = songs;
 }

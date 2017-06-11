@@ -14,11 +14,26 @@
 #include <QVBoxLayout>
 #include <QComboBox>
 
+#include <QJsonDocument>
+#include <QFile>
+
 #include "ImageBlock.h"
 
 
 
 MusicPlayer* player;
+
+QJsonDocument loadJson(QString fileName) {
+    QFile jsonFile(fileName);
+    jsonFile.open(QFile::ReadOnly);
+    return QJsonDocument().fromJson(jsonFile.readAll());
+}
+
+void saveJson(QJsonDocument document, QString fileName) {
+    QFile jsonFile(fileName);
+    jsonFile.open(QFile::WriteOnly);
+    jsonFile.write(document.toJson());
+}
 
 void iterate(QHash<QString, QVector<Song*>* >* list, const QDir &directory){
     QDirIterator it(directory.absolutePath(), QDir::Files, QDirIterator::Subdirectories);
