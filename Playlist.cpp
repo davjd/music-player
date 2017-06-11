@@ -5,6 +5,7 @@
 Playlist::Playlist()
 {
     list_ = new QVector<Song*>();
+    idx_ = -1;
 }
 
 void Playlist::push_back(Song *song){

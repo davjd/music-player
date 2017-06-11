@@ -2,6 +2,8 @@
 #define PLAYLISTSCREEN_H
 
 #include <QWidget>
+#include <QVector>
+#include "Playlist.h"
 
 namespace Ui {
 class PlaylistScreen;
@@ -17,6 +19,10 @@ public:
 
 private:
     Ui::PlaylistScreen *ui;
+    QVector<Playlist*>* list_;
+
+
+    void loadPlaylists();
 };
 
 #endif // PLAYLISTSCREEN_H

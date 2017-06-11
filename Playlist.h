@@ -21,6 +21,7 @@ public:
 private:
     QVector<Song* >* list_;
     QString title_;
+    int idx_;
 
 public slots:
 
