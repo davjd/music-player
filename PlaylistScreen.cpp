@@ -21,5 +21,9 @@ PlaylistScreen::~PlaylistScreen()
 
 void PlaylistScreen::loadPlaylists()
 {
-    Serializer loader();
+    Serializer loader;
+    QJsonObject json = loader.loadJson("Playlist.json").object();
+    for(auto playlist: json){
+        qDebug() << "playlist";
+    }
 }
