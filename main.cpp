@@ -52,8 +52,8 @@ void iterate(QHash<QString, QVector<Song*>* >* list, const QDir &directory){
         if(f.isFile()){
                     if(valids.contains(f.suffix().toLower())){
                         QString key = f.absolutePath();
-                        qDebug() << "Adding " << f.baseName() << " to key "
-                                 << f.absolutePath() << " of lists.";
+                        qDebug() << "value: " << f.baseName() << "\nkey: "
+                                 << f.absolutePath();
                         if(!list->contains(key)){
                             list->insert(key, new QVector<Song*>());
                         }
@@ -67,8 +67,8 @@ void iterate(QHash<QString, QVector<Song*>* >* list, const QDir &directory){
    if(f.isFile()){
        if(valids.contains(f.suffix().toLower())){
            QString key = f.absolutePath();
-           qDebug() << "Adding " << f.baseName() << " to key "
-                    << f.absolutePath() << " of lists.";
+           qDebug() << "value: " << f.baseName() << "\nkey: "
+                    << f.absolutePath();
            if(!list->contains(key)){
                list->insert(key, new QVector<Song*>());
            }
@@ -83,18 +83,18 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
 
-//    player = new MusicPlayer();
-//    player->setVolume(100);
+    player = new MusicPlayer();
+    player->setVolume(100);
 
-//    QHash<QString, QVector<Song*>* >* list = new QHash<QString, QVector<Song*>*>();
-//    QDir base(QString(getenv("HOME")) + "/Music/Luv");
-//    iterate(list, QDir(base));
-//    qDebug() << "Path: " <<base.absolutePath();
+    QHash<QString, QVector<Song*>* >* list = new QHash<QString, QVector<Song*>*>();
+    QDir base(QString(getenv("HOME")) + "/Music");
+    iterate(list, QDir(base));
+    qDebug() << "Path: " <<base.absolutePath();
 
-//    player->insert(list->value(base.absolutePath()));
+//    player->insert(list->value(list->begin()));
 
-//    MainWindow *w = new MainWindow();
-//    w->show();
+    MainWindow *w = new MainWindow();
+    w->show();
 
 
 //    SongScreen* screen = new SongScreen();
@@ -105,13 +105,6 @@ int main(int argc, char *argv[])
 
 
 
-//    w.show();
-//    intro.show();
-//    screen.show();
-
-    ImageBlock* i = new ImageBlock();
-    i->setTitle("Song Title");
-    i->show();
 
 
 

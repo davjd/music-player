@@ -15,7 +15,7 @@ QVector<Song* >* Playlist::list(){
      return list_;
 }
 
-void Playlist::setTitle(QString title){
+void Playlist::setTitle(const QString& title){
     title_ = title;
 }
 
@@ -23,7 +23,7 @@ QString Playlist::title(){
     return title_;
 }
 
-void Playlist::read(const QJsonObject &json){
+void Playlist::read(const QJsonObject& json){
     title_ = json["title"].toString();
     QJsonArray songs = json["songs"].toArray();
     for(QJsonValue data: songs){
@@ -33,7 +33,7 @@ void Playlist::read(const QJsonObject &json){
     }
 }
 
-void Playlist::write(QJsonObject &json){
+void Playlist::write(QJsonObject& json){
     json["title"] = title_;
     QJsonArray songs;
     for(Song* song : (*list_)){

@@ -13,7 +13,7 @@ public:
     void push_back(Song* song);
     QVector<Song* >* list();
     QString title();
-    void setTitle(QString title);
+    void setTitle(const QString& title);
     void read(const QJsonObject &json);
     void write(QJsonObject &json);
 
