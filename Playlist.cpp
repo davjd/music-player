@@ -24,11 +24,11 @@ QString Playlist::title(){
 }
 
 void Playlist::read(const QJsonObject &json){
-    title_ = json["title"];
+    title_ = json["title"].toString();
     QJsonArray songs = json["songs"].toArray();
-    foreach(QJsonObject data, songs){
+    for(QJsonValue data: songs){
         Song* song = new Song();
-        song->read(data);
+        song->read(data.toObject());
         list_->push_back(song);
     }
 }
@@ -36,7 +36,7 @@ void Playlist::read(const QJsonObject &json){
 void Playlist::write(QJsonObject &json){
     json["title"] = title_;
     QJsonArray songs;
-    foreach(Song* song, list_){
+    for(Song* song : (*list_)){
       QJsonObject data;
       song->write(data);
       songs.push_back(data);

@@ -100,8 +100,8 @@ int main(int argc, char *argv[])
 //    SongScreen* screen = new SongScreen();
 //    screen->show();
 
-    QDir* d = new QDir(QString(getenv("HOME")) + "/Music/trav/butterfly.mp3");
-    qDebug() << "p: " << d->absolutePath();
+//    QDir* d = new QDir(QString(getenv("HOME")) + "/Music/trav/butterfly.mp3");
+//    qDebug() << "p: " << d->absolutePath();
 
 
 
@@ -109,8 +109,8 @@ int main(int argc, char *argv[])
 //    intro.show();
 //    screen.show();
 
-//    ImageBlock* i = new ImageBlock();
-//    i->show();
+    ImageBlock* i = new ImageBlock();
+    i->show();
 
 
 
