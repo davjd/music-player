@@ -22,7 +22,7 @@
      <height>611</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <layout class="QVBoxLayout" name="row">
     <item>
      <widget class="RotatedButton" name="b1">
       <property name="text">
@@ -60,28 +60,28 @@
     </item>
    </layout>
   </widget>
-  <widget class="QScrollArea" name="scrollArea">
+  <widget class="QStackedWidget" name="stack">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>110</x>
      <y>80</y>
      <width>851</width>
      <height>500</height>
     </rect>
    </property>
-   <property name="widgetResizable">
-    <bool>true</bool>
-   </property>
-   <widget class="QWidget" name="scrollAreaWidgetContents">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>849</width>
-      <height>498</height>
-     </rect>
-    </property>
+   <widget class="QWidget" name="page">
+    <widget class="PlaylistScreen" name="pScreen" native="true">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>851</width>
+       <height>500</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
+   <widget class="QWidget" name="page_2"/>
   </widget>
  </widget>
  <customwidgets>
@@ -89,6 +89,12 @@
    <class>RotatedButton</class>
    <extends>QPushButton</extends>
    <header>RotatedButton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PlaylistScreen</class>
+   <extends>QWidget</extends>
+   <header>PlaylistScreen.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

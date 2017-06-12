@@ -22,7 +22,7 @@
      <height>511</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridLayout"/>
+   <layout class="QGridLayout" name="grid"/>
   </widget>
  </widget>
  <resources/>

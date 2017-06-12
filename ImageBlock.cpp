@@ -12,7 +12,6 @@ ImageBlock::ImageBlock(const QString& title, QWidget* parent)
     :QGroupBox(title, parent)
 {
     init();
-
 }
 
 void ImageBlock::setTitle(const QString& title){
@@ -34,5 +33,6 @@ void ImageBlock::init(){
     QVBoxLayout* grid = new QVBoxLayout();
     grid->addWidget(image_);
     grid->addWidget(title_);
+    grid->setSizeConstraint(QLayout::SetFixedSize);
     setLayout(grid);
 }

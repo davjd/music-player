@@ -54,9 +54,9 @@ IntroScreen::IntroScreen(QWidget *parent) :
     ui->b4->setFlat(true);
     ui->b5->setFlat(true);
 
-    p = ui->scrollArea->palette();
-    p.setColor(QPalette::Window, QColor(136,216,176,20));
-    ui->scrollArea->setPalette(p);
+//    p = ui->scrollArea->palette();
+//    p.setColor(QPalette::Window, QColor(136,216,176,20));
+//    ui->scrollArea->setPalette(p);
 
 
 
@@ -70,30 +70,30 @@ IntroScreen::~IntroScreen()
 
 void IntroScreen::addItem(){
     qDebug() << "new button.";
-    QWidget *viewport = new QWidget;
-    ui->scrollArea->setWidget(viewport);
-    ui->scrollArea->setWidgetResizable(true);
+//    QWidget *viewport = new QWidget;
+//    ui->scrollArea->setWidget(viewport);
+//    ui->scrollArea->setWidgetResizable(true);
 
-    QGridLayout *l = new QGridLayout(viewport);
+//    QGridLayout *l = new QGridLayout(viewport);
 
-    QVectorIterator<Song*> i((*player->songList()));
-    int ctr = 0;
-    while (i.hasNext()){
-        QPushButton *pb = new QPushButton((*i.next()).title());
+//    QVectorIterator<Song*> i((*player->songList()));
+//    int ctr = 0;
+//    while (i.hasNext()){
+//        QPushButton *pb = new QPushButton((*i.next()).title());
 
-        connect(pb, &QPushButton::clicked, [pb](bool checked){
-            qDebug() << "Title: " << pb->text();
+//        connect(pb, &QPushButton::clicked, [pb](bool checked){
+//            qDebug() << "Title: " << pb->text();
 
-        });
+//        });
 
-        int col = ctr % 2;
-        int row;
+//        int col = ctr % 2;
+//        int row;
 
-        if(col) row = ctr - 1;
-        else row = ctr;
+//        if(col) row = ctr - 1;
+//        else row = ctr;
 
-        l->addWidget(pb, row, col);
-        ++ctr;
-    }
-    l->addWidget(new RotatedButton("Rotated.", Qt::Vertical, true, this));
+//        l->addWidget(pb, row, col);
+//        ++ctr;
+//    }
+//    l->addWidget(new RotatedButton("Rotated.", Qt::Vertical, true, this));
 }
