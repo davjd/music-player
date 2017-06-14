@@ -143,6 +143,8 @@ int main(int argc, char *argv[])
 
 
     QJsonDocument doc(recordsArray);
+    qDebug() << "before: " << doc;
+
 
     Serializer s;
     s.saveJson(doc, "playlists.json");
@@ -163,7 +165,7 @@ int main(int argc, char *argv[])
     QString path = "[" + QString::number(idx) + "]" + ".playlists";
     s.modifyJsonValue(doc, path, songs);
 
-    qDebug() << path;
+    qDebug() << "after: " << doc;
 
 
 //    qDebug() << doc;
