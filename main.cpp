@@ -101,14 +101,16 @@ int main(int argc, char *argv[])
     iterate(list, QDir(base));
 
 
-//    Playlist* pl = new Playlist();
-//    pl->setTitle("ALLSONGS");
+    Playlist* pl = new Playlist();
+    pl->setTitle("ALLSONGS");
+    pl->setType(Playlist::Type::auto_gen);
 
-//    for(auto i = list->begin(); i != list->end(); ++i){
-//        for(auto ii = i.value()->begin(); ii != i.value()->end(); ++ii){
-//            pl->push_back((*ii));
-//        }
-//    }
+
+    for(auto i = list->begin(); i != list->end(); ++i){
+        for(auto ii = i.value()->begin(); ii != i.value()->end(); ++ii){
+            pl->push_back((*ii));
+        }
+    }
 
 
 
@@ -138,8 +140,8 @@ int main(int argc, char *argv[])
 
 //    player->insert(list->value(list->begin()));
 
-    MainWindow *w = new MainWindow();
-    w->show();
+//    MainWindow *w = new MainWindow();
+//    w->show();
 
 //    PlaylistGroup* group = new PlaylistGroup("Auto Playlists");
 //    group->show();
