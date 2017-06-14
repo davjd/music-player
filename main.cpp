@@ -101,31 +101,33 @@ int main(int argc, char *argv[])
     iterate(list, QDir(base));
 
 
-    Playlist* pl = new Playlist();
-    pl->setTitle("ALLSONGS");
+//    Playlist* pl = new Playlist();
+//    pl->setTitle("ALLSONGS");
 
-    for(auto i = list->begin(); i != list->end(); ++i){
-        for(auto ii = i.value()->begin(); ii != i.value()->end(); ++ii){
-            pl->push_back((*ii));
-        }
-    }
-
-
+//    for(auto i = list->begin(); i != list->end(); ++i){
+//        for(auto ii = i.value()->begin(); ii != i.value()->end(); ++ii){
+//            pl->push_back((*ii));
+//        }
+//    }
 
 
 
 
-    Serializer s;
-    QJsonArray recordsArray;
-    QJsonObject o;
-    pl->write(o);
-    pl->open(o);
-
-    QJsonDocument doc(recordsArray);
-    s.saveJson(doc, "playlists.txt");
 
 
-    qDebug() << o;
+//    Serializer s;
+//    QJsonArray recordsArray;
+//    QJsonObject o;
+//    pl->write(o);
+//    pl->open(o);
+
+//    recordsArray.push_back(o);
+
+//    QJsonDocument doc(recordsArray);
+//    s.saveJson(doc, "playlists.txt");
+
+
+//    qDebug() << doc.toJson();
 
 
 
@@ -136,8 +138,8 @@ int main(int argc, char *argv[])
 
 //    player->insert(list->value(list->begin()));
 
-//    MainWindow *w = new MainWindow();
-//    w->show();
+    MainWindow *w = new MainWindow();
+    w->show();
 
 //    PlaylistGroup* group = new PlaylistGroup("Auto Playlists");
 //    group->show();

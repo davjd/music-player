@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QVector>
+#include <QGridLayout>
 #include "Playlist.h"
 
 namespace Ui {
@@ -22,7 +23,7 @@ private:
     QVector<Playlist*>* list_;
 
 
-    void loadPlaylists();
+    void loadPlaylists(QGridLayout* grid);
 };
 
 #endif // PLAYLISTSCREEN_H

@@ -5,8 +5,8 @@
 Playlist::Playlist()
 {
     list_ = new QVector<Song*>();
-    idx_ = -1;
     time_ = time_.currentTime();
+    type_ = Type::auto_gen;
 }
 
 void Playlist::push_back(Song *song){
@@ -26,6 +26,8 @@ QString Playlist::title(){
 }
 
 void Playlist::read(const QJsonObject& json){
+
+    qDebug() << "title: " << parseTitle(json["title"].toString());
     title_ = json["title"].toString();
     QJsonArray songs = json["songs"].toArray();
     for(QJsonValue data: songs){
@@ -33,10 +35,16 @@ void Playlist::read(const QJsonObject& json){
         song->read(data.toObject());
         list_->push_back(song);
     }
+    type_ = (Type)json["type"].toInt();
+
+    QJsonObject time = json["time"].toObject();
+    time_ = QTime(time["hour"].toInt(),
+            time["minute"].toInt(),
+            time["ms"].toInt());
 }
 
 void Playlist::write(QJsonObject& json){
-    json["title"] = title_;
+    json["title"] = QString::number(type_) + "." + title_;
     QJsonArray songs;
     for(Song* song : (*list_)){
       QJsonObject data;
@@ -44,11 +52,17 @@ void Playlist::write(QJsonObject& json){
       songs.push_back(data);
     }
     json["songs"] = QJsonValue(songs);
+    json["type"] = type_;
+    open(json);
 }
 
 QTime Playlist::time()
 {
     return time_;
+}
+
+Playlist::Type Playlist::type(){
+    return type_;
 }
 
 void Playlist::open(QJsonObject& json){
@@ -57,7 +71,16 @@ void Playlist::open(QJsonObject& json){
     o["hour"] = time_.hour();
     o["minute"] = time_.minute();
     o["ms"] = time_.msec();
-
     json["time"] = o;
+}
+
+void Playlist::setType(Playlist::Type type)
+{
+   type_ = type;
+}
+
+QString Playlist::parseTitle(QString title){
+    const int i = title.indexOf('.');
+    return title.mid(i);
 
 }

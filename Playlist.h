@@ -10,6 +10,12 @@
 class Playlist
 {
 public:
+
+    enum Type{
+        auto_gen,
+        user_gen
+    };
+
     Playlist();
     void push_back(Song* song);
     QVector<Song* >* list();
@@ -18,14 +24,19 @@ public:
     void read(const QJsonObject &json);
     void write(QJsonObject &json);
     void open(QJsonObject& json);
+    void setType(Type type);
     QTime time();
+    Playlist::Type type();
+
 
 
 private:
     QVector<Song* >* list_;
     QString title_;
-    int idx_;
     QTime time_;
+    Type type_;
+
+    QString parseTitle(QString title);
 
 public slots:
 

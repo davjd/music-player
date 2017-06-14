@@ -3,8 +3,7 @@
 
 #include "Serializer.h"
 #include "ImageBlock.h"
-#include <QJsonDocument>
-#include <QGridLayout>
+#include <QJsonArray>
 #include <QScrollArea>
 #include <QScrollBar>
 
@@ -54,6 +53,7 @@ PlaylistScreen::PlaylistScreen(QWidget *parent) :
 //    client->setStyleSheet("background-color:blue;");
 //    area->setStyleSheet("background-color:red;");
     area->setAlignment(Qt::AlignCenter);
+//    loadPlaylists();
 
 
 
@@ -79,11 +79,25 @@ PlaylistScreen::~PlaylistScreen()
     delete ui;
 }
 
-void PlaylistScreen::loadPlaylists()
+void PlaylistScreen::loadPlaylists(QGridLayout* grid)
 {
     Serializer loader;
-    QJsonObject json = loader.loadJson("Playlist.json").object();
-    for(auto playlist: json){
-        qDebug() << "playlist";
-    }
+    QJsonArray json = loader.loadJson("playlists.txt").array();
+    qDebug() << "stuff loaded.";
+//    int ctr = 0;
+//    const int LENGTH = 3;
+//    for(QJsonValue playlist: json){
+
+
+//        PlaylistGroup* p = new PlaylistGroup(playlist.toObject()["title"].toString());
+//        p->setFixedHeight(410);
+//        p->setFixedWidth(810);
+//        grid->addWidget(p, i, 0);
+//        grid->setSpacing(80);
+//        ++ctr;
+
+
+
+////        qDebug() << playlist.toObject()["title"].toString();
+//    }
 }
