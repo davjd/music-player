@@ -362,3 +362,7 @@ Genre:
     }
 ]   
 ------------------------------------------------;;
+
+
+helpful links:
+https://github.com/rrozek/QtJsonModifyValue/blob/master/main.cpp
