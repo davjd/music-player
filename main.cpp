@@ -17,6 +17,8 @@
 #include <QJsonDocument>
 #include <QFile>
 
+#include "PlaylistGroup.h"
+
 #include "ImageBlock.h"
 
 
@@ -93,8 +95,11 @@ int main(int argc, char *argv[])
 
 //    player->insert(list->value(list->begin()));
 
-    MainWindow *w = new MainWindow();
-    w->show();
+//    MainWindow *w = new MainWindow();
+//    w->show();
+
+    PlaylistGroup* group = new PlaylistGroup();
+    group->show();
 
 
 //    SongScreen* screen = new SongScreen();

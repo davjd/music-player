@@ -35,7 +35,8 @@ SOURCES += main.cpp\
     RotatedButton.cpp \
     PlaylistScreen.cpp \
     ImageBlock.cpp \
-    Serializer.cpp
+    Serializer.cpp \
+    PlaylistGroup.cpp
 
 HEADERS  += MainWindow.h \
     Song.h \
@@ -47,7 +48,8 @@ HEADERS  += MainWindow.h \
     RotatedButton.h \
     PlaylistScreen.h \
     ImageBlock.h \
-    Serializer.h
+    Serializer.h \
+    PlaylistGroup.h
 
 FORMS    += MainWindow.ui \
     SongScreen.ui \
