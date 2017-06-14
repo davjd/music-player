@@ -8,6 +8,8 @@
 #include <QScrollArea>
 #include <QScrollBar>
 
+#include "PlaylistGroup.h"
+
 PlaylistScreen::PlaylistScreen(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::PlaylistScreen)
@@ -22,7 +24,7 @@ PlaylistScreen::PlaylistScreen(QWidget *parent) :
 
     int ctr = 0;
     const int COL_NUM = 4;
-    const int LENGTH = 20;
+    const int LENGTH = 3;
 
     for(int i = 0; i < LENGTH; ++i){
 
@@ -32,12 +34,14 @@ PlaylistScreen::PlaylistScreen(QWidget *parent) :
         if(row == 0) col = ctr;
         else col = ctr - 1;
 
-        ImageBlock* b = new ImageBlock();
-        b->setTitle("Song" + QString::number(i + 1));
-        b->setStyleSheet("background-color: white;");
-        b->setFixedHeight(170);
-        gl->addWidget(b, row, col);
-        gl->setSpacing(48);
+//        ImageBlock* b = new ImageBlock();
+//        b->setTitle("Song" + QString::number(i + 1));
+//        b->setStyleSheet("background-color: white;");
+//        b->setFixedHeight(170);
+        PlaylistGroup* p = new PlaylistGroup("Playlist: " + QString::number(i));
+        p->setFixedHeight(420);
+        gl->addWidget(p, 0, i);
+        gl->setSpacing(80);
         ++ctr;
     }
 

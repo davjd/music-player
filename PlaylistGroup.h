@@ -8,6 +8,7 @@ class PlaylistGroup : public QWidget
 {
 public:
     PlaylistGroup();
+    PlaylistGroup(const QString& title);
     void init(const QString& title  = "Title");
 };
 
