@@ -302,7 +302,7 @@ Genre:
         "song-artist"
 }  
     
-----Playlist----
+----Playlist---- v1.
 {
     "playlist-name" :
         [
@@ -326,4 +326,49 @@ Genre:
         
         ]
 }
+
+
+----Playlist---- v2.
+[
+    {
+        "type" : AUTO_GEN,
+        "title" : TYPE.TITLE,
+        "time":
+            {
+                "hour" : HOUR,
+                "minute" : MINUTE,
+                "ms" : MS
+            
+            }
+            
+        "songs" :
+            [
+                {
+                    "url" : URL,
+                    "title" : TITLE,
+                    "artist" : ARTIST
+                },
+                
+                {
+                    "url" : URL,
+                    "title" : TITLE,
+                    "artist" : ARTIST
+                }
+            ]
+    }
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ------------------------------------------------;;
