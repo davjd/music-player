@@ -332,43 +332,33 @@ Genre:
 [
     {
         "type" : AUTO_GEN,
-        "title" : TYPE.TITLE,
-        "time":
-            {
-                "hour" : HOUR,
-                "minute" : MINUTE,
-                "ms" : MS
-            
-            },
-            
-        "songs" :
+        "playlists" :
             [
                 {
-                    "url" : URL,
-                    "title" : TITLE,
-                    "artist" : ARTIST
-                },
+                    "title" : TYPE.TITLE,
+                    "time":
+                        {
+                            "hour" : HOUR,
+                            "minute" : MINUTE,
+                            "ms" : MS
+                        },
+            
+                    "songs" :
+                        [
+                            {
+                                "url" : URL,
+                                "title" : TITLE,
+                                "artist" : ARTIST
+                            },
                 
-                {
-                    "url" : URL,
-                    "title" : TITLE,
-                    "artist" : ARTIST
+                            {
+                                "url" : URL,
+                                "title" : TITLE,
+                                "artist" : ARTIST
+                            }
+                        ]
                 }
             ]
     }
-]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+]   
 ------------------------------------------------;;
