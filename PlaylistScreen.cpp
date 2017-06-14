@@ -46,13 +46,13 @@ PlaylistScreen::PlaylistScreen(QWidget *parent) :
     area->horizontalScrollBar()->setSingleStep(client->width() / 24);
 
     QVBoxLayout *layout = new QVBoxLayout(this);
-    layout->addWidget(new QLabel("Play your playlist.", this));
+    layout->addWidget(new QLabel("Select the playlist", this));
     layout->addWidget(area);
 
     setLayout(layout);
 
-    client->setStyleSheet("background-color:blue;");
-    area->setStyleSheet("background-color:red;");
+//    client->setStyleSheet("background-color:blue;");
+//    area->setStyleSheet("background-color:red;");
     area->setAlignment(Qt::AlignCenter);
 
 

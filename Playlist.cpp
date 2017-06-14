@@ -6,6 +6,7 @@ Playlist::Playlist()
 {
     list_ = new QVector<Song*>();
     idx_ = -1;
+    time_ = time_.currentTime();
 }
 
 void Playlist::push_back(Song *song){
@@ -43,4 +44,20 @@ void Playlist::write(QJsonObject& json){
       songs.push_back(data);
     }
     json["songs"] = QJsonValue(songs);
+}
+
+QTime Playlist::time()
+{
+    return time_;
+}
+
+void Playlist::open(QJsonObject& json){
+    time_ = time_.currentTime();
+    QJsonObject o;
+    o["hour"] = time_.hour();
+    o["minute"] = time_.minute();
+    o["ms"] = time_.msec();
+
+    json["time"] = o;
+
 }

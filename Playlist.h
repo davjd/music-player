@@ -4,6 +4,7 @@
 #include <QObject>
 #include "Song.h"
 #include <QVector>
+#include <QTime>
 
 
 class Playlist
@@ -16,12 +17,15 @@ public:
     void setTitle(const QString& title);
     void read(const QJsonObject &json);
     void write(QJsonObject &json);
+    void open(QJsonObject& json);
+    QTime time();
 
 
 private:
     QVector<Song* >* list_;
     QString title_;
     int idx_;
+    QTime time_;
 
 public slots:
 

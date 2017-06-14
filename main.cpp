@@ -21,6 +21,14 @@
 
 #include "ImageBlock.h"
 
+#include "Serializer.h"
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+#include "Playlist.h"
+#include "Song.h"
+
+
 
 
 MusicPlayer* player;
@@ -54,8 +62,8 @@ void iterate(QHash<QString, QVector<Song*>* >* list, const QDir &directory){
         if(f.isFile()){
                     if(valids.contains(f.suffix().toLower())){
                         QString key = f.absolutePath();
-                        qDebug() << "value: " << f.baseName() << "\nkey: "
-                                 << f.absolutePath();
+//                        qDebug() << "value: " << f.baseName() << "\nkey: "
+//                                 << f.absolutePath();
                         if(!list->contains(key)){
                             list->insert(key, new QVector<Song*>());
                         }
@@ -69,8 +77,8 @@ void iterate(QHash<QString, QVector<Song*>* >* list, const QDir &directory){
    if(f.isFile()){
        if(valids.contains(f.suffix().toLower())){
            QString key = f.absolutePath();
-           qDebug() << "value: " << f.baseName() << "\nkey: "
-                    << f.absolutePath();
+//           qDebug() << "value: " << f.baseName() << "\nkey: "
+//                    << f.absolutePath();
            if(!list->contains(key)){
                list->insert(key, new QVector<Song*>());
            }
@@ -88,15 +96,48 @@ int main(int argc, char *argv[])
     player = new MusicPlayer();
     player->setVolume(100);
 
-//    QHash<QString, QVector<Song*>* >* list = new QHash<QString, QVector<Song*>*>();
-//    QDir base(QString(getenv("HOME")) + "/Music");
-//    iterate(list, QDir(base));
+    QHash<QString, QVector<Song*>* >* list = new QHash<QString, QVector<Song*>*>();
+    QDir base(QString(getenv("HOME")) + "/Music");
+    iterate(list, QDir(base));
+
+
+    Playlist* pl = new Playlist();
+    pl->setTitle("ALLSONGS");
+
+    for(auto i = list->begin(); i != list->end(); ++i){
+        for(auto ii = i.value()->begin(); ii != i.value()->end(); ++ii){
+            pl->push_back((*ii));
+        }
+    }
+
+
+
+
+
+
+    Serializer s;
+    QJsonArray recordsArray;
+    QJsonObject o;
+    pl->write(o);
+    pl->open(o);
+
+    QJsonDocument doc(recordsArray);
+    s.saveJson(doc, "playlists.txt");
+
+
+    qDebug() << o;
+
+
+
+
+
+
 //    qDebug() << "Path: " <<base.absolutePath();
 
 //    player->insert(list->value(list->begin()));
 
-    MainWindow *w = new MainWindow();
-    w->show();
+//    MainWindow *w = new MainWindow();
+//    w->show();
 
 //    PlaylistGroup* group = new PlaylistGroup("Auto Playlists");
 //    group->show();
@@ -106,11 +147,83 @@ int main(int argc, char *argv[])
 //    screen->show();
 
 //    QDir* d = new QDir(QString(getenv("HOME")) + "/Music/trav/butterfly.mp3");
-//    qDebug() << "p: " << d->absolutePath();
+
+////    qDebug() << "p: " << d->absolutePath();
 
 
 
 
+
+
+
+//    Playlist* pl = new Playlist();
+
+
+
+
+//    Serializer s;
+
+//    QJsonArray recordsArray;
+////    recordsArray.push_back(recordObject);
+////    QJsonDocument doc(recordsArray);
+////    qDebug() << doc.toJson();
+
+////    QJsonObject so1;
+//    Song* s1 = new Song(new QDir(QString(getenv("HOME")) + "/Music/trav/butterfly.mp3"));
+////    s1->write(so1);
+
+////    QJsonObject so2;
+//    Song* s2 = new Song(new QDir(QString(getenv("HOME")) + "/Music/trav/a man.mp3"));
+////    s2->write(so2);
+
+////    recordsArray.push_back(so1);
+////    recordsArray.push_back(so2);
+
+//    QJsonArray doc = s.loadJson("playlists.txt").array();
+//    auto o = doc.first().toObject();
+//    s1->read(o);
+
+//    qDebug() << "title: " << s1->title();
+
+
+
+
+//    for(auto keys: doc){
+//        qDebug() << keys;
+//    }
+
+//    s.saveJson(doc, "songs.txt");
+
+//    qDebug() << doc;
+
+
+
+
+
+
+
+
+
+//    QJsonObject recordObject;
+//    recordObject.insert("FirstName", QJsonValue::fromVariant("John"));
+//    recordObject.insert("LastName", QJsonValue::fromVariant("Doe"));
+//    recordObject.insert("Age", QJsonValue::fromVariant(43));
+
+//    QJsonObject addressObject;
+//    addressObject.insert("Street", "Downing Street 10");
+//    addressObject.insert("City", "London");
+//    addressObject.insert("Country", "Great Britain");
+//    recordObject.insert("Address", addressObject);
+
+//    QJsonArray phoneNumbersArray;
+//    phoneNumbersArray.push_back("+44 1234567");
+//    phoneNumbersArray.push_back("+44 2345678");
+//    recordObject.insert("Phone Numbers", phoneNumbersArray);
+
+//    QJsonArray recordsArray;
+//    recordsArray.push_back(recordObject);
+//    QJsonDocument doc(recordsArray);
+//    qDebug() << doc.toJson();
 
 
 
