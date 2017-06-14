@@ -101,8 +101,10 @@ int main(int argc, char *argv[])
     iterate(list, QDir(base));
 
 
+    QJsonObject songs;
+
     Playlist* pl = new Playlist();
-    pl->setTitle("ALLSONGS");
+    pl->setTitle("ALL");
     pl->setType(Playlist::Type::auto_gen);
 
 
@@ -111,6 +113,64 @@ int main(int argc, char *argv[])
             pl->push_back((*ii));
         }
     }
+
+    pl->write(songs);
+
+    QJsonArray recordsArray;
+
+    QJsonArray p1;
+    QJsonArray p2;
+    QJsonArray p3;
+
+    QJsonObject obj1;
+    QJsonObject obj2;
+    QJsonObject obj3;
+
+    obj1["type"] = Playlist::Type::auto_gen;
+    obj2["type"] = Playlist::Type::user_gen;
+    obj3["type"] = Playlist::Type::smart_gen;
+
+
+
+
+    obj1.insert("playlists", p1);
+    obj2.insert("playlists", p2);
+    obj3.insert("playlists", p3);
+
+    recordsArray.push_back(obj1);
+    recordsArray.push_back(obj2);
+    recordsArray.push_back(obj3);
+
+
+    QJsonDocument doc(recordsArray);
+
+    Serializer s;
+    s.saveJson(doc, "playlists.json");
+
+    QJsonArray ar = doc.array();
+
+    int idx = -1;
+    for(QJsonValue v: ar){
+
+        ++idx;
+        if(songs["type"] ==  v.toObject()["type"]){
+//            QJsonObject item = v.toObject();
+//            s.modifyJsonValue(doc, "family[2].father.age", songs);
+            break;
+        }
+    }
+
+    QString path = "[" + QString::number(idx) + "]" + ".playlists";
+    s.modifyJsonValue(doc, path, songs);
+
+    qDebug() << path;
+
+
+//    qDebug() << doc;
+
+
+
+
 
 
 

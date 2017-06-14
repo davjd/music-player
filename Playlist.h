@@ -13,7 +13,8 @@ public:
 
     enum Type{
         auto_gen,
-        user_gen
+        user_gen,
+        smart_gen
     };
 
     Playlist();
