@@ -33,6 +33,9 @@ MainWindow::MainWindow(QWidget *parent) :
      * */
 
     loadInitial();
+    SongListScreen* s =  ui->iScreen->findChild<QStackedWidget*>("stack")->findChild<SongListScreen*>("p2");
+    s->setPlaylist(initialPlaylist_);
+    s->loadPlaylist();
 
     auto introObjs =  ui->iScreen->findChild<QWidget*>("verticalLayoutWidget")->children();
 
@@ -51,31 +54,31 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
                 switch(ctr){
+//                    case 0:
+//                    {
+//                        ui->iScreen->findChild<QStackedWidget*>("stack")->setCurrentIndex(0);
+//                        break;
+//                    }
                     case 0:
                     {
                         ui->iScreen->findChild<QStackedWidget*>("stack")->setCurrentIndex(0);
-                        break;
-                    }
-                    case 1:
-                    {
-                        ui->iScreen->findChild<QStackedWidget*>("stack")->setCurrentIndex(1);
                         SongListScreen* s =  ui->iScreen->findChild<QStackedWidget*>("stack")->findChild<SongListScreen*>("p2");
                         s->setPlaylist(initialPlaylist_);
                         s->loadPlaylist();
                         break;
                     }
-                    case 2:
-                        // when 3rd button pressed.
-                        qDebug() << "3rd button";
-                        break;
-                    case 3:
-                        // when 4th button pressed.
-                        qDebug() << "4th button";
-                        break;
-                    case 4:
-                        // when 5th button pressed.
-                        qDebug() << "5th button";
-                        break;
+//                    case 2:
+//                        // when 3rd button pressed.
+//                        qDebug() << "3rd button";
+//                        break;
+//                    case 3:
+//                        // when 4th button pressed.
+//                        qDebug() << "4th button";
+//                        break;
+//                    case 4:
+//                        // when 5th button pressed.
+//                        qDebug() << "5th button";
+//                        break;
                 }
 
 

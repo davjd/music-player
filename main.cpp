@@ -32,6 +32,8 @@
 #include "SongListScreen.h"
 #include "ScrollText.h"
 
+#include <QDialog>
+
 
 
 
@@ -314,10 +316,6 @@ int main(int argc, char *argv[])
 //    sl->loadPlaylist();
 //    sl->show();
 
-//    ScrollText* scroll = new ScrollText();
-//    scroll->setFixedWidth(100);
-//    scroll->setText("SOMETHING REALLLkkkkkkkkkkkkkkkkkkkkkLY LONGGGG");
-//    scroll->show();
 
 
 
