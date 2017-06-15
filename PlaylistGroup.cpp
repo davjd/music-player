@@ -84,10 +84,9 @@ void PlaylistGroup::loadGroup(const QJsonArray &items, QVector<Playlist*>* playl
     for(QJsonValue playlist: items){
         qDebug() << "insisde loop";
 
-        QJsonObject obj;
 
         playlists->append(new Playlist());
-        playlists->last()->read(obj);
+        playlists->last()->read(playlist.toObject());
 
         qDebug() << playlists->last()->list()->size();
 
