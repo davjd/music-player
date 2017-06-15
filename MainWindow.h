@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QStackedWidget>
+#include "Playlist.h"
 
 namespace Ui {
 class MainWindow;
@@ -14,10 +15,19 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+    void setCurrentPlaylist(Playlist* playlist);
+    Playlist* currentPlaylist();
+    Playlist* initialPlaylist();
+
     ~MainWindow();
 
 private:
     Ui::MainWindow *ui;
+    Playlist* currentPlaylist_;
+    Playlist* initialPlaylist_;
+
+    void loadInitial();
+
 };
 
 #endif // MAINWINDOW_H

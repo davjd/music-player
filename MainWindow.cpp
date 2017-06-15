@@ -6,12 +6,13 @@
 #include <QPalette>
 #include <QScrollArea>
 #include "PlaylistScreen.h"
-#include "PlaylistGroup.h";
+#include "PlaylistGroup.h"
 #include <typeinfo>
 #include "PlaylistBlock.h"
 #include "ImageBlock.h"
-#include "SongListScreen.h";
+#include "SongListScreen.h"
 #include "RotatedButton.h"
+#include "Serializer.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -19,20 +20,72 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    /*
+     *  The window requires that there must be a playlist loaded
+     *  into memory. This is because the user might click on the
+     *  songs qpushbutton, which will instantiate a SongListScreen.
+     *  When the SongListScreen gets instantiated, the instance will have no
+     *  initial playlist, which will lead to an empty screen inside the QStackedWidget.
+     *  In order to ensure that something is always there, the main window will
+     *  always have one playlist loaded. The obvious choice for this initial playlist
+     *  is the auto-generated playlist which contains every song.
+     *
+     * */
+
+    loadInitial();
 
     auto introObjs =  ui->iScreen->findChild<QWidget*>("verticalLayoutWidget")->children();
-//    qDebug() << introObjs;
 
+    int ctr = 0;
     for(auto w: introObjs){
         if(typeid(*w) == typeid(RotatedButton)){
-            PlaylistBlock* g = static_cast<PlaylistBlock*>(w);
-            connect(g, &PlaylistBlock::clicked, [this, g](){
-                ui->iScreen->findChild<QStackedWidget*>("stack")->setCurrentIndex(1);
-                SongListScreen* s =  ui->iScreen->findChild<QStackedWidget*>("stack")->findChild<SongListScreen*>("p2");
-                s->setPlaylist(g->playlist());
-                s->loadPlaylist();
+            RotatedButton* g = static_cast<RotatedButton*>(w);
+            connect(g, &RotatedButton::clicked, [this, g, ctr](){
+
+
+
+
+
+
+
+
+
+                switch(ctr){
+                    case 0:
+                    {
+                        ui->iScreen->findChild<QStackedWidget*>("stack")->setCurrentIndex(0);
+                        break;
+                    }
+                    case 1:
+                    {
+                        ui->iScreen->findChild<QStackedWidget*>("stack")->setCurrentIndex(1);
+                        SongListScreen* s =  ui->iScreen->findChild<QStackedWidget*>("stack")->findChild<SongListScreen*>("p2");
+                        s->setPlaylist(initialPlaylist_);
+                        s->loadPlaylist();
+                        break;
+                    }
+                    case 2:
+                        // when 3rd button pressed.
+                        qDebug() << "3rd button";
+                        break;
+                    case 3:
+                        // when 4th button pressed.
+                        qDebug() << "4th button";
+                        break;
+                    case 4:
+                        // when 5th button pressed.
+                        qDebug() << "5th button";
+                        break;
+                }
+
+
+//                if(ctr == 1){
+//                    SongListScreen* s =  ui->iScreen->findChild<QStackedWidget*>("stack")->findChild<SongListScreen*>("p2");
+//                    s->setPlaylist(g->playlist());
+//                    s->loadPlaylist();
+//                }
             });
-            qDebug() << w;
+            ++ctr;
         }
 
 //        qDebug() << w;
@@ -81,7 +134,39 @@ MainWindow::MainWindow(QWidget *parent) :
 
 }
 
+void MainWindow::setCurrentPlaylist(Playlist *playlist)
+{
+    if(currentPlaylist_ != nullptr) delete currentPlaylist_;
+    currentPlaylist_ = playlist;
+}
+
+Playlist *MainWindow::currentPlaylist()
+{
+    return currentPlaylist_;
+}
+
+Playlist *MainWindow::initialPlaylist()
+{
+    return initialPlaylist_;
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::loadInitial()
+{
+    initialPlaylist_ =  new Playlist();
+    Serializer ser;
+    QJsonDocument doc = ser.loadJson("playlists.json");
+    QJsonArray ar = doc.array();
+
+    for(QJsonValue v: ar){
+        if(Playlist::Type::auto_gen ==  ((Playlist::Type)v.toObject()["type"].toInt())){
+            initialPlaylist_->read(v.toObject()["playlists"].toArray().at(0).toObject());
+            qDebug() << initialPlaylist_->list()->size();
+            break;
+        }
+    }
 }

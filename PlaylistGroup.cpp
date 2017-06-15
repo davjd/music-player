@@ -68,7 +68,9 @@ void PlaylistGroup::init(const QString &title)
 
     QVBoxLayout *lay = new QVBoxLayout(this);
     lay->setObjectName("vbox");
-    lay->addWidget(new QLabel(title, this));
+    QLabel* t = new QLabel(title, this);
+    t->setObjectName("label");
+    lay->addWidget(t);
     lay->addWidget(area);
 
     setLayout(lay);
@@ -79,8 +81,8 @@ void PlaylistGroup::init(const QString &title)
 //    b->setFixedHeight(160);
 //    gl->addWidget(b, 0, 0);
 
-//    client->setStyleSheet("background-color:blue;");
-//    area->setStyleSheet("background-color:red;");
+    client->setStyleSheet("background-color:blue;");
+    area->setStyleSheet("background-color:red;");
     area->setAlignment(Qt::AlignVCenter);
 }
 
@@ -89,6 +91,7 @@ void PlaylistGroup::loadPlaylist(Playlist *playlist)
 
     qDebug() << "called";
     QGridLayout* g = static_cast<QGridLayout*>(grid());
+
     int ctr = 0;
     for(Song* song: (*playlist->list())){
         int row, col;

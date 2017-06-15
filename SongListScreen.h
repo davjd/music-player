@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include "PlaylistGroup.h"
-#include "QLayout"
+#include <QLayout>
 
 namespace Ui {
 class SongListScreen;
@@ -24,6 +24,7 @@ public:
 private:
     Playlist* playlist_;
     QLayout* grid();
+    void clear(QGridLayout* &g);
 
 
 

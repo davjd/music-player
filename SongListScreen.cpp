@@ -71,8 +71,6 @@ SongListScreen::SongListScreen(QWidget *parent) :
 //    area->setStyleSheet("background-color:red;");
     area->setAlignment(Qt::AlignCenter);
 
-//    loadPlaylist();
-
 
 
 
@@ -98,6 +96,7 @@ void SongListScreen::loadPlaylist()
     }
 
     QGridLayout* g = static_cast<QGridLayout*>(grid());
+    clear(g); // remove current group.
     PlaylistGroup* group = new PlaylistGroup(playlist_->title());
     group->loadPlaylist(playlist_);
     g->addWidget(group);
@@ -116,4 +115,13 @@ QLayout* SongListScreen::grid()
         }
     }
     return nullptr;
+}
+
+void SongListScreen::clear(QGridLayout *&g)
+{
+    if (g != 0){
+        QLayoutItem *item;
+        while ((item = g->takeAt(0)) != 0)
+            g->removeItem (item);
+    }
 }
