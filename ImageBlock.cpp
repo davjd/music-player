@@ -51,7 +51,7 @@ void ImageBlock::init(){
     grid->addWidget(image_);
     grid->addWidget(title_);
     title_->setFixedWidth(100);
-    title_->setStyleSheet("border-color:white; color:blue;");
+    title_->setStyleSheet("border-color:white; color:rgba(114,136,125,1);");
     grid->setSizeConstraint(QLayout::SetFixedSize);
     setLayout(grid);
 }

@@ -19,7 +19,9 @@ IntroScreen::IntroScreen(QWidget *parent) :
 
     setAutoFillBackground(true);
     QPalette p = palette();
-    p.setColor(QPalette::Window, QColor(10,0,0,150));
+//    p.setColor(QPalette::Window, QColor(76,98,79,150));
+    p.setColor(QPalette::Window, Qt::black);
+
     setPalette(p);
 
 

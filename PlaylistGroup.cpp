@@ -81,8 +81,8 @@ void PlaylistGroup::init(const QString &title)
 //    b->setFixedHeight(160);
 //    gl->addWidget(b, 0, 0);
 
-    client->setStyleSheet("background-color:blue;");
-    area->setStyleSheet("background-color:red;");
+    client->setStyleSheet("background-color: white;");
+    area->setStyleSheet("background-color:white;");
     area->setAlignment(Qt::AlignVCenter);
 }
 
@@ -103,7 +103,7 @@ void PlaylistGroup::loadPlaylist(Playlist *playlist)
         SongBlock* b = new SongBlock();
         b->setSong(song);
         b->setTitle(song->title());
-        b->setStyleSheet("background-color: green;");
+        b->setStyleSheet("background-color: white;");
         g->addWidget(b, row, col);
         ++ctr;
     }
@@ -137,7 +137,7 @@ void PlaylistGroup::loadGroup(const QJsonArray &items, QVector<Playlist*>* playl
 
         b->setPlaylist(playlists->last());
         b->setTitle(playlists->last()->title());
-        b->setStyleSheet("background-color: red;");
+        b->setStyleSheet("background-color: white;");
         g->addWidget(b, row, col);
         ++ctr;
     }

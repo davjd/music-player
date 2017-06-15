@@ -122,6 +122,9 @@ MainWindow::MainWindow(QWidget *parent) :
 //                player->setMedia(*g->song()->content());
                 player->play();
 
+                // toggle played in main window instead of music player.
+                // call initiain here.
+
             });
         }
     }
