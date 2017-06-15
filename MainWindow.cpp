@@ -4,8 +4,12 @@
 #include "IntroScreen.h"
 #include <QDebug>
 #include <QPalette>
+#include <QScrollArea>
 #include "PlaylistScreen.h"
 #include "PlaylistGroup.h";
+#include <typeinfo>
+#include "PlaylistBlock.h"
+#include "ImageBlock.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -14,9 +18,23 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
 
-    // getting ui objects:
-    QStackedWidget* stack = ui->iScreen->findChild<QStackedWidget*>("stack");
-    qDebug() << ui->iScreen->findChild<PlaylistGroup*>("pAuto Playlists");
+    // getting ui objects
+    auto screen = ui->iScreen->findChild<PlaylistScreen*>("p1")->findChild<QScrollArea*>("scroll")->widget()->findChild<QWidget*>("client");
+//    qDebug() << screen;
+
+
+//    qDebug() << "info: " << typeid(PlaylistBlock).name();
+    for(auto w: screen->children()){
+        if(typeid(*w) == typeid(PlaylistBlock)){
+            qDebug() << w;
+            PlaylistBlock* g = static_cast<PlaylistBlock*>(w);
+
+            connect(g, &PlaylistBlock::clicked, [this](){
+                        qDebug() << "woah.";
+            });
+        }
+    }
+
 //    qDebug() << stack->findChild<PlaylistScreen*>("p1")->findChild<PlaylistGroup*>("pAuto Playlists");
 
 

@@ -37,7 +37,6 @@ void ImageBlock::mousePressEvent(QMouseEvent *event)
 {
     emit clicked();
     QGroupBox::mouseReleaseEvent(event);
-    qDebug() << "clicked.";
 }
 
 void ImageBlock::init(){

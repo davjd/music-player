@@ -30,6 +30,7 @@ void PlaylistGroup::init(const QString &title)
     QWidget* client = new QWidget(this);
     client->setObjectName("client");
     QGridLayout *gl = new QGridLayout(client);
+    gl->setObjectName("grid");
 
     gl->setHorizontalSpacing(80);
     gl->setVerticalSpacing(20);
@@ -66,6 +67,7 @@ void PlaylistGroup::init(const QString &title)
     area->horizontalScrollBar()->setSingleStep(client->width() / 24);
 
     QVBoxLayout *lay = new QVBoxLayout(this);
+    lay->setObjectName("vbox");
     lay->addWidget(new QLabel(title, this));
     lay->addWidget(area);
 
@@ -127,6 +129,9 @@ void PlaylistGroup::loadGroup(const QJsonArray &items, QVector<Playlist*>* playl
         else col = ctr - 1;
 
         PlaylistBlock* b = new PlaylistBlock();
+//        b->setObjectName(playlists->last()->typeName(playlists->last()->type()) + QString::number(ctr));
+        b->setObjectName("playlistbutton");
+
         b->setPlaylist(playlists->last());
         b->setTitle(playlists->last()->title());
         b->setStyleSheet("background-color: red;");
