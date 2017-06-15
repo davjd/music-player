@@ -23,6 +23,7 @@ private:
     QVector<Playlist*>* list_;
 
 
+
     void loadPlaylists(QGridLayout* grid);
     void append(QJsonDocument& doc, QJsonObject& playlist);
 };

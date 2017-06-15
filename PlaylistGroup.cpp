@@ -5,6 +5,7 @@
 #include <QScrollArea>
 #include <QScrollBar>
 #include <QJsonValue>
+#include <QJsonObject>
 
 #include "ImageBlock.h"
 #include <QDebug>
@@ -35,21 +36,21 @@ void PlaylistGroup::init(const QString &title)
     int ctr = 0;
     const int LENGTH = 16;
 
-    for(int i = 0; i < LENGTH; ++i){
+//    for(int i = 0; i < LENGTH; ++i){
 
-        int row, col;
-        row = ctr % 2;
+//        int row, col;
+//        row = ctr % 2;
 
-        if(row == 0) col = ctr;
-        else col = ctr - 1;
+//        if(row == 0) col = ctr;
+//        else col = ctr - 1;
 
-        ImageBlock* b = new ImageBlock();
-        b->setTitle("Song" + QString::number(i + 1));
-        b->setStyleSheet("background-color: white;");
-        b->setFixedHeight(160);
-        gl->addWidget(b, row, col);
-        ++ctr;
-    }
+//        ImageBlock* b = new ImageBlock();
+//        b->setTitle("Song" + QString::number(i + 1));
+//        b->setStyleSheet("background-color: white;");
+//        b->setFixedHeight(160);
+//        gl->addWidget(b, row, col);
+//        ++ctr;
+//    }
 
     client->setLayout(gl);
 
@@ -73,27 +74,35 @@ void PlaylistGroup::init(const QString &title)
     area->setAlignment(Qt::AlignCenter);
 }
 
-void PlaylistGroup::loadGroup(const QJsonArray &items)
+void PlaylistGroup::loadGroup(const QJsonArray &items, QVector<Playlist*>* playlists)
 {
-    QGridLayout* grid;
 
+    QGridLayout* g = static_cast<QGridLayout*>(grid());
 
+    qDebug() << "inside";
     int ctr = 0;
     for(QJsonValue playlist: items){
-        qDebug() << playlist;
+        qDebug() << "insisde loop";
+
+        QJsonObject obj;
+
+        playlists->append(new Playlist());
+        playlists->last()->read(obj);
+
+        qDebug() << playlists->last()->list()->size();
 
         int row, col;
         row = ctr % 2;
 
-        if(row == 0) col = ctr;
-        else col = ctr - 1;
+//        if(row == 0) col = ctr;
+//        else col = ctr - 1;
 
-        ImageBlock* b = new ImageBlock();
-        b->setTitle("Song" + QString::number(1));
-        b->setStyleSheet("background-color: white;");
-        b->setFixedHeight(160);
-        grid->addWidget(b, row, col);
-        ++ctr;
+//        ImageBlock* b = new ImageBlock();
+//        b->setTitle("Song" + QString::number(1));
+//        b->setStyleSheet("background-color: white;");
+//        b->setFixedHeight(160);
+//        g->addWidget(b, row, col);
+//        ++ctr;
     }
 
 }

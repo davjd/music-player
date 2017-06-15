@@ -86,11 +86,14 @@ void PlaylistScreen::loadPlaylists(QGridLayout* grid)
 
     for(QJsonValue type: json){
         // create playlist groups for each type.
+        PlaylistGroup* group = new PlaylistGroup();
+        group->loadGroup(type.toObject()["playlists"].toArray(), list_);
 
+//        qDebug() << playlist.toObject()["playlists"];
 
-        for(QJsonValue playlist: type.toObject()["playlists"].toArray()){
-            qDebug() << playlist;
-        }
+//        for(QJsonValue playlist: type.toObject()["playlists"].toArray()){
+
+//        }
     }
 
 
