@@ -19,27 +19,43 @@ PlaylistScreen::PlaylistScreen(QWidget *parent) :
 
     // Fake up a grid to scroll
     QWidget *client = new QWidget(this);
+    client->setObjectName("client");
     QGridLayout *gl = new QGridLayout(client);
 
-    int ctr = 0;
-    const int LENGTH = 3;
+//    int ctr = 0;
+//    const int LENGTH = 3;
 
-    for(int i = 0; i < LENGTH; ++i){
+//    for(int i = 0; i < LENGTH; ++i){
 
-        PlaylistGroup* p = new PlaylistGroup("Playlist: " + QString::number(i));
-        p->setFixedHeight(410);
-        p->setFixedWidth(810);
-        gl->addWidget(p, i, 0);
-        gl->setSpacing(80);
-        ++ctr;
-    }
+//        PlaylistGroup* p = new PlaylistGroup("Playlist: " + QString::number(i));
+//        p->setFixedHeight(410);
+//        p->setFixedWidth(810);
+//        gl->addWidget(p, i, 0);
+//        gl->setSpacing(80);
+//        ++ctr;
+//    }
+
+
 
     client->setLayout(gl);
 
     // Put it into a scroll area
     QScrollArea *area = new QScrollArea(this);
+    area->setObjectName("scroll");
+    area->setWidgetResizable(true);
     area->setWidget(client);
     area->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+
+//    PlaylistGroup* p = new PlaylistGroup("Playlist: " + QString::number(1));
+//    p->update();
+//    p->setFixedHeight(410);
+//    p->setFixedWidth(810);
+
+//    gl->addWidget(p, 0, 0);
+//    gl->setSpacing(80);
+
+//    qDebug() << "after;size: " <<  gl->count();
 
     // Make the scroll step the same width as the fixed widgets in the grid
     area->horizontalScrollBar()->setSingleStep(client->width() / 24);
@@ -57,6 +73,19 @@ PlaylistScreen::PlaylistScreen(QWidget *parent) :
 
 
 
+//    gl->update();
+//    client->update();
+//    layout->update();
+//    area->repaint();
+//    area->update();
+//    update();
+//    repaint();
+//    parent->update();
+//    parent->repaint();
+
+
+
+
 //    int ctr = 0;
 //    int row = 0;
 //    const int COL_NUM = 3;
@@ -71,7 +100,12 @@ PlaylistScreen::PlaylistScreen(QWidget *parent) :
 //        b->setStyleSheet("background-color: green;");
 //        ui->grid->addWidget(b, row, col);
 //        ++ctr;
-//    }
+    //    }
+}
+
+Ui::PlaylistScreen* PlaylistScreen::screen()
+{
+    return ui;
 }
 
 PlaylistScreen::~PlaylistScreen()
@@ -79,15 +113,23 @@ PlaylistScreen::~PlaylistScreen()
     delete ui;
 }
 
-void PlaylistScreen::loadPlaylists(QGridLayout* grid)
+void PlaylistScreen::loadPlaylists(QGridLayout* &grid)
 {
     Serializer loader;
     QJsonArray json = loader.loadJson("playlists.json").array();
 
     for(QJsonValue type: json){
         // create playlist groups for each type.
-        PlaylistGroup* group = new PlaylistGroup();
+        PlaylistGroup* group = new PlaylistGroup(
+                    Playlist::typeName((Playlist::Type) type.toObject()["type"].toInt()));
+        group->setStyleSheet("color: red;");
+        group->setFixedHeight(450);
+        group->setFixedWidth(810);
+
+
         group->loadGroup(type.toObject()["playlists"].toArray(), list_);
+        grid->addWidget(group);
+
 
 //        qDebug() << playlist.toObject()["playlists"];
 
@@ -134,4 +176,14 @@ void PlaylistScreen::append(QJsonDocument &doc, QJsonObject& playlist)
         }
     }
 
+}
+
+QLayout* PlaylistScreen::grid()
+{
+    for(int i = 0, end = layout()->count(); i < end; ++i){
+        if(layout()->itemAt(i)->widget()->objectName() == "scroll"){
+            return layout()->itemAt(i)->widget()->findChild<QWidget *>("client")->layout();
+        }
+    }
+    return nullptr;
 }

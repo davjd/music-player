@@ -63,6 +63,11 @@ IntroScreen::IntroScreen(QWidget *parent) :
 
 }
 
+Ui::IntroScreen *IntroScreen::screen()
+{
+    return ui;
+}
+
 IntroScreen::~IntroScreen()
 {
     delete ui;

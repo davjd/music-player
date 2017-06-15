@@ -27,8 +27,8 @@ QString Playlist::title(){
 
 void Playlist::read(const QJsonObject& json){
 
-    qDebug() << "title: " << parseTitle(json["title"].toString());
-    title_ = json["title"].toString();
+//    qDebug() << "title: " <<
+    title_ = parseTitle(json["title"].toString());
     QJsonArray songs = json["songs"].toArray();
     for(QJsonValue data: songs){
         Song* song = new Song();
@@ -65,6 +65,22 @@ Playlist::Type Playlist::type(){
     return type_;
 }
 
+QString Playlist::typeName(Playlist::Type type)
+{
+   switch(type){
+        case Playlist::Type::auto_gen :
+            return "Auto Playlists";
+            break;
+        case Playlist::Type::user_gen :
+            return "Your Playlists";
+            break;
+        case Playlist::Type::smart_gen :
+            return "Curated Playlists";
+            break;
+        default : return "";
+   }
+}
+
 void Playlist::open(QJsonObject& json){
     time_ = time_.currentTime();
     QJsonObject o;
@@ -81,6 +97,6 @@ void Playlist::setType(Playlist::Type type)
 
 QString Playlist::parseTitle(QString title){
     const int i = title.indexOf('.');
-    return title.mid(i);
+    return title.mid(1 + i);
 
 }

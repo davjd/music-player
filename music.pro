@@ -36,7 +36,8 @@ SOURCES += main.cpp\
     PlaylistScreen.cpp \
     ImageBlock.cpp \
     Serializer.cpp \
-    PlaylistGroup.cpp
+    PlaylistGroup.cpp \
+    PlaylistBlock.cpp
 
 HEADERS  += MainWindow.h \
     Song.h \
@@ -49,7 +50,8 @@ HEADERS  += MainWindow.h \
     PlaylistScreen.h \
     ImageBlock.h \
     Serializer.h \
-    PlaylistGroup.h
+    PlaylistGroup.h \
+    PlaylistBlock.h
 
 FORMS    += MainWindow.ui \
     SongScreen.ui \

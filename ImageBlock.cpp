@@ -1,6 +1,7 @@
 #include "ImageBlock.h"
 #include <QVBoxLayout>
 #include <QPalette>
+#include <QDebug>
 
 ImageBlock::ImageBlock(QWidget* parent)
     :QGroupBox(parent)
@@ -20,6 +21,13 @@ void ImageBlock::setTitle(const QString& title){
 
 void ImageBlock::setImage(const QString& path){
     image_->setPixmap(QPixmap(path));
+}
+
+void ImageBlock::mousePressEvent(QMouseEvent *event)
+{
+    emit clicked();
+    QGroupBox::mouseReleaseEvent(event);
+    qDebug() << "clicked.";
 }
 
 void ImageBlock::init(){

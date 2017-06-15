@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+//    qDebug() << ui->iScreen->screen()->b1;
+
 //    setAutoFillBackground(true);
 //    QPalette p = palette();
 //    p.setColor(QPalette::Window, QColor(200,10,10));

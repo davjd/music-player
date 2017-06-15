@@ -13,6 +13,7 @@ class IntroScreen : public QWidget
 
 public:
     explicit IntroScreen(QWidget *parent = 0);
+    Ui::IntroScreen* screen();
     ~IntroScreen();
 
 private:

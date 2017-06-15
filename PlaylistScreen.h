@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QVector>
 #include <QGridLayout>
+#include <QLayout>
 #include "Playlist.h"
 
 namespace Ui {
@@ -16,15 +17,17 @@ class PlaylistScreen : public QWidget
 
 public:
     explicit PlaylistScreen(QWidget *parent = 0);
+    Ui::PlaylistScreen* screen();
     ~PlaylistScreen();
 
 private:
-    Ui::PlaylistScreen *ui;
+    Ui::PlaylistScreen* ui;
     QVector<Playlist*>* list_;
+    QLayout* grid();
 
 
 
-    void loadPlaylists(QGridLayout* grid);
+    void loadPlaylists(QGridLayout* &grid);
     void append(QJsonDocument& doc, QJsonObject& playlist);
 };
 

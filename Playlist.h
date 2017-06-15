@@ -29,6 +29,8 @@ public:
     QTime time();
     Playlist::Type type();
 
+    static QString typeName(Playlist::Type type);
+
 
 
 private:

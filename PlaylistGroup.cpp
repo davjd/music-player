@@ -7,7 +7,7 @@
 #include <QJsonValue>
 #include <QJsonObject>
 
-#include "ImageBlock.h"
+#include "PlaylistBlock.h"
 #include <QDebug>
 #include <QObjectList>
 
@@ -56,6 +56,7 @@ void PlaylistGroup::init(const QString &title)
 
     // Put it into a scroll area
     QScrollArea *area = new QScrollArea(this);
+    area->setWidgetResizable(true);
     area->setObjectName("scroll");
     area->setWidget(client);
     area->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -69,9 +70,15 @@ void PlaylistGroup::init(const QString &title)
 
     setLayout(lay);
 
+//    ImageBlock* b = new ImageBlock();
+//    b->setTitle("Song" + QString::number(i + 1));
+//    b->setStyleSheet("background-color: white;");
+//    b->setFixedHeight(160);
+//    gl->addWidget(b, 0, 0);
+
 //    client->setStyleSheet("background-color:blue;");
 //    area->setStyleSheet("background-color:red;");
-    area->setAlignment(Qt::AlignCenter);
+    area->setAlignment(Qt::AlignVCenter);
 }
 
 void PlaylistGroup::loadGroup(const QJsonArray &items, QVector<Playlist*>* playlists)
@@ -93,15 +100,15 @@ void PlaylistGroup::loadGroup(const QJsonArray &items, QVector<Playlist*>* playl
         int row, col;
         row = ctr % 2;
 
-//        if(row == 0) col = ctr;
-//        else col = ctr - 1;
+        if(row == 0) col = ctr;
+        else col = ctr - 1;
 
-//        ImageBlock* b = new ImageBlock();
-//        b->setTitle("Song" + QString::number(1));
-//        b->setStyleSheet("background-color: white;");
-//        b->setFixedHeight(160);
-//        g->addWidget(b, row, col);
-//        ++ctr;
+        PlaylistBlock* b = new PlaylistBlock();
+        b->setPlaylist(playlists->last());
+        b->setTitle(playlists->last()->title());
+        b->setStyleSheet("background-color: red;");
+        g->addWidget(b, row, col);
+        ++ctr;
     }
 
 }
