@@ -25,6 +25,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QJsonValueRef>
 #include "Playlist.h"
 #include "Song.h"
 
@@ -101,71 +102,75 @@ int main(int argc, char *argv[])
     iterate(list, QDir(base));
 
 
-    QJsonObject songs;
+//    QJsonObject songs;
 
-    Playlist* pl = new Playlist();
-    pl->setTitle("ALL");
-    pl->setType(Playlist::Type::auto_gen);
-
-
-    for(auto i = list->begin(); i != list->end(); ++i){
-        for(auto ii = i.value()->begin(); ii != i.value()->end(); ++ii){
-            pl->push_back((*ii));
-        }
-    }
-
-    pl->write(songs);
-
-    QJsonArray recordsArray;
-
-    QJsonArray p1;
-    QJsonArray p2;
-    QJsonArray p3;
-
-    QJsonObject obj1;
-    QJsonObject obj2;
-    QJsonObject obj3;
-
-    obj1["type"] = Playlist::Type::auto_gen;
-    obj2["type"] = Playlist::Type::user_gen;
-    obj3["type"] = Playlist::Type::smart_gen;
+//    Playlist* pl = new Playlist();
+//    pl->setTitle("ALL");
+//    pl->setType(Playlist::Type::auto_gen);
 
 
+//    for(auto i = list->begin(); i != list->end(); ++i){
+//        for(auto ii = i.value()->begin(); ii != i.value()->end(); ++ii){
+//            pl->push_back((*ii));
+//        }
+//    }
+
+//    pl->write(songs);
+
+//    QJsonArray recordsArray;
+
+//    QJsonArray p1;
+//    QJsonArray p2;
+//    QJsonArray p3;
+
+//    QJsonObject obj1;
+//    QJsonObject obj2;
+//    QJsonObject obj3;
+
+//    obj1["type"] = Playlist::Type::auto_gen;
+//    obj2["type"] = Playlist::Type::user_gen;
+//    obj3["type"] = Playlist::Type::smart_gen;
 
 
-    obj1.insert("playlists", p1);
-    obj2.insert("playlists", p2);
-    obj3.insert("playlists", p3);
-
-    recordsArray.push_back(obj1);
-    recordsArray.push_back(obj2);
-    recordsArray.push_back(obj3);
 
 
-    QJsonDocument doc(recordsArray);
-    qDebug() << "before: " << doc;
+//    obj1.insert("playlists", p1);
+//    obj2.insert("playlists", p2);
+//    obj3.insert("playlists", p3);
+
+//    recordsArray.push_back(obj1);
+//    recordsArray.push_back(obj2);
+//    recordsArray.push_back(obj3);
 
 
-    Serializer s;
-    s.saveJson(doc, "playlists.json");
+//    QJsonDocument doc(recordsArray);
+//    qDebug() << "before: " << doc;
 
-    QJsonArray ar = doc.array();
 
-    int idx = -1;
-    for(QJsonValue v: ar){
+//    Serializer s;
+//    s.saveJson(doc, "playlists.json");
 
-        ++idx;
-        if(songs["type"] ==  v.toObject()["type"]){
-//            QJsonObject item = v.toObject();
-//            s.modifyJsonValue(doc, "family[2].father.age", songs);
-            break;
-        }
-    }
+//    QJsonArray ar = doc.array();
 
-    QString path = "[" + QString::number(idx) + "]" + ".playlists";
-    s.modifyJsonValue(doc, path, songs);
 
-    qDebug() << "after: " << doc;
+//    int idx = -1;
+//    for(QJsonValue v: ar){
+
+//        ++idx;
+//        if(songs["type"] ==  v.toObject()["type"]){
+//            QString path = "[" + QString::number(idx) + "]" + ".playlists";
+//            QJsonArray newDoc = v.toObject()["playlists"].toArray();
+//            newDoc.push_back(songs);
+//            s.modifyJsonValue(doc, path, newDoc);
+//            break;
+//        }
+//    }
+
+
+//    s.saveJson(doc, "playlists.json");
+
+//    qDebug() << "after: " << doc;
+//    qDebug() << "new: " << newDoc;
 
 
 //    qDebug() << doc;
@@ -202,8 +207,8 @@ int main(int argc, char *argv[])
 
 //    player->insert(list->value(list->begin()));
 
-//    MainWindow *w = new MainWindow();
-//    w->show();
+    MainWindow *w = new MainWindow();
+    w->show();
 
 //    PlaylistGroup* group = new PlaylistGroup("Auto Playlists");
 //    group->show();

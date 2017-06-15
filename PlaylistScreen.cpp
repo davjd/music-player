@@ -53,7 +53,7 @@ PlaylistScreen::PlaylistScreen(QWidget *parent) :
 //    client->setStyleSheet("background-color:blue;");
 //    area->setStyleSheet("background-color:red;");
     area->setAlignment(Qt::AlignCenter);
-//    loadPlaylists();
+    loadPlaylists(gl);
 
 
 
@@ -82,7 +82,18 @@ PlaylistScreen::~PlaylistScreen()
 void PlaylistScreen::loadPlaylists(QGridLayout* grid)
 {
     Serializer loader;
-    QJsonArray json = loader.loadJson("playlists.txt").array();
+    QJsonArray json = loader.loadJson("playlists.json").array();
+
+    for(QJsonValue type: json){
+        // create playlist groups for each type.
+
+
+        for(QJsonValue playlist: type.toObject()["playlists"].toArray()){
+            qDebug() << playlist;
+        }
+    }
+
+
     qDebug() << "stuff loaded.";
 //    int ctr = 0;
 //    const int LENGTH = 3;
@@ -99,5 +110,25 @@ void PlaylistScreen::loadPlaylists(QGridLayout* grid)
 
 
 ////        qDebug() << playlist.toObject()["title"].toString();
-//    }
+    //    }
+}
+
+void PlaylistScreen::append(QJsonDocument &doc, QJsonObject& playlist)
+{
+    Serializer s;
+    QJsonArray ar = doc.array();
+
+    int idx = -1;
+    for(QJsonValue v: ar){
+        ++idx;
+        if(playlist["type"] ==  v.toObject()["type"]){
+            QString path = "[" + QString::number(idx) + "]" + ".playlists";
+            QJsonArray newDoc = v.toObject()["playlists"].toArray();
+            newDoc.push_back(playlist);
+            s.modifyJsonValue(doc, path, newDoc);
+            s.saveJson(doc, "playlists.json");
+            break;
+        }
+    }
+
 }

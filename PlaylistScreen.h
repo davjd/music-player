@@ -24,6 +24,7 @@ private:
 
 
     void loadPlaylists(QGridLayout* grid);
+    void append(QJsonDocument& doc, QJsonObject& playlist);
 };
 
 #endif // PLAYLISTSCREEN_H
