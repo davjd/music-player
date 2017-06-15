@@ -100,7 +100,8 @@ int main(int argc, char *argv[])
 
 
     player = new MusicPlayer();
-//    player->setVolume(100);
+    player->setVolume(100);
+
 
 //    QHash<QString, QVector<Song*>* >* list = new QHash<QString, QVector<Song*>*>();
 //    QDir base(QString(getenv("HOME")) + "/Music");

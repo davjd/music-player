@@ -16,6 +16,7 @@
         <file>rewind.svg</file>
         <file>stop.svg</file>
         <file>pause.svg</file>
+        <file>list.svg</file>
     </qresource>
     <qresource prefix="/demoArt">
         <file>front.jpg</file>

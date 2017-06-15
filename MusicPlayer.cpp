@@ -11,6 +11,7 @@ MusicPlayer::MusicPlayer(): QMediaPlayer()
     repeatState_ = Repeat::off;
     index_ = -1;
     length_ = -1;
+    played_ = false;
 }
 
 MusicPlayer::~MusicPlayer(){
@@ -77,6 +78,16 @@ int MusicPlayer::length(){
 
 bool MusicPlayer::hasPlayed(){
     return (index_ != -1);
+}
+
+void MusicPlayer::setPlayed(bool p)
+{
+    played_ = p;
+}
+
+bool MusicPlayer::played()
+{
+    return played_;
 }
 
 void MusicPlayer::next(){

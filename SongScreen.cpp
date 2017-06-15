@@ -76,7 +76,7 @@ void SongScreen::togglePlay(){
         }
     }
     else{
-        if(!player->hasPlayed()){
+        if(!player->played()){
             qDebug() << "initializing player...";
             player->initializeContent();
             play();

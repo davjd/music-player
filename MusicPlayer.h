@@ -29,6 +29,10 @@ public:
     void insert(QVector<Song*>* content);
     void initializeContent();
     bool hasPlayed();
+    bool played();
+    void setPlayed(bool p);
+
+    int setIndex(const int v); // will emit signal when index changes.
 
 
 
@@ -39,12 +43,12 @@ private:
     int index_;
     bool shuffleOn_;
     int length_;
+    bool played_;
 
     void remove(const int idx);
     int nextIndex();
     int previousIndex();
     void shuffle();
-    int setIndex(const int v); // will emit signal when index changes.
     int increment();
     int decrement();
 

@@ -13,6 +13,9 @@
 #include "SongListScreen.h"
 #include "RotatedButton.h"
 #include "Serializer.h"
+#include "SongBlock.h"
+
+#include "Player.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -36,6 +39,9 @@ MainWindow::MainWindow(QWidget *parent) :
     SongListScreen* s =  ui->iScreen->findChild<QStackedWidget*>("stack")->findChild<SongListScreen*>("p2");
     s->setPlaylist(initialPlaylist_);
     s->loadPlaylist();
+
+    player->insert(initialPlaylist_->list());
+
 
     auto introObjs =  ui->iScreen->findChild<QWidget*>("verticalLayoutWidget")->children();
 
@@ -104,19 +110,27 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     // getting ui objects
-    auto screen = ui->iScreen->findChild<PlaylistScreen*>("p1")->findChild<QScrollArea*>("scroll")->widget()->findChild<QWidget*>("client");
+    auto screen = ui->iScreen->findChild<SongListScreen*>("p2")->findChild<QScrollArea*>("scroll")->widget()->findChild<QWidget*>("client");
 
     for(auto w: screen->children()){
-        if(typeid(*w) == typeid(PlaylistBlock)){
-            PlaylistBlock* g = static_cast<PlaylistBlock*>(w);
-            connect(g, &PlaylistBlock::clicked, [this, g](){
-                ui->iScreen->findChild<QStackedWidget*>("stack")->setCurrentIndex(1);
-                SongListScreen* s =  ui->iScreen->findChild<QStackedWidget*>("stack")->findChild<SongListScreen*>("p2");
-                s->setPlaylist(g->playlist());
-                s->loadPlaylist();
+        if(typeid(*w) == typeid(SongBlock)){
+            SongBlock* g = static_cast<SongBlock*>(w);
+            connect(g, &SongBlock::clicked, [this, g](){
+                // play this song.
+                ui->stackedWidget->setCurrentIndex(1);
+                player->setIndex(initialPlaylist_->list()->indexOf(g->song()) - 1);
+//                player->setMedia(*g->song()->content());
+//                player->play();
+
             });
         }
     }
+
+    QPushButton* bttn = ui->sScreen->findChild<QPushButton*>("menu");
+    connect(bttn, &QPushButton::clicked, [this, bttn](){
+        // play this song.
+        ui->stackedWidget->setCurrentIndex(0);
+    });
 
 //    qDebug() << stack->findChild<PlaylistScreen*>("p1")->findChild<PlaylistGroup*>("pAuto Playlists");
 
