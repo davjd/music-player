@@ -10,6 +10,8 @@
 #include <typeinfo>
 #include "PlaylistBlock.h"
 #include "ImageBlock.h"
+#include "SongListScreen.h";
+#include "RotatedButton.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -18,19 +20,44 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
 
+    auto introObjs =  ui->iScreen->findChild<QWidget*>("verticalLayoutWidget")->children();
+//    qDebug() << introObjs;
+
+    for(auto w: introObjs){
+        if(typeid(*w) == typeid(RotatedButton)){
+            PlaylistBlock* g = static_cast<PlaylistBlock*>(w);
+            connect(g, &PlaylistBlock::clicked, [this, g](){
+                ui->iScreen->findChild<QStackedWidget*>("stack")->setCurrentIndex(1);
+                SongListScreen* s =  ui->iScreen->findChild<QStackedWidget*>("stack")->findChild<SongListScreen*>("p2");
+                s->setPlaylist(g->playlist());
+                s->loadPlaylist();
+            });
+            qDebug() << w;
+        }
+
+//        qDebug() << w;
+    }
+
+//    PlaylistBlock* g = static_cast<PlaylistBlock*>(w);
+//    connect(g, &PlaylistBlock::clicked, [this, g](){
+//        ui->iScreen->findChild<QStackedWidget*>("stack")->setCurrentIndex(1);
+//        SongListScreen* s =  ui->iScreen->findChild<QStackedWidget*>("stack")->findChild<SongListScreen*>("p2");
+//        s->setPlaylist(g->playlist());
+//        s->loadPlaylist();
+//    });
+
+
     // getting ui objects
     auto screen = ui->iScreen->findChild<PlaylistScreen*>("p1")->findChild<QScrollArea*>("scroll")->widget()->findChild<QWidget*>("client");
-//    qDebug() << screen;
 
-
-//    qDebug() << "info: " << typeid(PlaylistBlock).name();
     for(auto w: screen->children()){
         if(typeid(*w) == typeid(PlaylistBlock)){
-            qDebug() << w;
             PlaylistBlock* g = static_cast<PlaylistBlock*>(w);
-
-            connect(g, &PlaylistBlock::clicked, [this](){
-                        qDebug() << "woah.";
+            connect(g, &PlaylistBlock::clicked, [this, g](){
+                ui->iScreen->findChild<QStackedWidget*>("stack")->setCurrentIndex(1);
+                SongListScreen* s =  ui->iScreen->findChild<QStackedWidget*>("stack")->findChild<SongListScreen*>("p2");
+                s->setPlaylist(g->playlist());
+                s->loadPlaylist();
             });
         }
     }

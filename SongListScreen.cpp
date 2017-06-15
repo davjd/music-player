@@ -16,7 +16,7 @@ SongListScreen::SongListScreen(QWidget *parent) :
 
     playlist_ = new Playlist();
 
-    qDebug() << "Playlist screen init().";
+    qDebug() << "Songlist init";
 
     // Fake up a grid to scroll
     QWidget *client = new QWidget(this);
