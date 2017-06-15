@@ -122,6 +122,7 @@ void PlaylistScreen::loadPlaylists(QGridLayout* &grid)
         // create playlist groups for each type.
         PlaylistGroup* group = new PlaylistGroup(
                     Playlist::typeName((Playlist::Type) type.toObject()["type"].toInt()));
+        group->setObjectName("p" + Playlist::typeName((Playlist::Type) type.toObject()["type"].toInt()));
         group->setStyleSheet("color: red;");
         group->setFixedHeight(450);
         group->setFixedWidth(810);

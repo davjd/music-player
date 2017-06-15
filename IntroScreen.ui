@@ -69,19 +69,8 @@
      <height>500</height>
     </rect>
    </property>
-   <widget class="QWidget" name="page">
-    <widget class="PlaylistScreen" name="pScreen" native="true">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>851</width>
-       <height>500</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="page_2"/>
+   <widget class="PlaylistScreen" name="p1"/>
+   <widget class="SongListScreen" name="p2"/>
   </widget>
  </widget>
  <customwidgets>
@@ -94,6 +83,12 @@
    <class>PlaylistScreen</class>
    <extends>QWidget</extends>
    <header>PlaylistScreen.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SongListScreen</class>
+   <extends>QWidget</extends>
+   <header>SongListScreen.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

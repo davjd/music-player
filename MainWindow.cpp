@@ -4,12 +4,21 @@
 #include "IntroScreen.h"
 #include <QDebug>
 #include <QPalette>
+#include "PlaylistScreen.h"
+#include "PlaylistGroup.h";
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+
+    // getting ui objects:
+    QStackedWidget* stack = ui->iScreen->findChild<QStackedWidget*>("stack");
+    qDebug() << ui->iScreen->findChild<PlaylistGroup*>("pAuto Playlists");
+//    qDebug() << stack->findChild<PlaylistScreen*>("p1")->findChild<PlaylistGroup*>("pAuto Playlists");
+
 
 //    qDebug() << ui->iScreen->screen()->b1;
 
@@ -19,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
 //    setPalette(p);
 //    qDebug() << "color: " << p.color(QPalette::Window);
 
-//    connect(ui->iScreen, &QMediaPlayer::mediaStatusChanged, [this](QMediaPlayer::MediaStatus status){
+//    connect(, &QMediaPlayer::mediaStatusChanged, [this](QMediaPlayer::MediaStatus status){
 
 //    });
 

@@ -13,6 +13,7 @@ public:
     PlaylistGroup();
     PlaylistGroup(const QString& title);
     void init(const QString& title  = "Title");
+    void loadPlaylist(Playlist* playlist);
     void loadGroup(const QJsonArray& items, QVector<Playlist*>* playlists);
 
 private:

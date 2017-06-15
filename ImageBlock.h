@@ -5,7 +5,7 @@
 #include <QPixmap>
 #include <QLabel>
 #include <QMouseEvent>
-
+#include "ScrollText.h"
 
 class ImageBlock : public QGroupBox
 {
@@ -15,7 +15,7 @@ public:
     ImageBlock(const QString& title, QWidget* parent = 0);
 
     QLabel* image();
-    QLabel* title();
+    ScrollText* title();
 
     void init();
     void setTitle(const QString& title);
@@ -23,7 +23,7 @@ public:
 
 private:
     QLabel* image_;
-    QLabel* title_;
+    ScrollText* title_;
 
 signals:
     void clicked();

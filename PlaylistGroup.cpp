@@ -8,6 +8,7 @@
 #include <QJsonObject>
 
 #include "PlaylistBlock.h"
+#include "SongBlock.h"
 #include <QDebug>
 #include <QObjectList>
 
@@ -33,8 +34,8 @@ void PlaylistGroup::init(const QString &title)
     gl->setHorizontalSpacing(80);
     gl->setVerticalSpacing(20);
 
-    int ctr = 0;
-    const int LENGTH = 16;
+//    int ctr = 0;
+//    const int LENGTH = 16;
 
 //    for(int i = 0; i < LENGTH; ++i){
 
@@ -79,6 +80,28 @@ void PlaylistGroup::init(const QString &title)
 //    client->setStyleSheet("background-color:blue;");
 //    area->setStyleSheet("background-color:red;");
     area->setAlignment(Qt::AlignVCenter);
+}
+
+void PlaylistGroup::loadPlaylist(Playlist *playlist)
+{
+
+    qDebug() << "called";
+    QGridLayout* g = static_cast<QGridLayout*>(grid());
+    int ctr = 0;
+    for(Song* song: (*playlist->list())){
+        int row, col;
+        row = ctr % 2;
+
+        if(row == 0) col = ctr;
+        else col = ctr - 1;
+
+        SongBlock* b = new SongBlock();
+        b->setSong(song);
+        b->setTitle(song->title());
+        b->setStyleSheet("background-color: green;");
+        g->addWidget(b, row, col);
+        ++ctr;
+    }
 }
 
 void PlaylistGroup::loadGroup(const QJsonArray &items, QVector<Playlist*>* playlists)

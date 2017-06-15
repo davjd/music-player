@@ -15,6 +15,16 @@ ImageBlock::ImageBlock(const QString& title, QWidget* parent)
     init();
 }
 
+QLabel *ImageBlock::image()
+{
+    return image_;
+}
+
+ScrollText *ImageBlock::title()
+{
+    return title_;
+}
+
 void ImageBlock::setTitle(const QString& title){
     title_->setText(title);
 }
@@ -31,16 +41,18 @@ void ImageBlock::mousePressEvent(QMouseEvent *event)
 }
 
 void ImageBlock::init(){
-    title_ = new QLabel();
+    title_ = new ScrollText();
     image_ = new QLabel();
 
     setImage(":/buttons/musical-note.svg");
     setTitle("Title");
-    title_->setAlignment(Qt::AlignCenter);
+//    title_->setAlignment(Qt::AlignCenter);
 
     QVBoxLayout* grid = new QVBoxLayout();
     grid->addWidget(image_);
     grid->addWidget(title_);
+    title_->setFixedWidth(100);
+    title_->setStyleSheet("border-color:white; color:blue;");
     grid->setSizeConstraint(QLayout::SetFixedSize);
     setLayout(grid);
 }

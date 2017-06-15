@@ -29,6 +29,9 @@
 #include "Playlist.h"
 #include "Song.h"
 
+#include "SongListScreen.h"
+#include "ScrollText.h"
+
 
 
 
@@ -95,11 +98,11 @@ int main(int argc, char *argv[])
 
 
     player = new MusicPlayer();
-    player->setVolume(100);
+//    player->setVolume(100);
 
-    QHash<QString, QVector<Song*>* >* list = new QHash<QString, QVector<Song*>*>();
-    QDir base(QString(getenv("HOME")) + "/Music");
-    iterate(list, QDir(base));
+//    QHash<QString, QVector<Song*>* >* list = new QHash<QString, QVector<Song*>*>();
+//    QDir base(QString(getenv("HOME")) + "/Music");
+//    iterate(list, QDir(base));
 
 
 //    QJsonObject songs;
@@ -295,6 +298,26 @@ int main(int argc, char *argv[])
 //    recordsArray.push_back(recordObject);
 //    QJsonDocument doc(recordsArray);
 //    qDebug() << doc.toJson();
+
+
+//    Serializer ser;
+//    QJsonDocument doc = loadJson("playlists.json");
+//    QJsonObject obj = doc.array().at(0).toObject()["playlists"].toArray().at(0).toObject();
+
+//    Playlist* playlist = new Playlist();
+//    playlist->read(obj);
+//    qDebug() << "s: " << playlist->list()->size();
+
+
+//    SongListScreen* sl = new SongListScreen();
+//    sl->setPlaylist(playlist);
+//    sl->loadPlaylist();
+//    sl->show();
+
+//    ScrollText* scroll = new ScrollText();
+//    scroll->setFixedWidth(100);
+//    scroll->setText("SOMETHING REALLLkkkkkkkkkkkkkkkkkkkkkLY LONGGGG");
+//    scroll->show();
 
 
 

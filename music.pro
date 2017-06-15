@@ -37,7 +37,10 @@ SOURCES += main.cpp\
     ImageBlock.cpp \
     Serializer.cpp \
     PlaylistGroup.cpp \
-    PlaylistBlock.cpp
+    PlaylistBlock.cpp \
+    SongListScreen.cpp \
+    SongBlock.cpp \
+    ScrollText.cpp
 
 HEADERS  += MainWindow.h \
     Song.h \
@@ -51,12 +54,16 @@ HEADERS  += MainWindow.h \
     ImageBlock.h \
     Serializer.h \
     PlaylistGroup.h \
-    PlaylistBlock.h
+    PlaylistBlock.h \
+    SongListScreen.h \
+    SongBlock.h \
+    ScrollText.h
 
 FORMS    += MainWindow.ui \
     SongScreen.ui \
     IntroScreen.ui \
-    PlaylistScreen.ui
+    PlaylistScreen.ui \
+    SongListScreen.ui
 
 CONFIG += mobility
 MOBILITY = 
