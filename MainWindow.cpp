@@ -120,7 +120,7 @@ MainWindow::MainWindow(QWidget *parent) :
                 ui->stackedWidget->setCurrentIndex(1);
                 player->setIndex(initialPlaylist_->list()->indexOf(g->song()) - 1);
 //                player->setMedia(*g->song()->content());
-//                player->play();
+                player->play();
 
             });
         }
