@@ -1,5 +1,10 @@
 #include "Song.h"
 #include <QDebug>
+#include "taglib/mpegfile.h"
+#include "id3v2frame.h"
+#include"id3v2tag.h"
+#include <attachedpictureframe.h>
+#include <QFile>
 
 Song::Song()
 {
@@ -59,6 +64,28 @@ QDir* Song::path(){
 
 TagLib::FileRef* Song::source(){
     return source_;
+}
+
+QPixmap Song::cover()
+{
+    QFileInfo fi(path()->absolutePath());
+    QString ext = fi.suffix();
+
+    if(ext == "mp3"){
+        TagLib::MPEG::File file((path()->absolutePath().toStdString().data()));
+        TagLib::ID3v2::Tag *m_tag = file.ID3v2Tag(true);
+        TagLib::ID3v2::FrameList frameList = m_tag->frameList("APIC");
+        if(!frameList.isEmpty()) {
+           TagLib::ID3v2::AttachedPictureFrame *coverImg =
+                   static_cast<TagLib::ID3v2::AttachedPictureFrame *>(frameList.front());
+           QPixmap coverQImg;
+           coverQImg.loadFromData((const uchar *) coverImg->picture().data(),
+                                  coverImg->picture().size());
+           coverQImg = coverQImg.scaled(100,100);
+           return coverQImg;
+        }
+        else return QPixmap();
+    }
 }
 
 void Song::setS(TagLib::FileRef* s){

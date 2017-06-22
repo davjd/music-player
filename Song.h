@@ -9,6 +9,7 @@
 #include <QString>
 #include <QDir>
 #include <QJsonObject>
+#include <QPixmap>
 
 class Song : public QObject
 {
@@ -26,6 +27,7 @@ public:
     QString comment();
     QDir* path();
     TagLib::FileRef* source();
+    QPixmap cover();
 //    QMediaContent
 
     void read(const QJsonObject &json);

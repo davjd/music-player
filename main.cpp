@@ -33,6 +33,9 @@
 #include "ScrollText.h"
 
 #include <QDialog>
+#include <QImage>
+
+
 
 
 
@@ -150,7 +153,7 @@ int main(int argc, char *argv[])
 
 
 //    QJsonDocument doc(recordsArray);
-//    qDebug() << "before: " << doc;
+////    qDebug() << "before: " << doc;
 
 
 //    Serializer s;
@@ -215,6 +218,28 @@ int main(int argc, char *argv[])
 
     MainWindow *w = new MainWindow();
     w->show();
+
+//    QDir* d = new QDir(QString(getenv("HOME")) + "/Music/trav/butterfly.mp3");
+//    qDebug() << d->absolutePath().toStdString().data();
+//    TagLib::MPEG::File file(/*reinterpret_cast<const wchar_t*>*/(d->absolutePath().toStdString().data()));
+//    TagLib::ID3v2::Tag *m_tag = file.ID3v2Tag(true);
+////    TagLib::ID3v2::Frame frame = m_tag->frameList()
+//    TagLib::ID3v2::FrameList frameList = m_tag->frameList("APIC");
+////    TagLib::ID3v2::FrameList frameList = m_tag->frameList("APIC");
+//    if(frameList.isEmpty()) {
+//       qDebug() << "nothing.";
+//    }
+
+//    TagLib::ID3v2::AttachedPictureFrame *coverImg = static_cast<TagLib::ID3v2::AttachedPictureFrame *>(frameList.front());
+
+//    QLabel* label =  new QLabel();
+//    QPixmap coverQImg;
+//    coverQImg.loadFromData((const uchar *) coverImg->picture().data(), coverImg->picture().size());
+//    QGridLayout l;
+//    label->setPixmap(coverQImg);
+//    l.addWidget(label);
+//    label->show();
+//    qDebug() << label;
 
 //    PlaylistGroup* group = new PlaylistGroup("Auto Playlists");
 //    group->show();

@@ -20,6 +20,7 @@ public:
     void init();
     void setTitle(const QString& title);
     void setImage(const QString& path);
+    void setImage(const QPixmap& pic);
 
 private:
     QLabel* image_;

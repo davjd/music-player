@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    initialized_ = false;
 
     /*
      *  The window requires that there must be a playlist loaded
@@ -119,8 +120,14 @@ MainWindow::MainWindow(QWidget *parent) :
                 // play this song.
                 ui->stackedWidget->setCurrentIndex(1);
                 player->setIndex(initialPlaylist_->list()->indexOf(g->song()) - 1);
-//                player->setMedia(*g->song()->content());
-                player->play();
+                if(!initialized_){
+                    player->initializeContent();
+                    initialized_ = true;
+                }
+                else{
+                    player->setMedia(*g->song()->content());
+                    player->next();
+                }
 
                 // toggle played in main window instead of music player.
                 // call initiain here.
@@ -134,6 +141,10 @@ MainWindow::MainWindow(QWidget *parent) :
         // play this song.
         ui->stackedWidget->setCurrentIndex(0);
     });
+
+
+    setFixedWidth(950);
+    setFixedHeight(675);
 
 //    qDebug() << stack->findChild<PlaylistScreen*>("p1")->findChild<PlaylistGroup*>("pAuto Playlists");
 

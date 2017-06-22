@@ -33,6 +33,11 @@ void ImageBlock::setImage(const QString& path){
     image_->setPixmap(QPixmap(path));
 }
 
+void ImageBlock::setImage(const QPixmap &pic)
+{
+    image_->setPixmap(pic);
+}
+
 void ImageBlock::mousePressEvent(QMouseEvent *event)
 {
     emit clicked();

@@ -25,6 +25,7 @@ SongScreen::SongScreen(QWidget *parent) :
         qDebug() << "Song idx: " << player->songIndex();
         drawArtist();
         drawTitle();
+        drawCover();
     });
     connect(ui->progress, &QSlider::sliderReleased, [this](){
         player->setPosition(ui->progress->value());
@@ -83,22 +84,40 @@ void SongScreen::togglePlay(){
             pause();
         }
     }
-    else{
-        if(!player->played()){
-            qDebug() << "initializing player...";
-            player->initializeContent();
-            play();
-        }
-    }
+//    else{
+//        if(!player->played()){
+//            qDebug() << "initializing player...";
+//            player->initializeContent();
+//            play();
+//        }
+//    }
 }
 
 void SongScreen::drawArtist(){
     int idx = player->index();
     if(idx < 0 || idx > player->length()){
-        qDebug() << "Title won't be loaded, because of index.";
+        qDebug() << "Artist won't be loaded, because of index.";
         return;
     }
-    ui->artist->setText(player->songList()->at(player->songIndex())->artist());
+    QString artist(player->songList()->at(player->songIndex())->artist());
+    if(artist.length() == 0){
+        artist = player->songList()->at(player->songIndex())->path()->absolutePath();
+    }
+    ui->artist->setText(artist);
+}
+
+void SongScreen::drawCover()
+{
+    int idx = player->index();
+    if(idx < 0 || idx > player->length()){
+        qDebug() << "Cover won't be loaded, because of index.";
+        return;
+    }
+    QPixmap cover(player->songList()->at(player->songIndex())->cover());
+    if(!cover.isNull()){
+        ui->cover->setText("");
+        ui->cover->setIcon(QIcon(cover));
+    }
 }
 
 void SongScreen::drawTitle(){
@@ -107,7 +126,11 @@ void SongScreen::drawTitle(){
         qDebug() << "Title won't be loaded, because of index.";
         return;
     }
-    ui->title->setText(player->songList()->at(player->songIndex())->title());
+    QString title(player->songList()->at(player->songIndex())->title());
+    if(title.length() == 0){
+        title = player->songList()->at(player->songIndex())->path()->absolutePath();
+    }
+    ui->title->setText(title);
 }
 
 void SongScreen::toggleRepeat(){

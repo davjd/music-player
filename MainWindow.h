@@ -25,6 +25,7 @@ private:
     Ui::MainWindow *ui;
     Playlist* currentPlaylist_;
     Playlist* initialPlaylist_;
+    bool initialized_;
 
     void loadInitial();
 

@@ -133,7 +133,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="cover">
     <property name="geometry">
      <rect>
       <x>170</x>
@@ -241,7 +241,7 @@ QSlider::add-page
      <bool>true</bool>
     </property>
    </widget>
-   <zorder>pushButton</zorder>
+   <zorder>cover</zorder>
    <zorder>frame</zorder>
    <zorder>progress</zorder>
    <zorder>menu</zorder>

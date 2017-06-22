@@ -25,6 +25,7 @@ public slots:
     void togglePlay();
     void drawTitle();
     void drawArtist();
+    void drawCover();
     void toggleRepeat();
     void toggleShuffle();
 private slots:

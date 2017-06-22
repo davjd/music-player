@@ -12,6 +12,13 @@
 #include <QDebug>
 #include <QObjectList>
 
+#include "taglib/mpegfile.h"
+#include "id3v2frame.h"
+#include"id3v2tag.h"
+#include <attachedpictureframe.h>
+#include <QPixmap>
+#include <QFile>
+
 PlaylistGroup::PlaylistGroup()
     :QWidget()
 {
@@ -31,7 +38,6 @@ void PlaylistGroup::init(const QString &title)
     client->setObjectName("client");
     QGridLayout *gl = new QGridLayout(client);
     gl->setObjectName("grid");
-
     gl->setHorizontalSpacing(80);
     gl->setVerticalSpacing(20);
 
@@ -104,6 +110,30 @@ void PlaylistGroup::loadPlaylist(Playlist *playlist)
         b->setSong(song);
         b->setTitle(song->title());
         b->setStyleSheet("background-color: white;");
+
+
+        QFileInfo fi(b->song()->path()->absolutePath());
+        QString ext = fi.suffix();  // ext = "gz"
+
+        if(ext == "mp3"){
+
+            TagLib::MPEG::File file(/*reinterpret_cast<const wchar_t*>*/(b->song()->path()->absolutePath().toStdString().data()));
+            TagLib::ID3v2::Tag *m_tag = file.ID3v2Tag(true);
+            TagLib::ID3v2::FrameList frameList = m_tag->frameList("APIC");
+            if(!frameList.isEmpty()) {
+               TagLib::ID3v2::AttachedPictureFrame *coverImg = static_cast<TagLib::ID3v2::AttachedPictureFrame *>(frameList.front());
+
+
+               QPixmap coverQImg;
+               coverQImg.loadFromData((const uchar *) coverImg->picture().data(), coverImg->picture().size());
+               coverQImg = coverQImg.scaled(100,100);
+               b->setImage(coverQImg);
+            }
+
+        }
+
+
+
         g->addWidget(b, row, col);
         ++ctr;
     }
