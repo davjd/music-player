@@ -40,25 +40,15 @@ MainWindow::MainWindow(QWidget *parent) :
     SongListScreen* s =  ui->iScreen->findChild<QStackedWidget*>("stack")->findChild<SongListScreen*>("p2");
     s->setPlaylist(initialPlaylist_);
     s->loadPlaylist();
-
     player->insert(initialPlaylist_->list());
 
-
     auto introObjs =  ui->iScreen->findChild<QWidget*>("verticalLayoutWidget")->children();
-
     int ctr = 0;
+
     for(auto w: introObjs){
         if(typeid(*w) == typeid(RotatedButton)){
             RotatedButton* g = static_cast<RotatedButton*>(w);
             connect(g, &RotatedButton::clicked, [this, g, ctr](){
-
-
-
-
-
-
-
-
 
                 switch(ctr){
 //                    case 0:
@@ -111,27 +101,25 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     // getting ui objects
-    auto screen = ui->iScreen->findChild<SongListScreen*>("p2")->findChild<QScrollArea*>("scroll")->widget()->findChild<QWidget*>("client");
-
+    auto screen = ui->iScreen->findChild<SongListScreen*>("p2")->
+            findChild<QScrollArea*>("scroll")->
+            widget()->findChild<QWidget*>("client");
     for(auto w: screen->children()){
         if(typeid(*w) == typeid(SongBlock)){
             SongBlock* g = static_cast<SongBlock*>(w);
             connect(g, &SongBlock::clicked, [this, g](){
                 // play this song.
                 ui->stackedWidget->setCurrentIndex(1);
-                player->setIndex(initialPlaylist_->list()->indexOf(g->song()) - 1);
                 if(!initialized_){
+                    player->setIndex(initialPlaylist_->list()->indexOf(g->song()) - 1);
                     player->initializeContent();
                     initialized_ = true;
                 }
                 else{
+                    player->setIndex(initialPlaylist_->list()->indexOf(g->song()));
                     player->setMedia(*g->song()->content());
-                    player->next();
                 }
-
-                // toggle played in main window instead of music player.
-                // call initiain here.
-
+                qDebug() << "Player state: " << player->mediaStatus();
             });
         }
     }
@@ -160,9 +148,6 @@ MainWindow::MainWindow(QWidget *parent) :
 //    connect(, &QMediaPlayer::mediaStatusChanged, [this](QMediaPlayer::MediaStatus status){
 
 //    });
-
-
-
 }
 
 void MainWindow::setCurrentPlaylist(Playlist *playlist)

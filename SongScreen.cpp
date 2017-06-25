@@ -1,6 +1,7 @@
 #include "SongScreen.h"
 #include "ui_SongScreen.h"
 #include <QDebug>
+#include <QDateTime>
 #include "Song.h"
 
 SongScreen::SongScreen(QWidget *parent) :
@@ -8,16 +9,10 @@ SongScreen::SongScreen(QWidget *parent) :
     ui(new Ui::SongScreen)
 {
     ui->setupUi(this);
-//    this->setStyleSheet("background-color: black;");
-////    setPaletteBackgroundColor(Qt::black);
-//    setAutoFillBackground(true);
-
 
     setAutoFillBackground(true);
     QPalette p = palette();
     p.setColor(QPalette::Window, QColor(125,153,153,150));
-//    p.setColor(QPalette::Window, Qt::black);
-
     setPalette(p);
 
     connect(player, &MusicPlayer::idxChanged, [this](){
@@ -30,7 +25,6 @@ SongScreen::SongScreen(QWidget *parent) :
     connect(ui->progress, &QSlider::sliderReleased, [this](){
         player->setPosition(ui->progress->value());
     });
-
     connect(player, SIGNAL(mediaStatusChanged(QMediaPlayer::MediaStatus)), this, SLOT(setFiller()));
     connect(player, SIGNAL(positionChanged(qint64)), this, SLOT(fillBuffer()));
 }
@@ -116,6 +110,7 @@ void SongScreen::drawCover()
     QPixmap cover(player->songList()->at(player->songIndex())->cover());
     if(!cover.isNull()){
         ui->cover->setText("");
+        cover = cover.scaled(200,200);
         ui->cover->setIcon(QIcon(cover));
     }
 }
@@ -146,6 +141,17 @@ void SongScreen::toggleShuffle(){
 void SongScreen::setFiller(){
     if( player->mediaStatus() == QMediaPlayer::BufferedMedia){
         ui->progress->setMaximum(player->duration());
+        auto milliseconds = player->duration();
+        int seconds = (int) (milliseconds / 1000) % 60 ;
+        int minutes = (int) ((milliseconds / (1000*60)) % 60);
+        QString time = minutes + ":";
+        if(seconds < 10){
+            time += '0';
+        }
+        time += seconds;
+
+        qDebug() << time;
+//        ui->endPosition->setText(QDateTime::fromTime_t(player->duration()).toUTC().toString("hh:mm:ss"));
     }
     else qDebug() << player->mediaStatus();
 }

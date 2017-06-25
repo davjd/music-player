@@ -38,6 +38,11 @@ void ImageBlock::setImage(const QPixmap &pic)
     image_->setPixmap(pic);
 }
 
+void ImageBlock::setSize(const int width, const int height)
+{
+    image_->setPixmap(image_->pixmap()->scaled(width, height));
+}
+
 void ImageBlock::mousePressEvent(QMouseEvent *event)
 {
     emit clicked();
@@ -50,7 +55,6 @@ void ImageBlock::init(){
 
     setImage(":/buttons/musical-note.svg");
     setTitle("Title");
-//    title_->setAlignment(Qt::AlignCenter);
 
     QVBoxLayout* grid = new QVBoxLayout();
     grid->addWidget(image_);

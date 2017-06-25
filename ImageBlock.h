@@ -21,6 +21,7 @@ public:
     void setTitle(const QString& title);
     void setImage(const QString& path);
     void setImage(const QPixmap& pic);
+    void setSize(const int width, const int height);
 
 private:
     QLabel* image_;

@@ -241,16 +241,50 @@ QSlider::add-page
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QLabel" name="currentPosition">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>370</y>
+      <width>67</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: black;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="endPosition">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>370</y>
+      <width>67</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:black;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>cover</zorder>
    <zorder>frame</zorder>
    <zorder>progress</zorder>
    <zorder>menu</zorder>
+   <zorder>currentPosition</zorder>
+   <zorder>endPosition</zorder>
   </widget>
   <widget class="QPushButton" name="middle">
    <property name="geometry">
     <rect>
-     <x>440</x>
-     <y>510</y>
+     <x>430</x>
+     <y>520</y>
      <width>91</width>
      <height>91</height>
     </rect>
@@ -369,8 +403,8 @@ QSlider::add-page
   <widget class="QPushButton" name="left">
    <property name="geometry">
     <rect>
-     <x>380</x>
-     <y>530</y>
+     <x>370</x>
+     <y>540</y>
      <width>41</width>
      <height>51</height>
     </rect>
@@ -409,8 +443,8 @@ QSlider::add-page
   <widget class="QPushButton" name="right">
    <property name="geometry">
     <rect>
-     <x>550</x>
-     <y>530</y>
+     <x>540</x>
+     <y>540</y>
      <width>41</width>
      <height>51</height>
     </rect>
@@ -450,7 +484,7 @@ QSlider::add-page
    <property name="geometry">
     <rect>
      <x>350</x>
-     <y>490</y>
+     <y>500</y>
      <width>261</width>
      <height>31</height>
     </rect>

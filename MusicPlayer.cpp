@@ -21,10 +21,8 @@ MusicPlayer::~MusicPlayer(){
 
 void MusicPlayer::initializeContent(){
     /*
-
         Initialized the QMediaPlayer's mediaContet.
         This will also initialize all signals and slots required.
-
     */
     setMedia((*list_->at(increment())->content()));
 
@@ -94,10 +92,6 @@ void MusicPlayer::next(){
     if(repeatState_ == Repeat::off || repeatState_ == Repeat::single){
         if(index_ == length_) return;
     }
-
-
-
-
     int idx = nextIndex();
     qDebug() << "Next idx: " << idx;
     if(idx != -1){

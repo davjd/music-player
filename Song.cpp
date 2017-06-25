@@ -70,7 +70,6 @@ QPixmap Song::cover()
 {
     QFileInfo fi(path()->absolutePath());
     QString ext = fi.suffix();
-
     if(ext == "mp3"){
         TagLib::MPEG::File file((path()->absolutePath().toStdString().data()));
         TagLib::ID3v2::Tag *m_tag = file.ID3v2Tag(true);
@@ -84,8 +83,10 @@ QPixmap Song::cover()
            coverQImg = coverQImg.scaled(100,100);
            return coverQImg;
         }
-        else return QPixmap();
     }
+    QPixmap coverQImg(":/buttons/musical-note.svg");
+    coverQImg = coverQImg.scaled(100,100);
+    return coverQImg;
 }
 
 void Song::setS(TagLib::FileRef* s){
