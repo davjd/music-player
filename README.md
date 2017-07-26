@@ -5,8 +5,8 @@ Symposium project
 
 - Main screen
 
-![Alt text](DATA/homescreen.png? "MainScreen")
+![Alt text](https://github.com/davjd/music-player/blob/master/Data/homescreen.png "MainScreen")
 
 - Player screen
 
-![Alt text](DATA/player.png "PlayerScreen")
+![Alt text](https://github.com/davjd/music-player/blob/master/Data/player.png "PlayerScreen")
