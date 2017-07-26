@@ -5,8 +5,8 @@ Symposium project
 
 - Main screen
 
-![Alt text](DATA/homescreen.png?raw=true "Title")
+![Alt text](DATA/homescreen.png? "MainScreen")
 
 - Player screen
 
-![Alt text](DATA/player.png?raw=true "Title")
+![Alt text](DATA/player.png "PlayerScreen")
