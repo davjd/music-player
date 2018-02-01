@@ -3,11 +3,10 @@
 
 #include "Serializer.h"
 #include "ImageBlock.h"
+#include "PlaylistGroup.h"
 #include <QJsonArray>
 #include <QScrollArea>
 #include <QScrollBar>
-
-#include "PlaylistGroup.h"
 
 PlaylistScreen::PlaylistScreen(QWidget *parent) :
     QWidget(parent),
