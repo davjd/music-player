@@ -2,8 +2,8 @@
 #define PLAYLISTGROUP_H
 
 #include <QWidget>
-#include <QJsonArray>
 #include <QLayout>
+#include <QJsonArray>
 #include "Playlist.h"
 
 
