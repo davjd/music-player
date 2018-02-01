@@ -6,9 +6,7 @@
 #include <QWidget>
 #include <QStaticText>
 #include <QTimer>
-
 // credits to https://stackoverflow.com/users/592323/leemes
-
 
 class ScrollText : public QWidget
 {
