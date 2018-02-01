@@ -88,7 +88,6 @@ void ScrollText::paintEvent(QPaintEvent*)
             pb.setOpacity((qreal)(qMax(-8, scrollPos) + 8) / 8.0);
         pb.drawImage(0, 0, alphaChannel);
 
-        //pb.end();
         p.drawImage(0, 0, buffer);
     }
     else
