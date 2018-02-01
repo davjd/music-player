@@ -7,12 +7,10 @@ SongBlock::SongBlock() : ImageBlock()
 
 void SongBlock::setSong(Song *song)
 {
-
     if(song_ != nullptr) {
         delete song_;
     }
     song_ = song;
-
 }
 
 Song* SongBlock::song(){
