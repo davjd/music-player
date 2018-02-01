@@ -4,12 +4,10 @@
 #include "Song.h"
 #include "ImageBlock.h"
 
-
 class SongBlock : public ImageBlock
 {
 public:
     SongBlock();
-
     void setSong(Song* song);
     Song* song();
 
